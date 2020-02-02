@@ -24,12 +24,10 @@ export const Products: React.FC<IProductsProps> = (props) => {
       id: event.target.id,
       toBuy: event.target.checked
     }
-    console.log(item)
-/*
-    if (event.target.id !== event.target.checked.toString()) {
+
+    if (event.target.value !== event.target.checked.toString()) {
       updateProduct(item)
     }
-    */
   }
 
   return (
@@ -55,7 +53,8 @@ export const Products: React.FC<IProductsProps> = (props) => {
                   </IonCol>
                   <IonCol size="4" style={{textAlign: "center"}}>
                     To buy
-                    <IonToggle id={product.id} checked={product.toBuy} onIonChange={handleToBuyValue} />
+                    <IonToggle id={product.id} value={product.toBuy.toString()}
+                      checked={product.toBuy} onIonChange={handleToBuyValue} />
                   </IonCol>
                   <IonCol size="3" style={{textAlign: "center"}}>
                     Done
