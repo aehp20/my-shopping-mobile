@@ -1,23 +1,40 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
-import React from 'react';
+import React, { useState } from 'react';
+import {
+  IonContent,
+  IonHeader,
+  IonPage,
+  IonSearchbar,
+  IonFab,
+  IonFabButton,
+  IonIcon,
+  IonModal
+} from '@ionic/react';
+import { add } from 'ionicons/icons';
+
+import { Products } from './products/Products';
+import { Product } from './products/Product';
+import { useProductsController } from './products/Products-Controller'
 
 const Home: React.FC = () => {
+  const [showModal, setShowModal] = useState(false);
+
+  const { addProduct, products, doReorder, updateProduct, deleteProduct } = useProductsController();
+
   return (
     <IonPage>
       <IonHeader>
-        <IonToolbar>
-          <IonTitle>Ionic Blank</IonTitle>
-        </IonToolbar>
+        <IonSearchbar placeholder="Filter products"></IonSearchbar>
       </IonHeader>
       <IonContent className="ion-padding">
-        The world is your oyster.
-        <p>
-          If you get lost, the{' '}
-          <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/">
-            docs
-          </a>{' '}
-          will be your guide.
-        </p>
+        <Products products={products} doReorder={doReorder} updateProduct={updateProduct} />
+        <IonFab vertical="bottom" horizontal="center" slot="fixed">
+          <IonFabButton onClick={() => setShowModal(true)}>
+            <IonIcon icon={add}></IonIcon>
+          </IonFabButton>
+        </IonFab>
+        <IonModal isOpen={showModal} animated backdropDismiss={false}>
+          <Product isNew apply={addProduct} close={() => setShowModal(false)} />
+        </IonModal>
       </IonContent>
     </IonPage>
   );
