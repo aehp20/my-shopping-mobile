@@ -18,29 +18,19 @@ import {
 } from '@ionic/react';
 
 import { Product } from './Product';
-import { IProductToUpdate } from './Products-Types';
 import { useProductsController } from './Products-Controller';
 import { add } from 'ionicons/icons';
 
 export const Products: React.FC = () => {
-  const { addProduct, products, doReorder, updateProduct, deleteProduct } = useProductsController();
+  const { addProduct, products, doReorder, handleToBuyValue } = useProductsController();
 
   const [showModal, setShowModal] = useState(false);
-  
-  function handleToBuyValue(event: any) {
-    const item: IProductToUpdate = {
-      id: event.target.id,
-      toBuy: event.target.checked
-    }
-
-    if (event.target.value !== event.target.checked.toString()) {
-      updateProduct(item)
-    }
-  }
 
   return (
     <>
-      <IonSearchbar placeholder="Search products" style={{padding: "0px"}}></IonSearchbar>
+      <IonSearchbar placeholder="Search products"
+        style={{padding: "0px", position: "fixed", zIndex: "10"}}>
+      </IonSearchbar>
       {/* <IonItem>
         <IonLabel>Sort by</IonLabel>
         <IonSelect placeholder="Select one">
@@ -49,8 +39,8 @@ export const Products: React.FC = () => {
           <IonSelectOption value="toBuy">To buy</IonSelectOption>
         </IonSelect>
       </IonItem> */}
-      <IonList>
-        <IonListHeader>
+      <IonList style={{marginTop: "42px"}}>
+        <IonListHeader style={{height: "15px", minHeight: "15px"}}>
           <IonGrid>
             <IonRow>
               <IonCol size="7">Name</IonCol>

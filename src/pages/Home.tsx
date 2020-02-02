@@ -12,7 +12,7 @@ const Home: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
-        <IonTitle style={{padding: "6px"}}>Products</IonTitle>
+        <IonTitle style={{padding: "6px"}}>My shopping</IonTitle>
       </IonHeader>
       <IonContent>
         <Products />

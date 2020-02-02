@@ -33,15 +33,18 @@ export const Product: React.FC<IProductProps> = (props) => {
 
   return (
     <form>
-      <IonTitle color="primary">{title}</IonTitle>
+      <IonTitle>
+        <IonTitle style={{padding: "6px 0px"}}>{title}</IonTitle>
+      </IonTitle>
       <IonList>
         <IonItem>
           <IonLabel position="stacked">Name <IonText color="danger">*</IonText></IonLabel>
-          <IonInput required type="text" onIonChange={handleNameValue}></IonInput>
+          <IonInput autofocus={true} required type="text" onIonChange={handleNameValue}
+            clearInput></IonInput>
         </IonItem>
         <IonItem>
           <IonLabel position="stacked">Quantity <IonText color="danger">*</IonText></IonLabel>
-          <IonInput required type="text" onIonChange={handleQuantityValue}></IonInput>
+          <IonInput required type="text" onIonChange={handleQuantityValue} clearInput></IonInput>
         </IonItem>
         <IonItem>
           <IonLabel>

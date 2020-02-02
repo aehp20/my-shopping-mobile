@@ -56,6 +56,17 @@ export function useProductsController() {
     saveProducts(filteredProducts)
   }
 
+  function handleToBuyValue(event: any) {
+    const item: IProductToUpdate = {
+      id: event.target.id,
+      toBuy: event.target.checked
+    }
+
+    if (event.target.value !== event.target.checked.toString()) {
+      updateProduct(item)
+    }
+  }
+
   useEffect(() => {
     const loadSaved = async () => {
       const productsString = await get(PRODUCTS_STORAGE);
@@ -71,6 +82,7 @@ export function useProductsController() {
     doReorder,
     addProduct,
     updateProduct,
-    deleteProduct
+    deleteProduct,
+    handleToBuyValue
   }
 }
