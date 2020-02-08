@@ -38,7 +38,7 @@ export function useProductsController() {
 
   function updateProduct(product: IProductToUpdate) {
     let existingProduct = findProduct(product.id) as IProduct
-    existingProduct = {...existingProduct, toBuy: product.toBuy}
+    existingProduct = {...existingProduct, ...product}
 
     const existingProducts = products.map((item: IProduct) => {
       if (verifyProduct(item, existingProduct)) {
@@ -67,6 +67,17 @@ export function useProductsController() {
     }
   }
 
+  function handleSelectedProduct(event: any) {
+    const item: IProductToUpdate = {
+      id: event.target.id,
+      isSelected: event.target.checked
+    }
+
+    if (event.target.value !== (event.target.checked ? 'true' : 'false')) {
+      updateProduct(item)
+    }
+  }
+
   useEffect(() => {
     const loadSaved = async () => {
       const productsString = await get(PRODUCTS_STORAGE);
@@ -83,6 +94,7 @@ export function useProductsController() {
     addProduct,
     updateProduct,
     deleteProduct,
-    handleToBuyValue
+    handleToBuyValue,
+    handleSelectedProduct
   }
 }

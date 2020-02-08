@@ -16,13 +16,17 @@ import {
   IonListHeader,
   IonSearchbar
 } from '@ionic/react';
+import { add } from 'ionicons/icons';
+import classNames from 'classnames';
 
 import { Product } from './Product';
 import { useProductsController } from './Products-Controller';
-import { add } from 'ionicons/icons';
+
+import './Products.css';
 
 export const Products: React.FC = () => {
-  const { addProduct, products, doReorder, handleToBuyValue } = useProductsController();
+  const { addProduct, products, doReorder, handleToBuyValue, 
+    handleSelectedProduct } = useProductsController();
 
   const [showModal, setShowModal] = useState(false);
 
@@ -43,17 +47,23 @@ export const Products: React.FC = () => {
         <IonListHeader style={{height: "15px", minHeight: "15px"}}>
           <IonGrid>
             <IonRow>
+              <IonCol size="2">Done</IonCol>
               <IonCol size="7">Name</IonCol>
               <IonCol size="3">To buy</IonCol>
-              <IonCol size="2">Done</IonCol>
             </IonRow>
           </IonGrid>
         </IonListHeader>
         <IonReorderGroup disabled={true} onIonItemReorder={doReorder}>
           {products.map((product, index) => (
-            <IonItem key={index}>
+            <IonItem key={index} className={classNames({'enable-product': product.isSelected})}>
               <IonGrid>
                 <IonRow>
+                  <IonCol size="2" ion-no-padding>
+                    <IonCheckbox color="primary" style={{margin: "0px"}}
+                      id={product.id} value={product.isSelected ? 'true' : 'false'}
+                      checked={product.isSelected} onIonChange={handleSelectedProduct}
+                    />
+                  </IonCol>
                   <IonCol size="7">
                     {product.name} ({product.quantity})
                   </IonCol>
@@ -61,9 +71,6 @@ export const Products: React.FC = () => {
                     <IonToggle id={product.id} value={product.toBuy.toString()}
                       checked={product.toBuy} onIonChange={handleToBuyValue}
                       style={{padding: "5px 0px"}}/>
-                  </IonCol>
-                  <IonCol size="2" ion-no-padding>
-                    <IonCheckbox color="primary" style={{margin: "0px"}}/>
                   </IonCol>
                 </IonRow>
               </IonGrid>

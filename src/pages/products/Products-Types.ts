@@ -1,4 +1,5 @@
 export interface IProductToUpdate {
   id: string
-  toBuy: boolean
+  toBuy?: boolean
+  isSelected?: boolean
 }

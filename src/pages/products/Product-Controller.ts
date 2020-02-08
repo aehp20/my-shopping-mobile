@@ -27,7 +27,8 @@ export function useProductController({ isNew, apply, close }: IProductProps) {
       id: uuid(),
       name,
       quantity,
-      toBuy
+      toBuy,
+      isSelected: false
     }
 
     const validation = validate(product)

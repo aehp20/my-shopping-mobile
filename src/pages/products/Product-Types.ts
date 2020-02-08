@@ -3,6 +3,7 @@ export interface IProduct {
   name: string
   quantity: string
   toBuy: boolean
+  isSelected: boolean
 }
 
 export interface IProductProps {
