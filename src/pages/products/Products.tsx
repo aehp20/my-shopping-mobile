@@ -62,6 +62,7 @@ export const Products: React.FC = () => {
                     <IonCheckbox color="primary" style={{margin: "0px"}}
                       id={product.id} value={product.isSelected ? 'true' : 'false'}
                       checked={product.isSelected} onIonChange={handleSelectedProduct}
+                      disabled={!product.toBuy}
                     />
                   </IonCol>
                   <IonCol size="7">
