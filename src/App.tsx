@@ -3,6 +3,9 @@ import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import Home from './pages/Home';
+import { Product } from './pages/products/Product';
+import { ProductsProvider } from './pages/products/Products-Context';
+import { ROOT_PATH, PRODUCT_NEW_PATH, PRODUCT_EDIT_PATH, HOME_PATH } from './App-Constants';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -25,12 +28,16 @@ import './theme/variables.css';
 
 const App: React.FC = () => (
   <IonApp>
-    <IonReactRouter>
-      <IonRouterOutlet>
-        <Route path="/home" component={Home} exact={true} />
-        <Route exact path="/" render={() => <Redirect to="/home" />} />
-      </IonRouterOutlet>
-    </IonReactRouter>
+    <ProductsProvider>
+      <IonReactRouter>
+        <IonRouterOutlet>
+          <Route path={HOME_PATH} component={Home} exact={true} />
+          <Route path={PRODUCT_EDIT_PATH} component={Product} exact={true} />
+          <Route path={PRODUCT_NEW_PATH} component={Product} exact={true} />
+          <Route exact path={ROOT_PATH} render={() => <Redirect to={HOME_PATH} />} />
+        </IonRouterOutlet>
+      </IonReactRouter>
+    </ProductsProvider>
   </IonApp>
 );
 

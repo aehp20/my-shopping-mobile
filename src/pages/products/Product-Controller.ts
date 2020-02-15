@@ -1,13 +1,16 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import uuid from 'react-uuid'
 
-import { IValidationResponse, IProduct, IProductProps } from './Product-Types'
+import { IValidationResponse, IProduct, IProductControllerProps } from './Product-Types'
 import { validate } from './Product-Validator'
 
-export function useProductController({ isNew, apply, close }: IProductProps) {
+export function useProductController({ product, apply, setIsSortedProducts, close }: IProductControllerProps) {
+  const [id, setId] = useState(uuid())
+  const [isSelected, setIsSelected] = useState(false)
   const [name, setName] = useState('')
   const [quantity, setQuantity] = useState('')
   const [toBuy, setToBuy] = useState(true)
+
   const [validationResponse, setValidationResponse] = useState<IValidationResponse>({error: false})
 
   function handleNameValue(event: any) {
@@ -19,16 +22,16 @@ export function useProductController({ isNew, apply, close }: IProductProps) {
   }
 
   function handleToBuyValue(event: any) {
-    setToBuy(!event.target.value);
+    setToBuy(event.target.checked);
   }
 
   function handleApply() {
     const product: IProduct = {
-      id: uuid(),
+      id,
       name,
       quantity,
       toBuy,
-      isSelected: false
+      isSelected
     }
 
     const validation = validate(product)
@@ -37,16 +40,29 @@ export function useProductController({ isNew, apply, close }: IProductProps) {
       setValidationResponse(validation)
     } else {
       apply(product)
+      !product.toBuy && setIsSortedProducts(true)
       close();
     }
   }
 
+  useEffect(() => {
+    if (product) {
+      setId(product.id)
+      setIsSelected(product.isSelected)
+      setName(product.name)
+      setQuantity(product.quantity)
+      setToBuy(product.toBuy)
+    }
+  }, [product])
+
   return {
+    name,
+    quantity,
+    toBuy,
     handleNameValue,
     handleQuantityValue,
     handleToBuyValue,
     handleApply,
-    validationResponse,
-    toBuy
+    validationResponse
   }
 }

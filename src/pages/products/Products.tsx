@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   IonList,
   IonItem,
@@ -12,23 +12,21 @@ import {
   IonFab,
   IonFabButton,
   IonIcon,
-  IonModal,
   IonListHeader,
   IonSearchbar
 } from '@ionic/react';
+import { Link } from 'react-router-dom';
 import { add } from 'ionicons/icons';
 import classNames from 'classnames';
 
-import { Product } from './Product';
 import { useProductsController } from './Products-Controller';
+import { PRODUCT_NEW_PATH } from '../../App-Constants';
 
 import './Products.css';
+import { DONE_COL_SIZE, NAME_COL_SIZE, TO_BUY_COL_SIZE } from './Products-Constants';
 
 export const Products: React.FC = () => {
-  const { addProduct, products, doReorder, handleToBuyValue, 
-    handleSelectedProduct } = useProductsController();
-
-  const [showModal, setShowModal] = useState(false);
+  const { products, handleToBuyValue, handleSelectedProduct } = useProductsController();
 
   return (
     <>
@@ -47,28 +45,30 @@ export const Products: React.FC = () => {
         <IonListHeader style={{height: "15px", minHeight: "15px"}}>
           <IonGrid>
             <IonRow>
-              <IonCol size="2">Done</IonCol>
-              <IonCol size="7">Name</IonCol>
-              <IonCol size="3">To buy</IonCol>
+              <IonCol size={DONE_COL_SIZE}>Done</IonCol>
+              <IonCol size={NAME_COL_SIZE}>Name</IonCol>
+              <IonCol size={TO_BUY_COL_SIZE}>To buy</IonCol>
             </IonRow>
           </IonGrid>
         </IonListHeader>
-        <IonReorderGroup disabled={true} onIonItemReorder={doReorder}>
+        <IonReorderGroup disabled={true} onIonItemReorder={()=>null}>
           {products.map((product, index) => (
             <IonItem key={index} className={classNames({'enable-product': product.isSelected})}>
               <IonGrid>
                 <IonRow>
-                  <IonCol size="2" ion-no-padding>
+                  <IonCol size={DONE_COL_SIZE} ion-no-padding>
                     <IonCheckbox color="primary" style={{margin: "0px"}}
                       id={product.id} value={product.isSelected ? 'true' : 'false'}
                       checked={product.isSelected} onIonChange={handleSelectedProduct}
                       disabled={!product.toBuy}
                     />
                   </IonCol>
-                  <IonCol size="7">
-                    {product.name} ({product.quantity})
+                  <IonCol size={NAME_COL_SIZE}>
+                    <Link to={`/product/${product.id}`} className='my-link'>
+                      {product.name} ({product.quantity})
+                    </Link>
                   </IonCol>
-                  <IonCol size="3" style={{padding: "0px"}}>
+                  <IonCol size={TO_BUY_COL_SIZE} style={{padding: "0px"}}>
                     <IonToggle id={product.id} value={product.toBuy.toString()}
                       checked={product.toBuy} onIonChange={handleToBuyValue}
                       style={{padding: "5px 0px"}}/>
@@ -81,13 +81,10 @@ export const Products: React.FC = () => {
         </IonReorderGroup>
       </IonList>
       <IonFab vertical="bottom" horizontal="center" slot="fixed">
-        <IonFabButton onClick={() => setShowModal(true)}>
+        <IonFabButton routerLink={PRODUCT_NEW_PATH}>
           <IonIcon icon={add}></IonIcon>
         </IonFabButton>
       </IonFab>
-      <IonModal isOpen={showModal} animated backdropDismiss={false}>
-        <Product isNew apply={addProduct} close={() => setShowModal(false)} />
-      </IonModal>
     </>
   );
 };

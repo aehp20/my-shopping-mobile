@@ -1,3 +1,7 @@
 .enable-product {
   --ion-background-color: #0cd1e8;
 }
+
+.my-link {
+  text-decoration: none;
+}
