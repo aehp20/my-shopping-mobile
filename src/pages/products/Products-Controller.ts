@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useStorage } from '@ionic/react-hooks/storage';
 import { ItemReorderEventDetail } from '@ionic/core';
 
@@ -8,6 +8,7 @@ import { IProductToUpdate } from './Products-Types';
 
 export function useProductsController() {
   const [products, setProducts] = useState<IProduct[]>([]);
+  const [isSortedProducts, setIsSortedProducts] = useState(false);
 
   const { get, set } = useStorage();
 
@@ -18,14 +19,15 @@ export function useProductsController() {
     set(PRODUCTS_STORAGE, JSON.stringify(newProducts))
   }
 
-  function saveProducts(products: IProduct[]) {
+  const saveProducts = useCallback((products: IProduct[]) => {
     setProducts(products)
     set(PRODUCTS_STORAGE, JSON.stringify(products))
-  }
+  }, [set])
 
   function addProduct(product: IProduct) {
     const newProducts = [product, ...products];
     saveProducts(newProducts)
+    !product.toBuy && setIsSortedProducts(true)
   }
 
   function verifyProduct(item1: IProduct, item2: IProduct) {
@@ -64,6 +66,7 @@ export function useProductsController() {
 
     if (event.target.value !== event.target.checked.toString()) {
       updateProduct(item)
+      setIsSortedProducts(true)
     }
   }
 
@@ -78,6 +81,14 @@ export function useProductsController() {
     }
   }
 
+  const sortProductsByToBuy = useCallback(() => {
+    const toBuyProducts = products.filter((item: IProduct) => item.toBuy)
+    const notToBuyProducts = products.filter((item: IProduct) => !item.toBuy)
+    const sortedProducts = [...toBuyProducts, ...notToBuyProducts]
+
+    saveProducts(sortedProducts)
+  }, [products, saveProducts])
+
   useEffect(() => {
     const loadSaved = async () => {
       const productsString = await get(PRODUCTS_STORAGE);
@@ -87,6 +98,13 @@ export function useProductsController() {
     };
     loadSaved();
   }, [get]);
+
+  useEffect(() => {
+    if (isSortedProducts) {
+      sortProductsByToBuy()
+      setIsSortedProducts(false)
+    }
+  }, [isSortedProducts, sortProductsByToBuy]);
 
   return {
     products,
