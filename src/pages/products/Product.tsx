@@ -16,7 +16,8 @@ import {
   IonToolbar,
   IonButtons,
   IonBackButton,
-  IonContent
+  IonContent,
+  IonTextarea
 } from '@ionic/react';
 
 import { IProductProps } from './Product-Types';
@@ -41,9 +42,11 @@ export const Product: React.FC<IProductProps> = (props) => {
     name,
     quantity,
     toBuy,
+    description,
     handleNameValue,
     handleQuantityValue,
     handleToBuyValue,
+    handleDescriptionValue,
     handleApply,
     validationResponse
   } = useProductController({product, apply, setIsSortedProducts, close})
@@ -66,12 +69,12 @@ export const Product: React.FC<IProductProps> = (props) => {
             <IonItem>
               <IonLabel position="stacked">Name <IonText color="danger">*</IonText></IonLabel>
               <IonInput autofocus={true} required type="text" value={name} onIonChange={handleNameValue}
-                clearInput></IonInput>
+                clearInput />
             </IonItem>
             <IonItem>
               <IonLabel position="stacked">Quantity <IonText color="danger">*</IonText></IonLabel>
               <IonInput required type="text" value={quantity} onIonChange={handleQuantityValue}
-                clearInput></IonInput>
+                clearInput />
             </IonItem>
             <IonItem>
               <IonLabel>
@@ -79,7 +82,11 @@ export const Product: React.FC<IProductProps> = (props) => {
                   <h6>To buy</h6>
                 </IonText>
               </IonLabel>
-              <IonToggle mode="ios" checked={toBuy} onIonChange={handleToBuyValue} />
+              <IonToggle checked={toBuy} onIonChange={handleToBuyValue} />
+            </IonItem>
+            <IonItem>
+              <IonLabel position="stacked">Description</IonLabel>
+              <IonTextarea value={description} onIonChange={handleDescriptionValue} />
             </IonItem>
             {
               validationResponse.error && (

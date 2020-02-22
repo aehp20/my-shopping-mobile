@@ -64,14 +64,16 @@ export const Products: React.FC = () => {
                     />
                   </IonCol>
                   <IonCol size={NAME_COL_SIZE}>
-                    <Link to={`/product/${product.id}`} className='my-link'>
+                    <Link
+                      to={`/product/${product.id}`}
+                      className={classNames('my-link', {'no-buy': !product.toBuy})}>
                       {product.name} ({product.quantity})
                     </Link>
                   </IonCol>
                   <IonCol size={TO_BUY_COL_SIZE} style={{padding: "0px"}}>
                     <IonToggle id={product.id} value={product.toBuy.toString()}
                       checked={product.toBuy} onIonChange={handleToBuyValue}
-                      style={{padding: "5px 0px"}}/>
+                      style={{padding: "5px 0px"}} disabled={product.isSelected}/>
                   </IonCol>
                 </IonRow>
               </IonGrid>

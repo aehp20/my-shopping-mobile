@@ -10,6 +10,7 @@ export function useProductController({ product, apply, setIsSortedProducts, clos
   const [name, setName] = useState('')
   const [quantity, setQuantity] = useState('')
   const [toBuy, setToBuy] = useState(true)
+  const [description, setDescription] = useState('')
 
   const [validationResponse, setValidationResponse] = useState<IValidationResponse>({error: false})
 
@@ -25,13 +26,18 @@ export function useProductController({ product, apply, setIsSortedProducts, clos
     setToBuy(event.target.checked);
   }
 
+  function handleDescriptionValue(event: any) {
+    setDescription(event.target.value);
+  }
+
   function handleApply() {
     const product: IProduct = {
       id,
       name,
       quantity,
       toBuy,
-      isSelected
+      isSelected,
+      description
     }
 
     const validation = validate(product)
@@ -52,6 +58,7 @@ export function useProductController({ product, apply, setIsSortedProducts, clos
       setName(product.name)
       setQuantity(product.quantity)
       setToBuy(product.toBuy)
+      setDescription(product.description)
     }
   }, [product])
 
@@ -59,9 +66,11 @@ export function useProductController({ product, apply, setIsSortedProducts, clos
     name,
     quantity,
     toBuy,
+    description,
     handleNameValue,
     handleQuantityValue,
     handleToBuyValue,
+    handleDescriptionValue,
     handleApply,
     validationResponse
   }

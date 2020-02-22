@@ -13,6 +13,7 @@ export interface IProduct {
   quantity: string
   toBuy: boolean
   isSelected: boolean
+  description: string
 }
 
 export interface IProductControllerProps {
