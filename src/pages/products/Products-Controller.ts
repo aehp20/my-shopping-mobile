@@ -1,9 +1,27 @@
+import { useState, useEffect } from 'react';
+
 import { IProduct } from './Product-Types';
 import { IProductToUpdate } from './Products-Types';
 import { useProductsContext } from './Products-Context';
 
 export function useProductsController() {
   const { products, saveProducts, findProduct, verifyProduct, setIsSortedProducts } = useProductsContext()
+
+  const [isAllSelected, setIsAllSelected] = useState(false)
+
+  function handleSelectedAllProducts(event: any) {
+    if (event.target.value !== (event.target.checked ? 'true' : 'false')) {
+      const newIsAllSelected = !isAllSelected
+      const newProducts = products.map((product) => {
+        if (product.toBuy) {
+          product.isSelected = newIsAllSelected  
+        }
+        return product
+      })
+      setIsAllSelected(newIsAllSelected)
+      saveProducts(newProducts)
+    }
+  }
 
   function updateProduct(product: IProductToUpdate) {
     let existingProduct = findProduct(product.id) as IProduct
@@ -48,11 +66,19 @@ export function useProductsController() {
     }
   }
 
+  useEffect(() => {
+    const toBuyProducts = products.filter((product) => product.toBuy)
+    const newIsAllSelected = toBuyProducts.every((product) => product.isSelected)
+    setIsAllSelected(newIsAllSelected)
+  }, [products])
+
   return {
     products,
     updateProduct,
     deleteProduct,
     handleToBuyValue,
     handleSelectedProduct,
+    isAllSelected,
+    handleSelectedAllProducts
   }
 }

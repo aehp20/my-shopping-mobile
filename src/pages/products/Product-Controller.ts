@@ -30,6 +30,13 @@ export function useProductController({ product, apply, setIsSortedProducts, clos
     setDescription(event.target.value);
   }
 
+  function clean() {
+    setName('')
+    setQuantity('')
+    setToBuy(true)
+    setDescription('')
+  }
+
   function handleApply() {
     const product: IProduct = {
       id,
@@ -47,6 +54,7 @@ export function useProductController({ product, apply, setIsSortedProducts, clos
     } else {
       apply(product)
       !product.toBuy && setIsSortedProducts(true)
+      clean();
       close();
     }
   }

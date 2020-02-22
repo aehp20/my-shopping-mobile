@@ -21,12 +21,15 @@ import classNames from 'classnames';
 
 import { useProductsController } from './Products-Controller';
 import { PRODUCT_NEW_PATH } from '../../App-Constants';
-
-import './Products.css';
 import { DONE_COL_SIZE, NAME_COL_SIZE, TO_BUY_COL_SIZE } from './Products-Constants';
 
+import './Products.css';
+
 export const Products: React.FC = () => {
-  const { products, handleToBuyValue, handleSelectedProduct } = useProductsController();
+  const {
+    products, handleToBuyValue, handleSelectedProduct,
+    isAllSelected, handleSelectedAllProducts
+  } = useProductsController();
 
   return (
     <>
@@ -42,14 +45,22 @@ export const Products: React.FC = () => {
         </IonSelect>
       </IonItem> */}
       <IonList style={{marginTop: "42px"}}>
-        <IonListHeader style={{height: "15px", minHeight: "15px"}}>
-          <IonGrid>
-            <IonRow>
-              <IonCol size={DONE_COL_SIZE}>Done</IonCol>
-              <IonCol size={NAME_COL_SIZE}>Name</IonCol>
-              <IonCol size={TO_BUY_COL_SIZE}>To buy</IonCol>
-            </IonRow>
-          </IonGrid>
+        <IonListHeader style={{padding: "0px"}}>
+          <IonItem style={{width: "100%"}}>
+            <IonGrid>
+              <IonRow>
+                <IonCol size={DONE_COL_SIZE} ion-no-padding>
+                  <IonCheckbox color="primary" style={{margin: "0px"}}
+                    value={isAllSelected ? 'true' : 'false'}
+                    checked={isAllSelected}
+                    onIonChange={handleSelectedAllProducts}
+                  />
+                </IonCol>
+                <IonCol size={NAME_COL_SIZE}>Name</IonCol>
+                <IonCol size={TO_BUY_COL_SIZE}>Buy</IonCol>
+              </IonRow>
+            </IonGrid>
+          </IonItem>
         </IonListHeader>
         <IonReorderGroup disabled={true} onIonItemReorder={()=>null}>
           {products.map((product, index) => (
@@ -87,6 +98,11 @@ export const Products: React.FC = () => {
           <IonIcon icon={add}></IonIcon>
         </IonFabButton>
       </IonFab>
+      {/* <IonFab vertical="bottom" horizontal="end" slot="fixed">
+        <IonFabButton color='tertiary'>
+          <IonIcon icon={arrowUp} />
+        </IonFabButton>
+      </IonFab> */}
     </>
   );
 };
