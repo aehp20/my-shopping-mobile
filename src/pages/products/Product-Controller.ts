@@ -5,7 +5,7 @@ import { IValidationResponse, IProduct, IProductControllerProps } from './Produc
 import { validate } from './Product-Validator'
 
 export function useProductController({ product, apply, setIsSortedProducts, close }: IProductControllerProps) {
-  const [id, setId] = useState(uuid())
+  const [id, setId] = useState()
   const [isSelected, setIsSelected] = useState(false)
   const [name, setName] = useState('')
   const [quantity, setQuantity] = useState('')
@@ -31,6 +31,7 @@ export function useProductController({ product, apply, setIsSortedProducts, clos
   }
 
   function clean() {
+    setId(undefined)
     setName('')
     setQuantity('')
     setToBuy(true)
@@ -38,8 +39,10 @@ export function useProductController({ product, apply, setIsSortedProducts, clos
   }
 
   function handleApply() {
+    const uid = id ? id : uuid()
+
     const product: IProduct = {
-      id,
+      id: uid,
       name,
       quantity,
       toBuy,

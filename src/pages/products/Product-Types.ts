@@ -8,7 +8,7 @@ export interface IProductProps extends RouteComponentProps<IProductParams> {
 }
 
 export interface IProduct {
-  id: string
+  id: string | undefined
   name: string
   quantity: string
   toBuy: boolean
