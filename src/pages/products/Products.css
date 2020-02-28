@@ -9,3 +9,17 @@
 .no-buy {
   color: #86888f;
 }
+
+.delete-products-button {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.actions-bar-products {
+  padding: 0px;
+  position: fixed;
+  z-index: 10;
+  background: white;
+  width: 100%;
+}

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 import { IProduct } from './Product-Types';
 import { IProductToUpdate } from './Products-Types';
@@ -8,6 +8,7 @@ export function useProductsController() {
   const { products, saveProducts, findProduct, verifyProduct, setIsSortedProducts } = useProductsContext()
 
   const [isAllSelected, setIsAllSelected] = useState(false)
+  const [areThereSelectedProducts, setAreThereSelectedProducts] = useState(false)
 
   function handleSelectedAllProducts(event: any) {
     if (event.target.value !== (event.target.checked ? 'true' : 'false')) {
@@ -66,11 +67,16 @@ export function useProductsController() {
     }
   }
 
+  const getSelectedProducts = useCallback(() => {
+    return products.filter((product: IProduct) => product.isSelected)
+  }, [products])
+
   useEffect(() => {
     const toBuyProducts = products.filter((product) => product.toBuy)
     const newIsAllSelected = toBuyProducts.every((product) => product.isSelected)
     setIsAllSelected(newIsAllSelected)
-  }, [products])
+    setAreThereSelectedProducts(!!getSelectedProducts().length)
+  }, [products, getSelectedProducts])
 
   return {
     products,
@@ -79,6 +85,8 @@ export function useProductsController() {
     handleToBuyValue,
     handleSelectedProduct,
     isAllSelected,
-    handleSelectedAllProducts
+    handleSelectedAllProducts,
+    getSelectedProducts,
+    areThereSelectedProducts
   }
 }

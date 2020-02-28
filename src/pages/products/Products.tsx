@@ -13,10 +13,11 @@ import {
   IonFabButton,
   IonIcon,
   IonListHeader,
-  IonSearchbar
+  IonSearchbar,
+  IonButton
 } from '@ionic/react';
 import { Link } from 'react-router-dom';
-import { add } from 'ionicons/icons';
+import { add, trash } from 'ionicons/icons';
 import classNames from 'classnames';
 
 import { useProductsController } from './Products-Controller';
@@ -28,23 +29,33 @@ import './Products.css';
 export const Products: React.FC = () => {
   const {
     products, handleToBuyValue, handleSelectedProduct,
-    isAllSelected, handleSelectedAllProducts
+    isAllSelected, handleSelectedAllProducts,
+    areThereSelectedProducts, getSelectedProducts
   } = useProductsController();
+
+  const SIZE_SEARCH_PRODUCTS = areThereSelectedProducts ? "9" : "12"
 
   return (
     <>
-      <IonSearchbar placeholder="Search products"
-        style={{padding: "0px", position: "fixed", zIndex: "10"}}>
-      </IonSearchbar>
-      {/* <IonItem>
-        <IonLabel>Sort by</IonLabel>
-        <IonSelect placeholder="Select one">
-          <IonSelectOption value="order">Order</IonSelectOption>
-          <IonSelectOption value="name">Name</IonSelectOption>
-          <IonSelectOption value="toBuy">To buy</IonSelectOption>
-        </IonSelect>
-      </IonItem> */}
-      <IonList style={{marginTop: "42px"}}>
+      <IonGrid className="actions-bar-products">
+        <IonRow>
+          <IonCol size={SIZE_SEARCH_PRODUCTS}>
+            <IonSearchbar placeholder="Search products">
+            </IonSearchbar>
+          </IonCol>
+          {
+            areThereSelectedProducts && (
+              <IonCol size="3" className="delete-products-button">
+                <IonButton color="danger">
+                  <IonIcon icon={trash} size="large"></IonIcon>
+                </IonButton>
+              </IonCol>
+            )
+          }
+        </IonRow>
+      </IonGrid>
+      
+      <IonList style={{marginTop: "50px"}}>
         <IonListHeader style={{padding: "0px"}}>
           <IonItem style={{width: "100%"}}>
             <IonGrid>
@@ -98,11 +109,6 @@ export const Products: React.FC = () => {
           <IonIcon icon={add}></IonIcon>
         </IonFabButton>
       </IonFab>
-      {/* <IonFab vertical="bottom" horizontal="end" slot="fixed">
-        <IonFabButton color='tertiary'>
-          <IonIcon icon={arrowUp} />
-        </IonFabButton>
-      </IonFab> */}
     </>
   );
 };
