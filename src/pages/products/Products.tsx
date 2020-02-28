@@ -14,7 +14,8 @@ import {
   IonIcon,
   IonListHeader,
   IonSearchbar,
-  IonButton
+  IonButton,
+  IonAlert
 } from '@ionic/react';
 import { Link } from 'react-router-dom';
 import { add, trash } from 'ionicons/icons';
@@ -30,7 +31,10 @@ export const Products: React.FC = () => {
   const {
     products, handleToBuyValue, handleSelectedProduct,
     isAllSelected, handleSelectedAllProducts,
-    areThereSelectedProducts, getSelectedProducts
+    areThereSelectedProducts,
+    showConfirmDeletionAlert,
+    setShowConfirmDeletionAlert,
+    deleteProducts
   } = useProductsController();
 
   const SIZE_SEARCH_PRODUCTS = areThereSelectedProducts ? "9" : "12"
@@ -46,7 +50,7 @@ export const Products: React.FC = () => {
           {
             areThereSelectedProducts && (
               <IonCol size="3" className="delete-products-button">
-                <IonButton color="danger">
+                <IonButton color="danger" onClick={() => setShowConfirmDeletionAlert(true)}>
                   <IonIcon icon={trash} size="large"></IonIcon>
                 </IonButton>
               </IonCol>
@@ -54,7 +58,27 @@ export const Products: React.FC = () => {
           }
         </IonRow>
       </IonGrid>
-      
+      <IonAlert
+        isOpen={showConfirmDeletionAlert}
+        onDidDismiss={() => setShowConfirmDeletionAlert(false)}
+        header={'Confirm deletion'}
+        message={'Are you sure you want to delete the selected item(s)?'}
+        buttons={[
+          {
+            text: 'Cancel',
+            handler: () => {
+              setShowConfirmDeletionAlert(false)
+            }
+          },
+          {
+            text: 'Ok',
+            handler: () => {
+              deleteProducts()
+            }
+          }
+        ]}
+      />
+
       <IonList style={{marginTop: "50px"}}>
         <IonListHeader style={{padding: "0px"}}>
           <IonItem style={{width: "100%"}}>

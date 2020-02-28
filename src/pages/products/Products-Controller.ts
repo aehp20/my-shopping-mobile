@@ -9,6 +9,7 @@ export function useProductsController() {
 
   const [isAllSelected, setIsAllSelected] = useState(false)
   const [areThereSelectedProducts, setAreThereSelectedProducts] = useState(false)
+  const [showConfirmDeletionAlert, setShowConfirmDeletionAlert] = useState(false)
 
   function handleSelectedAllProducts(event: any) {
     if (event.target.value !== (event.target.checked ? 'true' : 'false')) {
@@ -38,10 +39,15 @@ export function useProductsController() {
     saveProducts(existingProducts)
   }
 
-  function deleteProduct(product: IProduct) {
-    const filteredProducts = products.filter((item: IProduct) => !verifyProduct(item, product))
+  function deleteProducts() {
+    const selectedProducts = getSelectedProducts()
 
-    saveProducts(filteredProducts)
+    const isInSelectedProduct = (product: IProduct): boolean => {
+      return !!selectedProducts.find((selectedProduct) => selectedProduct.id === product.id)
+    }
+    const restOfProducts = products.filter((item: IProduct) => !isInSelectedProduct(item))
+
+    saveProducts(restOfProducts)
   }
 
   function handleToBuyValue(event: any) {
@@ -81,12 +87,14 @@ export function useProductsController() {
   return {
     products,
     updateProduct,
-    deleteProduct,
+    deleteProducts,
     handleToBuyValue,
     handleSelectedProduct,
     isAllSelected,
     handleSelectedAllProducts,
     getSelectedProducts,
-    areThereSelectedProducts
+    areThereSelectedProducts,
+    showConfirmDeletionAlert,
+    setShowConfirmDeletionAlert
   }
 }
