@@ -24,6 +24,7 @@ import classNames from 'classnames';
 import { useProductsController } from './Products-Controller';
 import { PRODUCT_NEW_PATH } from '../../App-Constants';
 import { DONE_COL_SIZE, NAME_COL_SIZE, TO_BUY_COL_SIZE } from './Products-Constants';
+import { IProduct } from './Product-Types';
 
 import './Products.css';
 
@@ -38,6 +39,11 @@ export const Products: React.FC = () => {
   } = useProductsController();
 
   const SIZE_SEARCH_PRODUCTS = areThereSelectedProducts ? "9" : "12"
+
+  const getName = (product: IProduct) => {
+    const quantity = product.quantity ? `(${product.quantity})` : ''
+    return `${product.name} ${quantity}`
+  }
 
   return (
     <>
@@ -113,7 +119,7 @@ export const Products: React.FC = () => {
                     <Link
                       to={`/product/${product.id}`}
                       className={classNames('my-link', {'no-buy': !product.toBuy})}>
-                      {product.name} ({product.quantity})
+                      {getName(product)}
                     </Link>
                   </IonCol>
                   <IonCol size={TO_BUY_COL_SIZE} style={{padding: "0px"}}>

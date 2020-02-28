@@ -72,7 +72,7 @@ export const Product: React.FC<IProductProps> = (props) => {
                 clearInput />
             </IonItem>
             <IonItem>
-              <IonLabel position="stacked">Quantity <IonText color="danger">*</IonText></IonLabel>
+              <IonLabel position="stacked">Quantity</IonLabel>
               <IonInput required type="text" value={quantity} onIonChange={handleQuantityValue}
                 clearInput />
             </IonItem>
