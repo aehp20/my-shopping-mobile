@@ -10,6 +10,8 @@ export function useProductsController() {
   const [isAllSelected, setIsAllSelected] = useState(false)
   const [areThereSelectedProducts, setAreThereSelectedProducts] = useState(false)
   const [showConfirmDeletionAlert, setShowConfirmDeletionAlert] = useState(false)
+  const [searchValue, setSearchValue] = useState('')
+  const [filteredProducts, setFilteredProducts] = useState<IProduct[]>([])
 
   function handleSelectedAllProducts(event: any) {
     if (event.target.value !== (event.target.checked ? 'true' : 'false')) {
@@ -77,6 +79,10 @@ export function useProductsController() {
     return products.filter((product: IProduct) => product.isSelected)
   }, [products])
 
+  function searchProducts(event: any) {
+    setSearchValue(event.target.value)
+  }
+
   useEffect(() => {
     const toBuyProducts = products.filter((product) => product.toBuy)
     const newIsAllSelected = toBuyProducts.every((product) => product.isSelected)
@@ -84,8 +90,21 @@ export function useProductsController() {
     setAreThereSelectedProducts(!!getSelectedProducts().length)
   }, [products, getSelectedProducts])
 
+  useEffect(() => {
+    const value = searchValue.toUpperCase()
+
+    const filteredItems = products.filter((product: IProduct) => {
+      const name = product.name.toUpperCase()
+      
+      return name.indexOf(value) === -1 ? false : true
+    })
+
+    setFilteredProducts(filteredItems)
+  }, [searchValue, products])
+
   return {
     products,
+    filteredProducts,
     updateProduct,
     deleteProducts,
     handleToBuyValue,
@@ -95,6 +114,7 @@ export function useProductsController() {
     getSelectedProducts,
     areThereSelectedProducts,
     showConfirmDeletionAlert,
-    setShowConfirmDeletionAlert
+    setShowConfirmDeletionAlert,
+    searchProducts
   }
 }

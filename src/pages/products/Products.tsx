@@ -30,13 +30,17 @@ import './Products.css';
 
 export const Products: React.FC = () => {
   const {
-    products, handleToBuyValue, handleSelectedProduct,
+    products, filteredProducts,
+    handleToBuyValue, handleSelectedProduct,
     isAllSelected, handleSelectedAllProducts,
     areThereSelectedProducts,
     showConfirmDeletionAlert,
     setShowConfirmDeletionAlert,
-    deleteProducts
+    deleteProducts,
+    searchProducts
   } = useProductsController();
+
+  const items = !!filteredProducts.length ? filteredProducts : products
 
   const SIZE_SEARCH_PRODUCTS = areThereSelectedProducts ? "9" : "12"
 
@@ -50,7 +54,7 @@ export const Products: React.FC = () => {
       <IonGrid className="actions-bar-products">
         <IonRow>
           <IonCol size={SIZE_SEARCH_PRODUCTS}>
-            <IonSearchbar placeholder="Search products">
+            <IonSearchbar placeholder="Search products" onIonChange={searchProducts}>
             </IonSearchbar>
           </IonCol>
           {
@@ -104,7 +108,7 @@ export const Products: React.FC = () => {
           </IonItem>
         </IonListHeader>
         <IonReorderGroup disabled={true} onIonItemReorder={()=>null}>
-          {products.map((product, index) => (
+          {items.map((product, index) => (
             <IonItem key={index} className={classNames({'enable-product': product.isSelected})}>
               <IonGrid>
                 <IonRow>
