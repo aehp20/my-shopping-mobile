@@ -1,6 +1,12 @@
-import React, { createContext, useState, useEffect, useCallback, useContext } from "react";
-import { useStorage } from "@ionic/react-hooks/storage";
-
+import React, {
+  createContext,
+  useState,
+  useEffect,
+  useCallback,
+  useContext,
+} from 'react'
+import { useStorage } from '@ionic/react-hooks/storage'
+/*
 import { PRODUCTS_STORAGE } from './Products-Constants';
 import { IProduct } from "./Product-Types";
 import { IProductsContext } from "./Products-Types";
@@ -84,3 +90,4 @@ export function ProductsProvider(props: any) { // todo
 export const useProductsContext = () => {
   return useContext(ProductsContext)
 }
+*/

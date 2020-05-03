@@ -1,6 +1,18 @@
 import { useState, useEffect } from 'react'
 import uuid from 'react-uuid'
 
+import { useListsProductsController } from '../listsProducts/ListsProducts-Controller'
+import { IProductProps } from './Product-Types'
+import { useListProductsController } from '../listProducts/ListProducts-Controller'
+
+export function useProductController(props: IProductProps) {
+  const { idListProducts, id } = props.match.params
+  const { products, saveProducts } = useListProductsController(idListProducts)
+  console.log(idListProducts)
+  console.log(products)
+}
+
+/*
 import { IValidationResponse, IProduct, IProductControllerProps } from './Product-Types'
 import { validate } from './Product-Validator'
 
@@ -86,3 +98,4 @@ export function useProductController({ product, apply, setIsSortedProducts, clos
     validationResponse
   }
 }
+*/

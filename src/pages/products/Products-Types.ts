@@ -1,4 +1,4 @@
-import { IProduct } from "./Product-Types";
+import { IProduct } from '../product/Product-Types'
 
 export interface IProductToUpdate {
   id: string
@@ -14,4 +14,10 @@ export interface IProductsContext {
   editProduct: (product: IProduct) => void
   verifyProduct: (item1: IProduct, item2: IProduct) => boolean
   setIsSortedProducts: (value: React.SetStateAction<boolean>) => void
+}
+
+export interface IProductsProps {
+  idListProducts: string
+  products: IProduct[]
+  saveProducts: (products: IProduct[]) => void
 }

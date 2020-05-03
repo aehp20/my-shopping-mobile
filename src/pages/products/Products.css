@@ -1,25 +1,50 @@
-.enable-product {
+.products-enable-product {
   --ion-background-color: #C3F9B7;
 }
 
-.my-link {
+.products-link {
   text-decoration: none;
 }
 
-.no-buy {
+.products-no-buy {
   color: #86888f;
 }
 
-.delete-products-button {
+.products-delete-button {
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
 }
 
-.actions-bar-products {
+.products-actions-bar {
   padding: 0px;
   position: fixed;
   z-index: 10;
   background: white;
   width: 100%;
+  margin-top: 1px;
+}
+
+.products-empty-list {
+  --border-style: none;
+}
+
+.products-list {
+  margin-top: 60px;
+}
+
+.products-list-header {
+  padding: 0px;
+}
+
+.products-list-item {
+  width: 100%;
+}
+
+.products-list-col {
+  padding: 0px;
+}
+
+.products-list-toggle {
+  padding: 5px 0px;
 }

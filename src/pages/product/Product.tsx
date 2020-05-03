@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import {
   IonInput,
   IonItem,
@@ -17,19 +17,20 @@ import {
   IonButtons,
   IonBackButton,
   IonContent,
-  IonTextarea
-} from '@ionic/react';
+  IonTextarea,
+} from '@ionic/react'
 
-import { IProductProps } from './Product-Types';
-import { useProductController } from './Product-Controller';
-import { TITLE_NEW_PRODUCT, TITLE_EDIT_PRODUCT } from './Product-Constants';
-import { useProductsContext } from './Products-Context';
-import { HOME_PATH } from '../../App-Constants';
+import { IProductProps } from './Product-Types'
+import { useProductController } from './Product-Controller'
+import { TITLE_NEW_PRODUCT, TITLE_EDIT_PRODUCT } from './Product-Constants'
+import { HOME_PATH } from '../../App-Constants'
 
-export const Product: React.FC<IProductProps> = (props) => {
-  const { findProduct, addProduct, editProduct, setIsSortedProducts } = useProductsContext()
-  const { id } = props.match.params
+export function Product(props: IProductProps) {
+  //const { findProduct, addProduct, editProduct, setIsSortedProducts } = useProductsContext()
+  useProductController(props)
 
+  return <div>test</div>
+  /*
   const product = findProduct(id)
 
   const close = () => {
@@ -115,5 +116,6 @@ export const Product: React.FC<IProductProps> = (props) => {
         </form>
       </IonContent>
     </IonPage>
-  );
-};
+  )
+  */
+}

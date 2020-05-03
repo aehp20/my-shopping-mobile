@@ -1,11 +1,11 @@
-import { RouteComponentProps } from "react-router";
+import { RouteComponentProps } from 'react-router'
 
 interface IProductParams {
-  id: string;
+  idListProducts: string
+  id: string
 }
 
-export interface IProductProps extends RouteComponentProps<IProductParams> {
-}
+export interface IProductProps extends RouteComponentProps<IProductParams> {}
 
 export interface IProduct {
   id: string | undefined
