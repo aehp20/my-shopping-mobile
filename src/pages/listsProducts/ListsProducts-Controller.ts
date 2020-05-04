@@ -13,14 +13,14 @@ export function useListsProductsController() {
 
     const newRowsProducts: IRowProducts[] = []
 
-    listsProducts.forEach((listProducts, index) => {
-      if (index % 2 === 0) {
-        newRowsProducts.push({ row: [listProducts] })
-      } else {
-        const { row } = newRowsProducts[Math.floor(index / 2)]
-        row.push(listProducts)
-      }
-    })
+    // listsProducts.forEach((listProducts, index) => {
+    //   if (index % 2 === 0) {
+    //     newRowsProducts.push({ row: [listProducts] })
+    //   } else {
+    //     const { row } = newRowsProducts[Math.floor(index / 2)]
+    //     row.push(listProducts)
+    //   }
+    // })
 
     setRowsProducts(newRowsProducts)
   }, [appData])
@@ -54,8 +54,8 @@ export function useListsProductsController() {
       if (item.id === listProducts.id) {
         newListProducts = {
           ...item,
-          name: listProducts.name,
-          products: listProducts.products,
+          name: listProducts.name
+          // products: listProducts.products,
         }
       }
 
@@ -68,7 +68,7 @@ export function useListsProductsController() {
   function addListProducts(listProducts: IListProducts) {
     const { listsProducts } = appData
     const newListsProducts = [listProducts, ...listsProducts]
-    saveAppData({ listsProducts: newListsProducts })
+    // saveAppData({ listsProducts: newListsProducts })
   }
 
   function applyListProducts(listProducts: IListProducts) {
@@ -84,6 +84,6 @@ export function useListsProductsController() {
   return {
     rowsProducts,
     applyListProducts,
-    findListProductsById,
+    findListProductsById
   }
 }

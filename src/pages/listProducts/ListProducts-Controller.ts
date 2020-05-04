@@ -17,7 +17,7 @@ export function useListProductsController(id: string) {
   )
   const {
     applyListProducts,
-    findListProductsById,
+    findListProductsById
   } = useListsProductsController()
 
   function handleName(event: any) {
@@ -32,7 +32,7 @@ export function useListProductsController(id: string) {
     const listProducts: IListProducts = {
       id: idListProducts,
       name,
-      products,
+      products
     }
 
     applyListProducts(listProducts)
@@ -59,11 +59,11 @@ export function useListProductsController(id: string) {
           ? existListProducts.name
           : LIST_PRODUCTS_INITIAL_DATA.name
       )
-      setProducts(
-        !!existListProducts
-          ? existListProducts.products
-          : LIST_PRODUCTS_INITIAL_DATA.products
-      )
+      // setProducts(
+      //   !!existListProducts
+      //     ? existListProducts.products
+      //     : LIST_PRODUCTS_INITIAL_DATA.products
+      // )
     }
   }, [id])
 
@@ -72,6 +72,6 @@ export function useListProductsController(id: string) {
     name,
     products,
     saveProducts,
-    handleName,
+    handleName
   }
 }

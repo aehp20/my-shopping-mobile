@@ -1,4 +1,4 @@
-import { IListProducts } from './pages/listProducts/ListProducts-Types'
+import { IListProducts } from './views/listsProducts/ListsProducts-Types'
 
 export interface IAppData {
   listsProducts: IListProducts[]
@@ -7,4 +7,7 @@ export interface IAppData {
 export interface IAppContext {
   appData: IAppData
   saveAppData: (appData: IAppData) => void
+  getListProducts: (id: string) => IListProducts | undefined
+  saveListProducts: (listProducts: IListProducts) => void
+  deleteListProducts: (id: string) => void
 }
