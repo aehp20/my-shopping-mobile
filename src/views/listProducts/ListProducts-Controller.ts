@@ -1,11 +1,14 @@
 import { useState, useEffect } from 'react'
 import { InputChangeEventDetail } from '@ionic/core'
+import { useHistory } from 'react-router-dom'
 import uuid from 'react-uuid'
 
 import { useAppContext } from '../../App-Context'
 import { IProduct } from '../listsProducts/ListsProducts-Types'
+import { getListProductsPath } from '../listsProducts/ListsProducts-Utils'
 
 export function useListProductsController(idListProducts: string) {
+  const history = useHistory()
   const { getListProducts, saveListProducts } = useAppContext()
   const [id, setId] = useState<string>('')
   const [name, setName] = useState<string>('')
@@ -22,6 +25,7 @@ export function useListProductsController(idListProducts: string) {
       name,
       products
     })
+    history.push(getListProductsPath(id))
   }
 
   useEffect(() => {

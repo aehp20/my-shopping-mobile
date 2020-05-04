@@ -1,12 +1,10 @@
 import React from 'react'
 import {
-  IonInput,
   IonText,
   IonPage,
   IonHeader,
   IonToolbar,
   IonButtons,
-  IonBackButton,
   IonContent,
   IonButton,
   IonIcon,
@@ -14,11 +12,12 @@ import {
   IonRow,
   IonCol
 } from '@ionic/react'
+import { save, arrowBack } from 'ionicons/icons'
+import { Link } from 'react-router-dom'
 
 import { useListProductsController } from './ListProducts-Controller'
-import { StyledErrorSection } from './ListProducts-Styles'
+import { StyledErrorSection, StyledIonInput } from './ListProducts-Styles'
 import { HOME_PATH } from '../../App-Constants'
-import { save } from 'ionicons/icons'
 import { Products } from './products'
 
 export function ListProducts(props: any) {
@@ -36,12 +35,14 @@ export function ListProducts(props: any) {
       <IonHeader>
         <IonToolbar>
           <IonButtons slot='start'>
-            <IonBackButton defaultHref={HOME_PATH} />
+            <Link to={HOME_PATH}>
+              <IonIcon icon={arrowBack} size='large'></IonIcon>
+            </Link>
           </IonButtons>
           <IonGrid>
             <IonRow>
               <IonCol size='9'>
-                <IonInput
+                <StyledIonInput
                   autofocus={true}
                   required
                   type='text'

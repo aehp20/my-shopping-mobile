@@ -53,3 +53,7 @@ export function displayProducts(
 
   return content
 }
+
+export function getListProductsPath(id: string) {
+  return `/list-products/${id}`
+}
