@@ -1,6 +1,5 @@
 import React from 'react'
 import { IonGrid, IonRow, IonCol } from '@ionic/react'
-import { Link } from 'react-router-dom'
 import { trash } from 'ionicons/icons'
 
 import { hasListItems } from '../../common/utils'
@@ -17,7 +16,7 @@ import { LIST_PRODUCTS_NEW_PATH } from '../listProducts/ListProducts-Constants'
 import { EmptyListMessage } from '../../common/components/emptyListMessage'
 import { useListsProductsController } from './ListsProducts-Controller'
 import { ConfirmDeletionDialog } from '../../common/components/confirmDialog'
-import { StyledLink } from '../../common/styles'
+import { StyledLink, StyledBlackLink } from '../../common/styles'
 
 export function ListsProducts() {
   const {
@@ -40,9 +39,9 @@ export function ListsProducts() {
                     <StyledColumn>
                       <StyledHeader>
                         <StyledName>
-                          <Link to={getListProductsPath(listProducts.id)}>
+                          <StyledLink to={getListProductsPath(listProducts.id)}>
                             {listProducts.name}
-                          </Link>
+                          </StyledLink>
                         </StyledName>
                         <StyledTrashIcon
                           icon={trash}
@@ -53,9 +52,11 @@ export function ListsProducts() {
                         />
                       </StyledHeader>
                       <StyledProducts>
-                        <StyledLink to={getListProductsPath(listProducts.id)}>
+                        <StyledBlackLink
+                          to={getListProductsPath(listProducts.id)}
+                        >
                           {displayProducts(listProducts.products)}
-                        </StyledLink>
+                        </StyledBlackLink>
                       </StyledProducts>
                     </StyledColumn>
                   </IonCol>

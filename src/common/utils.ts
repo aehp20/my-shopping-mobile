@@ -1,3 +1,3 @@
-export function hasListItems(list: any[]) {
+export function hasListItems(list: any[] | undefined) {
   return !!list && list.length
 }

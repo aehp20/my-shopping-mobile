@@ -25,7 +25,6 @@ import '@ionic/react/css/display.css'
 
 /* Theme variables */
 import './theme/variables.css'
-import './theme/common.css'
 import { PRODUCT_NEW_PATH } from './pages/product/Product-Constants'
 import { LISTS_PRODUCTS_PATH, ListsProducts } from './views/listsProducts'
 import {
