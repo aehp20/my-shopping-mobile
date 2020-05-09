@@ -37,14 +37,19 @@ import { useProductsController } from './Products-Controller'
 import { hasListItems } from '../../../common/utils'
 
 export function Products(props: IProductsProps) {
-  const { products } = props
-  const { filteredProducts, handleSearch } = useProductsController(products)
-  const items = !!filteredProducts ? filteredProducts : products
+  const { id, name, products: productsProps } = props
+  const {
+    filteredProducts,
+    handleSearch,
+    isAllSelected,
+    areThereSelectedProducts,
+    handleSelectedProduct,
+    products
+  } = useProductsController(id, name, productsProps)
 
-  const isAllSelected = false
-  const areThereSelectedProducts = true
+  let items = !!filteredProducts ? filteredProducts : products
+
   const handleSelectedAllProducts = () => null
-  const handleSelectedProduct = () => null
   const handleToBuyValue = () => null
   const setShowConfirmDeletionAlert = (a: boolean) => null
 
@@ -123,8 +128,8 @@ export function Products(props: IProductsProps) {
                       <StyledCheckbox
                         color='primary'
                         id={product.id}
-                        value={product.isSelected ? 'true' : 'false'}
-                        checked={product.isSelected}
+                        value={!!product.isSelected ? 'true' : 'false'}
+                        checked={!!product.isSelected}
                         onIonChange={handleSelectedProduct}
                         disabled={!product.toBuy}
                       />
