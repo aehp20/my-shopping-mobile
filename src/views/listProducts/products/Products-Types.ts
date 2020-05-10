@@ -9,4 +9,5 @@ export interface IProductsProps {
 export interface ISelectedProduct {
   id: string
   checked: boolean
+  type: string
 }

@@ -9,7 +9,6 @@ import {
   IonIcon
 } from '@ionic/react'
 import classNames from 'classnames'
-import { Link } from 'react-router-dom'
 import { trash } from 'ionicons/icons'
 
 import { IProductsProps } from './Products-Types'
@@ -32,25 +31,28 @@ import {
   StyledToggleToBuy
 } from './Products-Styles'
 import { getName } from './Products-Utils'
-import { StyledCheckbox } from '../../../common/styles'
+import {
+  StyledCheckbox,
+  StyledLink,
+  StyledBlackLink
+} from '../../../common/styles'
 import { useProductsController } from './Products-Controller'
 import { hasListItems } from '../../../common/utils'
 
 export function Products(props: IProductsProps) {
   const { id, name, products: productsProps } = props
   const {
+    products,
     filteredProducts,
-    handleSearch,
+    items,
     isAllSelected,
     areThereSelectedProducts,
     handleSelectedProduct,
-    products
+    handleToBuyValue,
+    handleSelectedAllProducts,
+    handleSearch
   } = useProductsController(id, name, productsProps)
 
-  let items = !!filteredProducts ? filteredProducts : products
-
-  const handleSelectedAllProducts = () => null
-  const handleToBuyValue = () => null
   const setShowConfirmDeletionAlert = (a: boolean) => null
 
   const SIZE_SEARCH_PRODUCTS = areThereSelectedProducts
@@ -63,6 +65,13 @@ export function Products(props: IProductsProps) {
     ) : (
       <EmptyListMessage />
     )
+
+  function getLink(to: string, toBuy: boolean, content: string) {
+    if (toBuy) {
+      return <StyledLink to={to}>{content}</StyledLink>
+    }
+    return <StyledBlackLink to={to}>{content}</StyledBlackLink>
+  }
 
   return (
     <>
@@ -135,19 +144,16 @@ export function Products(props: IProductsProps) {
                       />
                     </IonCol>
                     <IonCol size={NAME_COL_SIZE}>
-                      <Link
-                        to={`/product/${product.id}`}
-                        className={classNames('products-link', {
-                          'products-no-buy': !product.toBuy
-                        })}
-                      >
-                        {getName(product)}
-                      </Link>
+                      {getLink(
+                        `/product/${product.id}`,
+                        !!product.toBuy,
+                        getName(product)
+                      )}
                     </IonCol>
                     <StyledColumnToBuy size={TO_BUY_COL_SIZE}>
                       <StyledToggleToBuy
                         id={product.id}
-                        value={'product.toBuy.toString()'}
+                        value={(!!product.toBuy).toString()}
                         checked={product.toBuy}
                         onIonChange={handleToBuyValue}
                         disabled={product.isSelected}
