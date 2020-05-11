@@ -30,28 +30,24 @@ import {
   StyledColumnToBuy,
   StyledToggleToBuy
 } from './Products-Styles'
-import { getName } from './Products-Utils'
-import {
-  StyledCheckbox,
-  StyledLink,
-  StyledBlackLink
-} from '../../../common/styles'
+import { getName, getLink } from './Products-Utils'
+import { StyledCheckbox } from '../../../common/styles'
 import { useProductsController } from './Products-Controller'
 import { hasListItems } from '../../../common/utils'
+import { StyledEmptyList } from '../../../common/components/emptyListMessage/EmptyListMessage-Styles'
 
 export function Products(props: IProductsProps) {
-  const { id, name, products: productsProps } = props
+  const { id, name, products } = props
   const {
-    products,
-    filteredProducts,
     items,
     isAllSelected,
     areThereSelectedProducts,
+    notFoundFilteredProducts,
     handleSelectedProduct,
     handleToBuyValue,
     handleSelectedAllProducts,
     handleSearch
-  } = useProductsController(id, name, productsProps)
+  } = useProductsController(id, name, products)
 
   const setShowConfirmDeletionAlert = (a: boolean) => null
 
@@ -59,19 +55,11 @@ export function Products(props: IProductsProps) {
     ? SEARCH_PRODUCTS_REDUCED_COL_SIZE
     : SEARCH_PRODUCTS_COL_SIZE
 
-  const listMessage =
-    hasListItems(products) && !hasListItems(filteredProducts) ? (
-      <div>Items not found</div>
-    ) : (
-      <EmptyListMessage />
-    )
-
-  function getLink(to: string, toBuy: boolean, content: string) {
-    if (toBuy) {
-      return <StyledLink to={to}>{content}</StyledLink>
-    }
-    return <StyledBlackLink to={to}>{content}</StyledBlackLink>
-  }
+  const listMessage = notFoundFilteredProducts ? (
+    <StyledEmptyList>Items not found</StyledEmptyList>
+  ) : (
+    <EmptyListMessage />
+  )
 
   return (
     <>

@@ -23,12 +23,15 @@ export function useProductsController(
     { id: '4', name: 'product4', isSelected: false, toBuy: true },
     { id: '5', name: 'product5', isSelected: false, toBuy: true }
   ])
-  const [filteredProducts, setFilteredProducts] = useState<IProduct[]>([])
+  const [filteredProducts, setFilteredProducts] = useState<IProduct[]>()
   const [items, setItems] = useState<IProduct[]>([])
   const [selectedProduct, setSelectedProduct] = useState<ISelectedProduct>()
   const [isAllSelected, setIsAllSelected] = useState(false)
-  const [searchValue, setSearchValue] = useState('')
+  const [searchValue, setSearchValue] = useState<string>()
   const [areThereSelectedProducts, setAreThereSelectedProducts] = useState(
+    false
+  )
+  const [notFoundFilteredProducts, setNotFoundFilteredProducts] = useState(
     false
   )
 
@@ -78,10 +81,11 @@ export function useProductsController(
   }
 
   useEffect(() => {
-    const newItems = hasListItems(filteredProducts)
-      ? filteredProducts
-      : products
+    const newItems = !!filteredProducts ? filteredProducts : products
     setItems(newItems)
+    setNotFoundFilteredProducts(
+      hasListItems(products) && !hasListItems(filteredProducts)
+    )
   }, [filteredProducts, products])
 
   useEffect(() => {
@@ -114,26 +118,32 @@ export function useProductsController(
         newProducts = [...toBuyProducts, ...notToBuyProducts]
       }
 
-      console.log(newProducts)
-      setProducts(newProducts)
+      if (hasListItems(filteredProducts)) {
+        setFilteredProducts(newProducts)
+      } else {
+        setProducts(newProducts)
+      }
     }
   }, [selectedProduct])
 
   useEffect(() => {
-    const value = searchValue.toUpperCase()
-    const filteredItems = products.filter((product: IProduct) => {
-      const name = product.name.toUpperCase()
-      return name.indexOf(value) === -1 ? false : true
-    })
-    // setFilteredProducts(filteredItems)
+    if (searchValue) {
+      const value = searchValue.toUpperCase()
+      const filteredItems = products.filter((product: IProduct) => {
+        const name = product.name.toUpperCase()
+        return name.indexOf(value) === -1 ? false : true
+      })
+      setFilteredProducts(filteredItems)
+    } else if (searchValue === '') {
+      setFilteredProducts(undefined)
+    }
   }, [searchValue])
 
   return {
-    products,
-    filteredProducts,
     items,
     isAllSelected,
     areThereSelectedProducts,
+    notFoundFilteredProducts,
     handleSelectedProduct,
     handleToBuyValue,
     handleSelectedAllProducts,
