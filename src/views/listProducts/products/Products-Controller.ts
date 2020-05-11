@@ -10,19 +10,15 @@ import { hasListItems } from '../../../common/utils'
 import { ACTION_TYPE_SELECT, ACTION_TYPE_TO_BUY } from './Products-Constants'
 import { ISelectedProduct } from './Products-Types'
 import { getSelectedProducts } from './Products-Utils'
+import { useAppContext } from '../../../App-Context'
 
 export function useProductsController(
   idListProducts: string,
   nameListProducts: string,
   productsListProducts: IProduct[]
 ) {
-  const [products, setProducts] = useState<IProduct[]>([
-    { id: '1', name: 'product1', isSelected: false, toBuy: true },
-    { id: '2', name: 'product2', isSelected: false, toBuy: true },
-    { id: '3', name: 'product3', isSelected: false, toBuy: true },
-    { id: '4', name: 'product4', isSelected: false, toBuy: true },
-    { id: '5', name: 'product5', isSelected: false, toBuy: true }
-  ])
+  const { saveListProducts } = useAppContext()
+  const [products, setProducts] = useState<IProduct[]>(productsListProducts)
   const [filteredProducts, setFilteredProducts] = useState<IProduct[]>()
   const [items, setItems] = useState<IProduct[]>([])
   const [selectedProduct, setSelectedProduct] = useState<ISelectedProduct>()
@@ -103,6 +99,11 @@ export function useProductsController(
     setNotFoundFilteredProducts(
       hasListItems(products) && !hasListItems(filteredProducts)
     )
+    saveListProducts({
+      id: idListProducts,
+      name: nameListProducts,
+      products
+    })
   }, [filteredProducts, products])
 
   useEffect(() => {
