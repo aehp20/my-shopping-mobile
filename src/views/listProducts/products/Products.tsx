@@ -35,6 +35,7 @@ import { StyledCheckbox } from '../../../common/styles'
 import { useProductsController } from './Products-Controller'
 import { hasListItems } from '../../../common/utils'
 import { StyledEmptyList } from '../../../common/components/emptyListMessage/EmptyListMessage-Styles'
+import { ConfirmDeletionDialog } from '../../../common/components/confirmDialog'
 
 export function Products(props: IProductsProps) {
   const { id, name, products } = props
@@ -43,13 +44,15 @@ export function Products(props: IProductsProps) {
     isAllSelected,
     areThereSelectedProducts,
     notFoundFilteredProducts,
+    isOpenConfirmDeletionDialog,
+    openConfirmDeletionDialog,
+    closeConfirmDeletionDialog,
+    deleteSelectedList,
     handleSelectedProduct,
     handleToBuyValue,
     handleSelectedAllProducts,
     handleSearch
   } = useProductsController(id, name, products)
-
-  const setShowConfirmDeletionAlert = (a: boolean) => null
 
   const SIZE_SEARCH_PRODUCTS = areThereSelectedProducts
     ? SEARCH_PRODUCTS_REDUCED_COL_SIZE
@@ -73,10 +76,7 @@ export function Products(props: IProductsProps) {
           </IonCol>
           {areThereSelectedProducts && (
             <StyledColumnDelete size='3'>
-              <IonButton
-                color='danger'
-                onClick={() => setShowConfirmDeletionAlert(true)}
-              >
+              <IonButton color='danger' onClick={openConfirmDeletionDialog}>
                 <IonIcon icon={trash} size='large'></IonIcon>
               </IonButton>
             </StyledColumnDelete>
@@ -84,11 +84,11 @@ export function Products(props: IProductsProps) {
         </IonRow>
       </StyledActionsBar>
 
-      {/* <ConfirmDeletionDialog
-            isOpen={isOpenConfirmDeletionDialog}
-            cancelFn={closeConfirmDeletionDialog}
-            okFn={deleteSelectedList}
-          /> */}
+      <ConfirmDeletionDialog
+        isOpen={isOpenConfirmDeletionDialog}
+        cancelFn={closeConfirmDeletionDialog}
+        okFn={deleteSelectedList}
+      />
 
       <StyledList>
         <StyledHeaderList>
@@ -153,6 +153,7 @@ export function Products(props: IProductsProps) {
             ))
           : listMessage}
       </StyledList>
+
       <AddItemButton path={'LIST_PRODUCTS_NEW_PATH'} />
     </>
   )

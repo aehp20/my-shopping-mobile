@@ -34,6 +34,10 @@ export function useProductsController(
   const [notFoundFilteredProducts, setNotFoundFilteredProducts] = useState(
     false
   )
+  const [
+    isOpenConfirmDeletionDialog,
+    setIsOpenConfirmDeletionDialog
+  ] = useState(false)
 
   const handleSelectedProduct = (
     event: CustomEvent<CheckboxChangeEventDetail>
@@ -78,6 +82,19 @@ export function useProductsController(
   const handleSearch = (event: CustomEvent<SearchbarChangeEventDetail>) => {
     const { value } = event.target as HTMLInputElement
     setSearchValue(value)
+  }
+
+  const openConfirmDeletionDialog = () => {
+    setIsOpenConfirmDeletionDialog(true)
+  }
+
+  const closeConfirmDeletionDialog = () => {
+    setIsOpenConfirmDeletionDialog(false)
+  }
+
+  const deleteSelectedList = () => {
+    const selectedProducts = items.filter((item: IProduct) => !item.isSelected)
+    setProducts(selectedProducts)
   }
 
   useEffect(() => {
@@ -144,6 +161,10 @@ export function useProductsController(
     isAllSelected,
     areThereSelectedProducts,
     notFoundFilteredProducts,
+    isOpenConfirmDeletionDialog,
+    openConfirmDeletionDialog,
+    closeConfirmDeletionDialog,
+    deleteSelectedList,
     handleSelectedProduct,
     handleToBuyValue,
     handleSelectedAllProducts,
