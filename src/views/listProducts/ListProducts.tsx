@@ -10,10 +10,10 @@ import {
   IonIcon,
   IonGrid,
   IonRow,
-  IonCol
+  IonCol,
+  IonBackButton
 } from '@ionic/react'
-import { save, arrowBack } from 'ionicons/icons'
-import { Link } from 'react-router-dom'
+import { save } from 'ionicons/icons'
 
 import { useListProductsController } from './ListProducts-Controller'
 import { StyledErrorSection, StyledIonInput } from './ListProducts-Styles'
@@ -36,9 +36,7 @@ export function ListProducts(props: any) {
       <IonHeader>
         <IonToolbar>
           <IonButtons slot='start'>
-            <Link to={HOME_PATH}>
-              <IonIcon icon={arrowBack} size='large'></IonIcon>
-            </Link>
+            <IonBackButton defaultHref={HOME_PATH} />
           </IonButtons>
           <IonGrid>
             <IonRow>
