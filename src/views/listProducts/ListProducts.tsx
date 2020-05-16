@@ -14,15 +14,19 @@ import {
   IonBackButton
 } from '@ionic/react'
 import { save } from 'ionicons/icons'
+import { RouteComponentProps } from 'react-router'
 
 import { useListProductsController } from './ListProducts-Controller'
 import { StyledErrorSection, StyledIonInput } from './ListProducts-Styles'
 import { HOME_PATH } from '../../App-Constants'
 import { Products } from './products'
 import { hasListItems } from '../../common/utils'
+import { IListProductsParams } from './ListProducts-Types'
 
-export function ListProducts(props: any) {
-  const { id } = props.match.params
+export function ListProducts({
+  match
+}: RouteComponentProps<IListProductsParams>) {
+  const { id } = match.params
   const {
     name,
     handleName,

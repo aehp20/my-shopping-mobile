@@ -3,9 +3,19 @@ import { Redirect, Route } from 'react-router-dom'
 import { IonApp, IonRouterOutlet } from '@ionic/react'
 import { IonReactRouter } from '@ionic/react-router'
 
-import { Home } from './views/home'
 import { AppProvider } from './App-Context'
 import { ROOT_PATH, HOME_PATH } from './App-Constants'
+import {
+  LIST_PRODUCTS_NEW_PATH,
+  LIST_PRODUCTS_EDIT_PATH
+} from './views/listProducts/ListProducts-Constants'
+import { ListProducts } from './views/listProducts'
+import { Home } from './views/home'
+import {
+  PRODUCT_NEW_PATH,
+  PRODUCT_EDIT_PATH
+} from './views/listProducts/product/Product-Constants'
+import { Product } from './views/listProducts/product'
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css'
@@ -25,14 +35,6 @@ import '@ionic/react/css/display.css'
 
 /* Theme variables */
 import './theme/variables.css'
-import { PRODUCT_NEW_PATH } from './pages/product/Product-Constants'
-import { LISTS_PRODUCTS_PATH, ListsProducts } from './views/listsProducts'
-import {
-  LIST_PRODUCTS_NEW_PATH,
-  LIST_PRODUCTS_EDIT_PATH
-} from './views/listProducts/ListProducts-Constants'
-import { ListProducts } from './views/listProducts'
-// import { Product } from "./pages/product"
 
 const App: React.FC = () => (
   <IonApp>
@@ -50,8 +52,8 @@ const App: React.FC = () => (
             component={ListProducts}
             exact={true}
           />
-          {/* <Route path={PRODUCT_NEW_PATH} component={Product} exact={true} /> */}
-          {/* <Route path={PRODUCT_EDIT_PATH} component={Product} exact={true} /> */}
+          <Route path={PRODUCT_NEW_PATH} component={Product} exact={true} />
+          <Route path={PRODUCT_EDIT_PATH} component={Product} exact={true} />
           <Route
             exact
             path={ROOT_PATH}

@@ -38,7 +38,7 @@ import { StyledEmptyList } from '../../../common/components/emptyListMessage/Emp
 import { ConfirmDeletionDialog } from '../../../common/components/confirmDialog'
 
 export function Products(props: IProductsProps) {
-  const { id, name, products } = props
+  const { id: idListProducts, name, products } = props
   const {
     items,
     isAllSelected,
@@ -52,7 +52,7 @@ export function Products(props: IProductsProps) {
     handleToBuyValue,
     handleSelectedAllProducts,
     handleSearch
-  } = useProductsController(id, name, products)
+  } = useProductsController(idListProducts, name, products)
 
   const SIZE_SEARCH_PRODUCTS = areThereSelectedProducts
     ? SEARCH_PRODUCTS_REDUCED_COL_SIZE
@@ -133,7 +133,7 @@ export function Products(props: IProductsProps) {
                     </IonCol>
                     <IonCol size={NAME_COL_SIZE}>
                       {getLink(
-                        `/product/${product.id}`,
+                        `/list-products/${idListProducts}/product/${product.id}`,
                         !!product.toBuy,
                         getName(product)
                       )}
@@ -154,7 +154,7 @@ export function Products(props: IProductsProps) {
           : listMessage}
       </StyledList>
 
-      <AddItemButton path={'LIST_PRODUCTS_NEW_PATH'} />
+      <AddItemButton path={`/list-products/${idListProducts}/product`} />
     </>
   )
 }
