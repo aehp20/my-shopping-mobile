@@ -13,40 +13,40 @@ export function useListProductsController(idListProducts: string) {
   const [id, setId] = useState<string>('')
   const [name, setName] = useState<string>('')
   const [products, setProducts] = useState<IProduct[] | undefined>([])
-  const [isNew, setIsNew] = useState<boolean>(false)
+  const [isNew, setIsNew] = useState<boolean>(true)
 
   function handleName(event: CustomEvent<InputChangeEventDetail>) {
     setName((<HTMLInputElement>event.target).value)
   }
 
   function apply() {
-    // saveListProducts({
-    //   id,
-    //   name,
-    //   products
-    // })
-    // history.push(getListProductsPath(id))
+    saveListProducts({
+      id,
+      name,
+      products
+    })
+    history.push(getListProductsPath(id))
   }
 
-  // useEffect(() => {
-  //   let listProducts
+  useEffect(() => {
+    let listProducts
 
-  //   if (!!idListProducts) {
-  //     listProducts = getListProducts(idListProducts)
+    if (!!idListProducts) {
+      listProducts = getListProducts(idListProducts)
 
-  //     if (!!listProducts) {
-  //       setId(listProducts.id)
-  //       setName(listProducts.name)
-  //       setProducts(listProducts.products)
-  //       setIsNew(false)
-  //     }
-  //   } else {
-  //     setId(uuid())
-  //     setName('')
-  //     setProducts([])
-  //     setIsNew(true)
-  //   }
-  // }, [idListProducts])
+      if (!!listProducts) {
+        setId(listProducts.id)
+        setName(listProducts.name)
+        setProducts(listProducts.products)
+        setIsNew(false)
+      }
+    } else {
+      setId(uuid())
+      setName('')
+      setProducts([])
+      setIsNew(true)
+    }
+  }, [idListProducts])
 
   return {
     name,

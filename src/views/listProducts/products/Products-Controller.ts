@@ -99,6 +99,7 @@ export function useProductsController(
     setNotFoundFilteredProducts(
       hasListItems(products) && !hasListItems(filteredProducts)
     )
+    console.log('Products-Controller')
     saveListProducts({
       id: idListProducts,
       name: nameListProducts,

@@ -12,15 +12,14 @@ import {
   IonRow,
   IonCol
 } from '@ionic/react'
-import { save } from 'ionicons/icons'
+import { save, arrowBack } from 'ionicons/icons'
 import { RouteComponentProps } from 'react-router'
 import { Link } from 'react-router-dom'
 
 import { useListProductsController } from './ListProducts-Controller'
-import { StyledIonInput } from './ListProducts-Styles'
+import { StyledIonInput, StyledArrowBack } from './ListProducts-Styles'
 import { HOME_PATH } from '../../App-Constants'
 import { Products } from './products'
-import { hasListItems } from '../../common/utils'
 import { IListProductsParams } from './ListProducts-Types'
 import { StyledErrorSection } from '../../common/styles'
 
@@ -36,12 +35,28 @@ export function ListProducts({
     isNew
   } = useListProductsController(id)
 
+  const errorSection = !name ? (
+    <StyledErrorSection>
+      <IonText color='danger'>Name is required</IonText>
+    </StyledErrorSection>
+  ) : (
+    ''
+  )
+
+  const productsSection = !isNew ? (
+    <Products id={id} name={name} products={products!} />
+  ) : (
+    ''
+  )
+
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar>
           <IonButtons slot='start'>
-            <Link to={HOME_PATH}>DDD</Link>
+            <Link to={HOME_PATH}>
+              <StyledArrowBack icon={arrowBack}></StyledArrowBack>
+            </Link>
           </IonButtons>
           <IonGrid>
             <IonRow>
@@ -66,12 +81,8 @@ export function ListProducts({
         </IonToolbar>
       </IonHeader>
       <IonContent>
-        {!name && (
-          <StyledErrorSection>
-            <IonText color='danger'>Name is required</IonText>
-          </StyledErrorSection>
-        )}
-        {!isNew && <Products id={id} name={name} products={products!} />}
+        {errorSection}
+        {productsSection}
       </IonContent>
     </IonPage>
   )
