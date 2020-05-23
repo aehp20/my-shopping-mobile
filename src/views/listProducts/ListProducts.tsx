@@ -67,7 +67,7 @@ export function ListProducts({
                   type='text'
                   value={name}
                   onIonChange={handleName}
-                  placeholder='Enter the name'
+                  placeholder='Enter a name'
                   clearInput
                 />
               </IonCol>
