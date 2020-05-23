@@ -5,12 +5,7 @@ import {
   IonLabel,
   IonToggle,
   IonText,
-  IonButton,
   IonList,
-  IonGrid,
-  IonRow,
-  IonCol,
-  IonTitle,
   IonPage,
   IonHeader,
   IonToolbar,
@@ -25,11 +20,27 @@ import { useProductController } from './Product-Controller'
 import { HOME_PATH } from '../../../App-Constants'
 import { TITLE_NEW_PRODUCT, TITLE_EDIT_PRODUCT } from './Product-Constants'
 import { IProductParams } from './Product-Types'
+import {
+  StyledTitle,
+  StyledButton,
+  StyledLabelForToggle
+} from './Product-Styles'
 
 export function Product({ match }: RouteComponentProps<IProductParams>) {
   const { idListProducts, id } = match.params
-  //const { findProduct, addProduct, editProduct, setIsSortedProducts } = useProductsContext()
-  const { isNew } = useProductController(idListProducts, id)
+  const {
+    isNew,
+    name,
+    quantity,
+    toBuy,
+    description,
+    validationResponse,
+    handleName,
+    handleQuantity,
+    handleToBuy,
+    handleDescription,
+    apply
+  } = useProductController(idListProducts, id)
 
   // const product = findProduct(id)
 
@@ -39,31 +50,7 @@ export function Product({ match }: RouteComponentProps<IProductParams>) {
 
   // const apply = id ? editProduct : addProduct
 
-  // const {
-  //   name,
-  //   quantity,
-  //   toBuy,
-  //   description,
-  //   handleNameValue,
-  //   handleQuantityValue,
-  //   handleToBuyValue,
-  //   handleDescriptionValue,
-  //   handleApply,
-  //   validationResponse
-  // } = useProductController({product, apply, setIsSortedProducts, close})
-
   const title = isNew ? TITLE_NEW_PRODUCT : TITLE_EDIT_PRODUCT
-
-  const name = ''
-  const quantity = ''
-  const toBuy = true
-  const description = ''
-  const handleName = () => null
-  const handleQuantity = () => null
-  const handleToBuy = () => null
-  const handleDescription = () => null
-  const handleApply = () => null
-  const validationResponse: any = {}
 
   return (
     <IonPage>
@@ -72,7 +59,7 @@ export function Product({ match }: RouteComponentProps<IProductParams>) {
           <IonButtons slot='start'>
             <IonBackButton defaultHref={HOME_PATH} />
           </IonButtons>
-          <IonTitle style={{ padding: '6px 0px' }}>{title}</IonTitle>
+          <StyledTitle>{title}</StyledTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent>
@@ -101,12 +88,8 @@ export function Product({ match }: RouteComponentProps<IProductParams>) {
                 clearInput
               />
             </IonItem>
-            <IonItem>
-              <IonLabel>
-                <IonText>
-                  <h6>To buy</h6>
-                </IonText>
-              </IonLabel>
+            <IonItem lines='full'>
+              <StyledLabelForToggle>To buy</StyledLabelForToggle>
               <IonToggle checked={toBuy} onIonChange={handleToBuy} />
             </IonItem>
             <IonItem>
@@ -123,20 +106,9 @@ export function Product({ match }: RouteComponentProps<IProductParams>) {
               </>
             )}
           </IonList>
-          <IonGrid>
-            <IonRow>
-              <IonCol size='6'>
-                <IonButton
-                  expand='full'
-                  style={{ textTransform: 'none' }}
-                  onClick={handleApply}
-                  strong
-                >
-                  Apply
-                </IonButton>
-              </IonCol>
-            </IonRow>
-          </IonGrid>
+          <StyledButton expand='full' onClick={apply} strong>
+            Apply
+          </StyledButton>
         </form>
       </IonContent>
     </IonPage>
