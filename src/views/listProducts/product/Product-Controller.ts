@@ -5,12 +5,13 @@ import uuid from 'react-uuid'
 import { IProduct } from '../../listsProducts/ListsProducts-Types'
 import { validate } from './Product-Validator'
 import { IValidationResponse } from './Product-Types'
+import { TITLE_NEW_PRODUCT, TITLE_EDIT_PRODUCT } from './Product-Constants'
 
 export function useProductController(
   idListProducts: string,
   idProduct: string
 ) {
-  const [isNew, setIsNew] = useState<boolean>(false)
+  const [title, setTitle] = useState('')
   const [id, setId] = useState(idProduct)
   const [name, setName] = useState('')
   const [quantity, setQuantity] = useState('')
@@ -69,12 +70,14 @@ export function useProductController(
 
   useEffect(() => {
     if (!!idListProducts && !idProduct) {
-      setIsNew(true)
+      setTitle(TITLE_NEW_PRODUCT)
+    } else {
+      setTitle(TITLE_EDIT_PRODUCT)
     }
   }, [idListProducts, idProduct])
 
   return {
-    isNew,
+    title,
     name,
     quantity,
     toBuy,

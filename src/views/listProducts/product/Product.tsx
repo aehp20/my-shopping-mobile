@@ -18,7 +18,6 @@ import { RouteComponentProps } from 'react-router'
 
 import { useProductController } from './Product-Controller'
 import { HOME_PATH } from '../../../App-Constants'
-import { TITLE_NEW_PRODUCT, TITLE_EDIT_PRODUCT } from './Product-Constants'
 import { IProductParams } from './Product-Types'
 import {
   StyledTitle,
@@ -29,7 +28,7 @@ import {
 export function Product({ match }: RouteComponentProps<IProductParams>) {
   const { idListProducts, id } = match.params
   const {
-    isNew,
+    title,
     name,
     quantity,
     toBuy,
@@ -49,8 +48,6 @@ export function Product({ match }: RouteComponentProps<IProductParams>) {
   // }
 
   // const apply = id ? editProduct : addProduct
-
-  const title = isNew ? TITLE_NEW_PRODUCT : TITLE_EDIT_PRODUCT
 
   return (
     <IonPage>
