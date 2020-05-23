@@ -1,5 +1,0 @@
-export const ERROR_REQUIRED_NAME = 'The name is required.'
-export const TITLE_NEW_PRODUCT = 'New product'
-export const TITLE_EDIT_PRODUCT = 'Edit product'
-export const PRODUCT_NEW_PATH = '/product/:idListProducts'
-export const PRODUCT_EDIT_PATH = '/product/:idListProducts/:id'
