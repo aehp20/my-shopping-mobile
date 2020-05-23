@@ -20,33 +20,33 @@ export function useListProductsController(idListProducts: string) {
   }
 
   function apply() {
-    saveListProducts({
-      id,
-      name,
-      products
-    })
-    history.push(getListProductsPath(id))
+    // saveListProducts({
+    //   id,
+    //   name,
+    //   products
+    // })
+    // history.push(getListProductsPath(id))
   }
 
-  useEffect(() => {
-    let listProducts
+  // useEffect(() => {
+  //   let listProducts
 
-    if (!!idListProducts) {
-      listProducts = getListProducts(idListProducts)
+  //   if (!!idListProducts) {
+  //     listProducts = getListProducts(idListProducts)
 
-      if (!!listProducts) {
-        setId(listProducts.id)
-        setName(listProducts.name)
-        setProducts(listProducts.products)
-        setIsNew(false)
-      }
-    } else {
-      setId(uuid())
-      setName('')
-      setProducts([])
-      setIsNew(true)
-    }
-  }, [idListProducts])
+  //     if (!!listProducts) {
+  //       setId(listProducts.id)
+  //       setName(listProducts.name)
+  //       setProducts(listProducts.products)
+  //       setIsNew(false)
+  //     }
+  //   } else {
+  //     setId(uuid())
+  //     setName('')
+  //     setProducts([])
+  //     setIsNew(true)
+  //   }
+  // }, [idListProducts])
 
   return {
     name,

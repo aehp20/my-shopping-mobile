@@ -9,7 +9,10 @@ import { useStorage } from '@ionic/react-hooks/storage'
 
 import { APP_STORAGE_KEY, APP_INITIAL_DATA } from './App-Constants'
 import { IAppContext, IAppData } from './App-Types'
-import { IListProducts } from './views/listsProducts/ListsProducts-Types'
+import {
+  IListProducts,
+  IProduct
+} from './views/listsProducts/ListsProducts-Types'
 
 const AppContext = createContext({} as IAppContext)
 
@@ -73,6 +76,32 @@ export function AppProvider(props: any) {
     return undefined
   }
 
+  function saveProduct(idListProducts: string, product: IProduct) {
+    let listProducts = getListProducts(idListProducts)
+
+    if (listProducts && listProducts.products) {
+      const { products } = listProducts
+      const existingProduct = products.find((item) => item.id === product.id)
+
+      let newListProducts: IProduct[]
+
+      if (existingProduct) {
+        newListProducts = products.map((item) => {
+          if (item.id === product.id) {
+            return { ...item, ...product }
+          }
+          return item
+        })
+      } else {
+        newListProducts = [product, ...products]
+      }
+
+      listProducts = { ...listProducts, products: newListProducts }
+
+      saveListProducts(listProducts)
+    }
+  }
+
   useEffect(() => {
     const loadSaved = async () => {
       const appDataAsString = await get(APP_STORAGE_KEY)
@@ -91,7 +120,8 @@ export function AppProvider(props: any) {
     getListProducts,
     saveListProducts,
     deleteListProducts,
-    getProduct
+    getProduct,
+    saveProduct
   }
 
   return (

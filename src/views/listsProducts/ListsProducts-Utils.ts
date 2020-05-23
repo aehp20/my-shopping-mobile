@@ -39,16 +39,14 @@ export function displayProducts(
   if (!!products && !!products.length) {
     if (products.length <= nbDisplayedProducts) {
       for (let index = 0; index < products.length; index++) {
-        content += products[index].name + ' '
+        content += products[index].name + ', '
       }
     } else {
       for (let index = 0; index < nbDisplayedProducts; index++) {
-        content += products[index].name + ' '
+        content += products[index].name + ', '
       }
       content += `(+${products.length - nbDisplayedProducts})`
     }
-  } else {
-    content = '0'
   }
 
   return content

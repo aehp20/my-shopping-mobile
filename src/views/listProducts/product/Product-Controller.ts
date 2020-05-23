@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { InputChangeEventDetail, ToggleChangeEventDetail } from '@ionic/core'
 import uuid from 'react-uuid'
+import { useHistory } from 'react-router-dom'
 
 import { IProduct } from '../../listsProducts/ListsProducts-Types'
 import { validate } from './Product-Validator'
@@ -11,12 +12,14 @@ import {
   PRODUCT_INITIAL
 } from './Product-Constants'
 import { useAppContext } from '../../../App-Context'
+import { getListProductsPath } from '../../listsProducts/ListsProducts-Utils'
 
 export function useProductController(
   idListProducts: string,
   idProduct: string
 ) {
-  const { getProduct } = useAppContext()
+  const history = useHistory()
+  const { getProduct, saveProduct } = useAppContext()
   const [title, setTitle] = useState('')
   const [id, setId] = useState(idProduct)
   const [name, setName] = useState(PRODUCT_INITIAL.name)
@@ -52,6 +55,10 @@ export function useProductController(
     setValidationResponse(PRODUCT_INITIAL.validationResponse)
   }
 
+  const close = () => {
+    history.push(getListProductsPath(idListProducts))
+  }
+
   const apply = () => {
     const uid = id ? id : uuid()
 
@@ -68,10 +75,10 @@ export function useProductController(
     if (validation.error) {
       setValidationResponse(validation)
     } else {
-      //apply(product)
+      saveProduct(idListProducts, product)
       //!product.toBuy && setIsSortedProducts(true)
       clean()
-      // close()
+      close()
     }
   }
 
@@ -82,6 +89,7 @@ export function useProductController(
       const product = getProduct(idListProducts, idProduct)
 
       if (product) {
+        setId(product.id)
         setName(product.name)
         setQuantity(
           product.quantity ? product.quantity : PRODUCT_INITIAL.quantity

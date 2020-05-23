@@ -10,11 +10,11 @@ import {
   IonIcon,
   IonGrid,
   IonRow,
-  IonCol,
-  IonBackButton
+  IonCol
 } from '@ionic/react'
 import { save } from 'ionicons/icons'
 import { RouteComponentProps } from 'react-router'
+import { Link } from 'react-router-dom'
 
 import { useListProductsController } from './ListProducts-Controller'
 import { StyledIonInput } from './ListProducts-Styles'
@@ -41,7 +41,7 @@ export function ListProducts({
       <IonHeader>
         <IonToolbar>
           <IonButtons slot='start'>
-            <IonBackButton defaultHref={HOME_PATH} />
+            <Link to={HOME_PATH}>DDD</Link>
           </IonButtons>
           <IonGrid>
             <IonRow>
@@ -71,9 +71,7 @@ export function ListProducts({
             <IonText color='danger'>Name is required</IonText>
           </StyledErrorSection>
         )}
-        {!isNew && hasListItems(products) && (
-          <Products id={id} name={name} products={products!} />
-        )}
+        {!isNew && <Products id={id} name={name} products={products!} />}
       </IonContent>
     </IonPage>
   )

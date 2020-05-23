@@ -17,4 +17,5 @@ export interface IAppContext {
     idListProducts: string,
     idProduct: string
   ) => IProduct | undefined
+  saveProduct: (idListProducts: string, product: IProduct) => void
 }
