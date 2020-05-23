@@ -13,3 +13,7 @@ export const StyledLink = styled(Link)`
 export const StyledBlackLink = styled(StyledLink)`
   color: #262626;
 `
+
+export const StyledErrorSection = styled.div`
+  padding: 6px;
+`

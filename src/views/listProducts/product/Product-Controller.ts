@@ -6,11 +6,13 @@ import { IProduct } from '../../listsProducts/ListsProducts-Types'
 import { validate } from './Product-Validator'
 import { IValidationResponse } from './Product-Types'
 import { TITLE_NEW_PRODUCT, TITLE_EDIT_PRODUCT } from './Product-Constants'
+import { useAppContext } from '../../../App-Context'
 
 export function useProductController(
   idListProducts: string,
   idProduct: string
 ) {
+  const { getProduct } = useAppContext()
   const [title, setTitle] = useState('')
   const [id, setId] = useState(idProduct)
   const [name, setName] = useState('')
@@ -72,6 +74,15 @@ export function useProductController(
     if (!!idListProducts && !idProduct) {
       setTitle(TITLE_NEW_PRODUCT)
     } else {
+      const product = getProduct(idListProducts, idProduct)
+
+      if (product) {
+        setName(product.name)
+        setQuantity(product.quantity ? product.quantity : '')
+        setToBuy(product.toBuy === undefined ? true : product.toBuy)
+        setDescription(product.description ? product.description : '')
+      }
+
       setTitle(TITLE_EDIT_PRODUCT)
     }
   }, [idListProducts, idProduct])

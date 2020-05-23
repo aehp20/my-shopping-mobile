@@ -24,6 +24,7 @@ import {
   StyledButton,
   StyledLabelForToggle
 } from './Product-Styles'
+import { StyledErrorSection } from '../../../common/styles'
 
 export function Product({ match }: RouteComponentProps<IProductParams>) {
   const { idListProducts, id } = match.params
@@ -96,13 +97,14 @@ export function Product({ match }: RouteComponentProps<IProductParams>) {
                 onIonChange={handleDescription}
               />
             </IonItem>
-            {validationResponse.error && (
-              <>
-                <br />
-                <IonText color='danger'>{validationResponse.message}</IonText>
-              </>
-            )}
           </IonList>
+
+          {validationResponse.error && (
+            <StyledErrorSection>
+              <IonText color='danger'>{validationResponse.message}</IonText>
+            </StyledErrorSection>
+          )}
+
           <StyledButton expand='full' onClick={apply} strong>
             Apply
           </StyledButton>

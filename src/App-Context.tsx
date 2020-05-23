@@ -61,6 +61,18 @@ export function AppProvider(props: any) {
     }
   }
 
+  /** Product operation **/
+
+  function getProduct(idListProducts: string, idProduct: string) {
+    const listProducts = getListProducts(idListProducts)
+
+    if (listProducts && listProducts.products) {
+      return listProducts.products.find((item) => item.id === idProduct)
+    }
+
+    return undefined
+  }
+
   useEffect(() => {
     const loadSaved = async () => {
       const appDataAsString = await get(APP_STORAGE_KEY)
@@ -78,7 +90,8 @@ export function AppProvider(props: any) {
     saveAppData,
     getListProducts,
     saveListProducts,
-    deleteListProducts
+    deleteListProducts,
+    getProduct
   }
 
   return (
