@@ -5,7 +5,11 @@ import uuid from 'react-uuid'
 import { IProduct } from '../../listsProducts/ListsProducts-Types'
 import { validate } from './Product-Validator'
 import { IValidationResponse } from './Product-Types'
-import { TITLE_NEW_PRODUCT, TITLE_EDIT_PRODUCT } from './Product-Constants'
+import {
+  TITLE_NEW_PRODUCT,
+  TITLE_EDIT_PRODUCT,
+  PRODUCT_INITIAL
+} from './Product-Constants'
 import { useAppContext } from '../../../App-Context'
 
 export function useProductController(
@@ -15,13 +19,13 @@ export function useProductController(
   const { getProduct } = useAppContext()
   const [title, setTitle] = useState('')
   const [id, setId] = useState(idProduct)
-  const [name, setName] = useState('')
-  const [quantity, setQuantity] = useState('')
-  const [toBuy, setToBuy] = useState(true)
-  const [description, setDescription] = useState('')
+  const [name, setName] = useState(PRODUCT_INITIAL.name)
+  const [quantity, setQuantity] = useState(PRODUCT_INITIAL.quantity)
+  const [toBuy, setToBuy] = useState(PRODUCT_INITIAL.toBuy)
+  const [description, setDescription] = useState(PRODUCT_INITIAL.description)
   const [validationResponse, setValidationResponse] = useState<
     IValidationResponse
-  >({ error: false })
+  >(PRODUCT_INITIAL.validationResponse)
 
   const handleName = (event: CustomEvent<InputChangeEventDetail>) => {
     setName((<HTMLInputElement>event.target).value)
@@ -40,11 +44,12 @@ export function useProductController(
   }
 
   const clean = () => {
-    setId('')
-    setName('')
-    setQuantity('')
-    setToBuy(true)
-    setDescription('')
+    setId(PRODUCT_INITIAL.id)
+    setName(PRODUCT_INITIAL.name)
+    setQuantity(PRODUCT_INITIAL.quantity)
+    setToBuy(PRODUCT_INITIAL.toBuy)
+    setDescription(PRODUCT_INITIAL.description)
+    setValidationResponse(PRODUCT_INITIAL.validationResponse)
   }
 
   const apply = () => {
@@ -78,9 +83,15 @@ export function useProductController(
 
       if (product) {
         setName(product.name)
-        setQuantity(product.quantity ? product.quantity : '')
+        setQuantity(
+          product.quantity ? product.quantity : PRODUCT_INITIAL.quantity
+        )
         setToBuy(product.toBuy === undefined ? true : product.toBuy)
-        setDescription(product.description ? product.description : '')
+        setDescription(
+          product.description
+            ? product.description
+            : PRODUCT_INITIAL.description
+        )
       }
 
       setTitle(TITLE_EDIT_PRODUCT)
