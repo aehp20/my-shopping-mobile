@@ -30,7 +30,7 @@ export function useListProductsController(idListProducts: string) {
 
   useEffect(() => {
     let listProducts
-
+    console.log('useEffect', idListProducts)
     if (!!idListProducts) {
       listProducts = getListProducts(idListProducts)
 

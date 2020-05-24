@@ -17,11 +17,11 @@ import { RouteComponentProps } from 'react-router'
 import { Link } from 'react-router-dom'
 
 import { useListProductsController } from './ListProducts-Controller'
-import { StyledIonInput, StyledArrowBack } from './ListProducts-Styles'
+import { StyledIonInput } from './ListProducts-Styles'
 import { HOME_PATH } from '../../App-Constants'
 import { Products } from './products'
 import { IListProductsParams } from './ListProducts-Types'
-import { StyledErrorSection } from '../../common/styles'
+import { StyledErrorSection, StyledArrowBack } from '../../common/styles'
 
 export function ListProducts({
   match,

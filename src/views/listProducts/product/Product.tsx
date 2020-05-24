@@ -10,21 +10,22 @@ import {
   IonHeader,
   IonToolbar,
   IonButtons,
-  IonBackButton,
   IonContent,
   IonTextarea,
 } from '@ionic/react'
 import { RouteComponentProps } from 'react-router'
 
 import { useProductController } from './Product-Controller'
-import { HOME_PATH } from '../../../App-Constants'
-import { IProductParams } from './Product-Types'
 import {
   StyledTitle,
   StyledButton,
   StyledLabelForToggle,
 } from './Product-Styles'
-import { StyledErrorSection } from '../../../common/styles'
+import { StyledErrorSection, StyledArrowBack } from '../../../common/styles'
+import { Link } from 'react-router-dom'
+import { arrowBack } from 'ionicons/icons'
+import { getListProductsPath } from '../../listsProducts/ListsProducts-Utils'
+import { IProductParams } from './Product-Types'
 
 export function Product({ match }: RouteComponentProps<IProductParams>) {
   const { idListProducts, id } = match.params
@@ -55,7 +56,9 @@ export function Product({ match }: RouteComponentProps<IProductParams>) {
       <IonHeader>
         <IonToolbar>
           <IonButtons slot='start'>
-            <IonBackButton defaultHref={HOME_PATH} />
+            <Link to={getListProductsPath(idListProducts)}>
+              <StyledArrowBack icon={arrowBack}></StyledArrowBack>
+            </Link>
           </IonButtons>
           <StyledTitle>{title}</StyledTitle>
         </IonToolbar>

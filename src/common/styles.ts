@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { IonCheckbox } from '@ionic/react'
+import { IonCheckbox, IonIcon } from '@ionic/react'
 import { Link } from 'react-router-dom'
 
 export const StyledCheckbox = styled(IonCheckbox)`
@@ -16,4 +16,10 @@ export const StyledBlackLink = styled(StyledLink)`
 
 export const StyledErrorSection = styled.div`
   padding: 6px;
+`
+
+export const StyledArrowBack = styled(IonIcon)`
+  font-size: 24px;
+  padding-left: 10px;
+  color: #222428;
 `
