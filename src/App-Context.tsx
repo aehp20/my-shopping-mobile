@@ -8,7 +8,7 @@ import React, {
 import { useStorage } from '@ionic/react-hooks/storage'
 
 import { APP_STORAGE_KEY, APP_INITIAL_DATA } from './App-Constants'
-import { IAppContext, IAppData } from './App-Types'
+import { IAppContext, IAppData, IAppProvider } from './App-Types'
 import {
   IListProducts,
   IProduct,
@@ -16,8 +16,7 @@ import {
 
 const AppContext = createContext({} as IAppContext)
 
-export function AppProvider(props: any) {
-  // TODO props any
+export function AppProvider(props: IAppProvider) {
   const [appData, setAppData] = useState<IAppData>(APP_INITIAL_DATA)
 
   const { get, set } = useStorage()

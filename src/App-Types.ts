@@ -2,6 +2,11 @@ import {
   IListProducts,
   IProduct,
 } from './views/listsProducts/ListsProducts-Types'
+import { ReactNode } from 'react'
+
+export interface IAppProvider {
+  children: ReactNode
+}
 
 export interface IAppData {
   listsProducts: IListProducts[]
