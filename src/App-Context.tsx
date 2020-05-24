@@ -104,14 +104,18 @@ export function AppProvider(props: IAppProvider) {
   useEffect(() => {
     const loadSaved = async () => {
       const appDataAsString = await get(APP_STORAGE_KEY)
-      const appDataInStorage = (appDataAsString
-        ? JSON.parse(appDataAsString)
-        : {}) as IAppData
+      let appDataInStorage = APP_INITIAL_DATA
+
+      if (appDataAsString) {
+        appDataInStorage = JSON.parse(appDataAsString)
+      } else {
+        saveAppData(appDataInStorage)
+      }
 
       setAppData(appDataInStorage)
     }
     loadSaved()
-  }, [get])
+  }, [get, saveAppData])
 
   const value = {
     appData,
