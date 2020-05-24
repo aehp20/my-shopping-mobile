@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { IProduct } from '../../listsProducts/ListsProducts-Types'
-import { StyledLink, StyledBlackLink } from '../../../common/styles'
+import { StyledLink } from '../../../common/styles'
 
 export function getName(product: IProduct) {
   const quantity = product.quantity ? `(${product.quantity})` : ''
