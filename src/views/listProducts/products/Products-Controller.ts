@@ -7,7 +7,6 @@ import {
 
 import { IProduct } from '../../listsProducts/ListsProducts-Types'
 import { hasListItems } from '../../../common/utils'
-import { ISelectedProduct } from './Products-Types'
 import { getSelectedProducts } from './Products-Utils'
 import { useAppContext } from '../../../App-Context'
 
@@ -20,7 +19,6 @@ export function useProductsController(
   const [products, setProducts] = useState<IProduct[]>([])
   const [filteredProducts, setFilteredProducts] = useState<IProduct[]>()
   const [items, setItems] = useState<IProduct[]>([])
-  const [selectedProduct, setSelectedProduct] = useState<ISelectedProduct>()
   const [isAllSelected, setIsAllSelected] = useState(false)
   const [searchValue, setSearchValue] = useState<string>()
   const [areThereSelectedProducts, setAreThereSelectedProducts] = useState(
@@ -133,50 +131,22 @@ export function useProductsController(
   }, [productsListProducts])
 
   useEffect(() => {
+    const newIsAllSelected = hasListItems(products)
+      ? products.every((product) => product.isSelected)
+      : false
+    const newSelectedProducts = getSelectedProducts(products)
+
+    setIsAllSelected(newIsAllSelected)
+    setAreThereSelectedProducts(!!newSelectedProducts.length)
+  }, [products])
+
+  useEffect(() => {
     const newItems = !!filteredProducts ? filteredProducts : products
     setItems(newItems)
     setNotFoundFilteredProducts(
       hasListItems(products) && !hasListItems(filteredProducts)
     )
   }, [filteredProducts, products])
-
-  // useEffect(() => {
-  //   if (selectedProduct) {
-  //     const { id, checked, type } = selectedProduct
-  //     let newProducts = items.map((item: IProduct) => {
-  //       if (item.id === id) {
-  //         if (type === ACTION_TYPE_SELECT) {
-  //           item = { ...item, isSelected: checked }
-  //         } else if (type === ACTION_TYPE_TO_BUY) {
-  //           item = { ...item, toBuy: checked }
-  //         }
-  //       }
-  //       return item
-  //     })
-
-  //     if (type === ACTION_TYPE_SELECT) {
-  //       const newIsAllSelected = newProducts.every(
-  //         (product) => product.isSelected
-  //       )
-  //       const newSelectedProducts = getSelectedProducts(newProducts)
-
-  //       setIsAllSelected(newIsAllSelected)
-  //       setAreThereSelectedProducts(!!newSelectedProducts.length)
-  //     } else if (type === ACTION_TYPE_TO_BUY) {
-  //       const toBuyProducts = newProducts.filter((item: IProduct) => item.toBuy)
-  //       const notToBuyProducts = newProducts.filter(
-  //         (item: IProduct) => !item.toBuy
-  //       )
-  //       newProducts = [...toBuyProducts, ...notToBuyProducts]
-  //     }
-
-  //     if (hasListItems(filteredProducts)) {
-  //       setFilteredProducts(newProducts)
-  //     } else {
-  //       setProducts(newProducts)
-  //     }
-  //   }
-  // }, [selectedProduct])
 
   useEffect(() => {
     if (searchValue) {

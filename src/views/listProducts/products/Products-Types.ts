@@ -5,9 +5,3 @@ export interface IProductsProps {
   name: string
   products: IProduct[]
 }
-
-export interface ISelectedProduct {
-  id: string
-  checked: boolean
-  type: string
-}
