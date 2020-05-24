@@ -35,17 +35,19 @@ export function displayProducts(
   nbDisplayedProducts: number = 3
 ) {
   let content = ''
+  let index
 
   if (!!products && !!products.length) {
     if (products.length <= nbDisplayedProducts) {
-      for (let index = 0; index < products.length; index++) {
+      for (index = 0; index < products.length - 1; index++) {
         content += products[index].name + ', '
       }
+      content += products[index].name
     } else {
-      for (let index = 0; index < nbDisplayedProducts; index++) {
+      for (index = 0; index < nbDisplayedProducts; index++) {
         content += products[index].name + ', '
       }
-      content += `(+${products.length - nbDisplayedProducts})`
+      content += '...'
     }
   }
 
@@ -54,4 +56,8 @@ export function displayProducts(
 
 export function getListProductsPath(id: string) {
   return `/list-products/${id}`
+}
+
+export function getNumberOfProducts(products: IProduct[] | undefined) {
+  return products && products.length ? `(${products.length})` : ''
 }

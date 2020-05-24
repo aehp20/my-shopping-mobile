@@ -11,12 +11,17 @@ import {
   StyledHeader,
   StyledTrashIcon
 } from './ListsProducts-Styles'
-import { displayProducts, getListProductsPath } from './ListsProducts-Utils'
+import {
+  displayProducts,
+  getListProductsPath,
+  getNumberOfProducts
+} from './ListsProducts-Utils'
 import { LIST_PRODUCTS_NEW_PATH } from '../listProducts/ListProducts-Constants'
 import { EmptyListMessage } from '../../common/components/emptyListMessage'
 import { useListsProductsController } from './ListsProducts-Controller'
 import { ConfirmDeletionDialog } from '../../common/components/confirmDialog'
 import { StyledLink, StyledBlackLink } from '../../common/styles'
+import { EmptyEspace } from '../../common/components/emptyEspace'
 
 export function ListsProducts() {
   const {
@@ -41,6 +46,8 @@ export function ListsProducts() {
                         <StyledName>
                           <StyledLink to={getListProductsPath(listProducts.id)}>
                             {listProducts.name}
+                            <EmptyEspace />
+                            {getNumberOfProducts(listProducts.products)}
                           </StyledLink>
                         </StyledName>
                         <StyledTrashIcon
