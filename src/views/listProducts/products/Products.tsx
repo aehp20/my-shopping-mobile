@@ -127,7 +127,6 @@ export function Products(props: IProductsProps) {
                     <IonCol size={NAME_COL_SIZE}>
                       {getLink(
                         `/list-products/${idListProducts}/product/${product.id}`,
-                        !!product.toBuy,
                         getName(product)
                       )}
                     </IonCol>

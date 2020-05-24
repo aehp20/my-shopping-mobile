@@ -13,9 +13,6 @@ export function getSelectedProducts(products: IProduct[]) {
   return products.filter((product: IProduct) => product.isSelected)
 }
 
-export function getLink(to: string, toBuy: boolean, content: string) {
-  if (toBuy) {
-    return <StyledLink to={to}>{content}</StyledLink>
-  }
-  return <StyledBlackLink to={to}>{content}</StyledBlackLink>
+export function getLink(to: string, content: string) {
+  return <StyledLink to={to}>{content}</StyledLink>
 }
