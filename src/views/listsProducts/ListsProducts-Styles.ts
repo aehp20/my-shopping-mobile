@@ -8,6 +8,7 @@ export const StyledColumn = styled.div`
   border-width: 1px;
   border-color: #3399ff;
   padding: 6px;
+  min-height: 47px;
 `
 
 export const StyledName = styled.div`
