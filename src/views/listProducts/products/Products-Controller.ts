@@ -7,7 +7,7 @@ import {
 
 import { IProduct } from '../../listsProducts/ListsProducts-Types'
 import { hasListItems } from '../../../common/utils'
-import { ISelectedProduct, IUpdateProduct } from './Products-Types'
+import { ISelectedProduct } from './Products-Types'
 import { getSelectedProducts } from './Products-Utils'
 import { useAppContext } from '../../../App-Context'
 
@@ -41,7 +41,7 @@ export function useProductsController(
     const { id, checked, value } = target as HTMLInputElement
 
     if (value !== (checked ? 'true' : 'false')) {
-      updateProducts({ id, isSelected: checked })
+      updateSelectedProducts(id, checked)
     }
   }
 
@@ -50,7 +50,7 @@ export function useProductsController(
     const { id, checked, value } = target as HTMLInputElement
 
     if (value !== checked.toString()) {
-      updateProducts({ id, toBuy: checked })
+      updateToBuyProducts(id, checked)
     }
   }
 
@@ -92,13 +92,31 @@ export function useProductsController(
     save(selectedProducts)
   }
 
-  const updateProducts = (updateProduct: IUpdateProduct) => {
+  const updateSelectedProducts = (id: string, isSelected: boolean) => {
     const newProducts = products.map((item) => {
-      if (item.id === updateProduct.id) {
-        item = { ...item, ...updateProduct }
+      if (item.id === id) {
+        item = { ...item, isSelected }
       }
       return item
     })
+    setProducts(newProducts)
+  }
+
+  const updateToBuyProducts = (id: string, toBuy: boolean) => {
+    const tempProducts = products.map((item) => {
+      if (item.id === id) {
+        item = { ...item, toBuy }
+      }
+      return item
+    })
+
+    // Sort products
+    const toBuyProducts = tempProducts.filter((item: IProduct) => item.toBuy)
+    const notToBuyProducts = tempProducts.filter(
+      (item: IProduct) => !item.toBuy
+    )
+    const newProducts = [...toBuyProducts, ...notToBuyProducts]
+
     setProducts(newProducts)
   }
 
