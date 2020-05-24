@@ -104,7 +104,7 @@ export function useProductController(
 
       setTitle(TITLE_EDIT_PRODUCT)
     }
-  }, [idListProducts, idProduct])
+  }, [idListProducts, idProduct, getProduct])
 
   return {
     title,

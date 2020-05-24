@@ -43,4 +43,6 @@ export const StyledToggleToBuy = styled(IonToggle)`
   padding: 5px 0px;
 `
 
-// background: ${props => props.primary ? "palevioletred" : "white"};
+export const StyledItemProduct = styled(IonItem)<{ isSelected: boolean }>`
+  --background: ${(props) => (props.isSelected ? '#c1f3a9' : 'white')};
+`

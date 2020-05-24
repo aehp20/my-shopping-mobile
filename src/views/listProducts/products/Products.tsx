@@ -1,6 +1,5 @@
 import React from 'react'
 import {
-  IonItem,
   IonGrid,
   IonRow,
   IonCol,
@@ -8,7 +7,6 @@ import {
   IonButton,
   IonIcon,
 } from '@ionic/react'
-import classNames from 'classnames'
 import { trash } from 'ionicons/icons'
 
 import { IProductsProps } from './Products-Types'
@@ -29,6 +27,7 @@ import {
   StyledColumnDelete,
   StyledColumnToBuy,
   StyledToggleToBuy,
+  StyledItemProduct,
 } from './Products-Styles'
 import { getName, getLink } from './Products-Utils'
 import { StyledCheckbox } from '../../../common/styles'
@@ -98,7 +97,6 @@ export function Products(props: IProductsProps) {
                 <IonCol size={DONE_COL_SIZE} ion-no-padding>
                   <StyledCheckbox
                     color='primary'
-                    className='checkout-customize'
                     value={isAllSelected ? 'true' : 'false'}
                     checked={isAllSelected}
                     onIonChange={handleSelectedAllProducts}
@@ -113,12 +111,7 @@ export function Products(props: IProductsProps) {
 
         {hasListItems(items)
           ? items!.map((product, index) => (
-              <IonItem
-                key={index}
-                className={classNames({
-                  'products-enable-product': product.isSelected,
-                })}
-              >
+              <StyledItemProduct key={index} isSelected={!!product.isSelected}>
                 <IonGrid>
                   <IonRow>
                     <IonCol size={DONE_COL_SIZE} ion-no-padding>
@@ -149,7 +142,7 @@ export function Products(props: IProductsProps) {
                     </StyledColumnToBuy>
                   </IonRow>
                 </IonGrid>
-              </IonItem>
+              </StyledItemProduct>
             ))
           : listMessage}
       </StyledList>

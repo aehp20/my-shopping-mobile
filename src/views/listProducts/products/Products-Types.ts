@@ -11,3 +11,9 @@ export interface ISelectedProduct {
   checked: boolean
   type: string
 }
+
+export interface IUpdateProduct {
+  id: string
+  isSelected?: boolean
+  toBuy?: boolean
+}

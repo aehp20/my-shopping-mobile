@@ -7,8 +7,7 @@ import {
 
 import { IProduct } from '../../listsProducts/ListsProducts-Types'
 import { hasListItems } from '../../../common/utils'
-import { ACTION_TYPE_SELECT, ACTION_TYPE_TO_BUY } from './Products-Constants'
-import { ISelectedProduct } from './Products-Types'
+import { ISelectedProduct, IUpdateProduct } from './Products-Types'
 import { getSelectedProducts } from './Products-Utils'
 import { useAppContext } from '../../../App-Context'
 
@@ -42,7 +41,7 @@ export function useProductsController(
     const { id, checked, value } = target as HTMLInputElement
 
     if (value !== (checked ? 'true' : 'false')) {
-      setSelectedProduct({ id, checked, type: ACTION_TYPE_SELECT })
+      updateProducts({ id, isSelected: checked })
     }
   }
 
@@ -51,7 +50,7 @@ export function useProductsController(
     const { id, checked, value } = target as HTMLInputElement
 
     if (value !== checked.toString()) {
-      setSelectedProduct({ id, checked, type: ACTION_TYPE_TO_BUY })
+      updateProducts({ id, toBuy: checked })
     }
   }
 
@@ -93,6 +92,16 @@ export function useProductsController(
     save(selectedProducts)
   }
 
+  const updateProducts = (updateProduct: IUpdateProduct) => {
+    const newProducts = products.map((item) => {
+      if (item.id === updateProduct.id) {
+        item = { ...item, ...updateProduct }
+      }
+      return item
+    })
+    setProducts(newProducts)
+  }
+
   const save = (products: IProduct[]) => {
     saveListProducts({
       id: idListProducts,
@@ -113,43 +122,43 @@ export function useProductsController(
     )
   }, [filteredProducts, products])
 
-  useEffect(() => {
-    if (selectedProduct) {
-      const { id, checked, type } = selectedProduct
-      let newProducts = items.map((item: IProduct) => {
-        if (item.id === id) {
-          if (type === ACTION_TYPE_SELECT) {
-            item = { ...item, isSelected: checked }
-          } else if (type === ACTION_TYPE_TO_BUY) {
-            item = { ...item, toBuy: checked }
-          }
-        }
-        return item
-      })
+  // useEffect(() => {
+  //   if (selectedProduct) {
+  //     const { id, checked, type } = selectedProduct
+  //     let newProducts = items.map((item: IProduct) => {
+  //       if (item.id === id) {
+  //         if (type === ACTION_TYPE_SELECT) {
+  //           item = { ...item, isSelected: checked }
+  //         } else if (type === ACTION_TYPE_TO_BUY) {
+  //           item = { ...item, toBuy: checked }
+  //         }
+  //       }
+  //       return item
+  //     })
 
-      if (type === ACTION_TYPE_SELECT) {
-        const newIsAllSelected = newProducts.every(
-          (product) => product.isSelected
-        )
-        const newSelectedProducts = getSelectedProducts(newProducts)
+  //     if (type === ACTION_TYPE_SELECT) {
+  //       const newIsAllSelected = newProducts.every(
+  //         (product) => product.isSelected
+  //       )
+  //       const newSelectedProducts = getSelectedProducts(newProducts)
 
-        setIsAllSelected(newIsAllSelected)
-        setAreThereSelectedProducts(!!newSelectedProducts.length)
-      } else if (type === ACTION_TYPE_TO_BUY) {
-        const toBuyProducts = newProducts.filter((item: IProduct) => item.toBuy)
-        const notToBuyProducts = newProducts.filter(
-          (item: IProduct) => !item.toBuy
-        )
-        newProducts = [...toBuyProducts, ...notToBuyProducts]
-      }
+  //       setIsAllSelected(newIsAllSelected)
+  //       setAreThereSelectedProducts(!!newSelectedProducts.length)
+  //     } else if (type === ACTION_TYPE_TO_BUY) {
+  //       const toBuyProducts = newProducts.filter((item: IProduct) => item.toBuy)
+  //       const notToBuyProducts = newProducts.filter(
+  //         (item: IProduct) => !item.toBuy
+  //       )
+  //       newProducts = [...toBuyProducts, ...notToBuyProducts]
+  //     }
 
-      if (hasListItems(filteredProducts)) {
-        setFilteredProducts(newProducts)
-      } else {
-        setProducts(newProducts)
-      }
-    }
-  }, [selectedProduct])
+  //     if (hasListItems(filteredProducts)) {
+  //       setFilteredProducts(newProducts)
+  //     } else {
+  //       setProducts(newProducts)
+  //     }
+  //   }
+  // }, [selectedProduct])
 
   useEffect(() => {
     if (searchValue) {
@@ -162,7 +171,7 @@ export function useProductsController(
     } else if (searchValue === '') {
       setFilteredProducts(undefined)
     }
-  }, [searchValue])
+  }, [searchValue, products])
 
   return {
     items,
