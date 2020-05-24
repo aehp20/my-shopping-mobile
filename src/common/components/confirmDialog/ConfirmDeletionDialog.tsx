@@ -15,12 +15,12 @@ export function ConfirmDeletionDialog(props: IConfirmDeletionDialog) {
       buttons={[
         {
           text: 'Cancel',
-          handler: cancelFn
+          handler: cancelFn,
         },
         {
           text: 'Ok',
-          handler: okFn
-        }
+          handler: okFn,
+        },
       ]}
     />
   )

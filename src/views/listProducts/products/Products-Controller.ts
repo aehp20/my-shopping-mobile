@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import {
   CheckboxChangeEventDetail,
   ToggleChangeEventDetail,
-  SearchbarChangeEventDetail
+  SearchbarChangeEventDetail,
 } from '@ionic/core'
 
 import { IProduct } from '../../listsProducts/ListsProducts-Types'
@@ -32,7 +32,7 @@ export function useProductsController(
   )
   const [
     isOpenConfirmDeletionDialog,
-    setIsOpenConfirmDeletionDialog
+    setIsOpenConfirmDeletionDialog,
   ] = useState(false)
 
   const handleSelectedProduct = (
@@ -103,7 +103,7 @@ export function useProductsController(
     saveListProducts({
       id: idListProducts,
       name: nameListProducts,
-      products
+      products,
     })
   }, [filteredProducts, products])
 
@@ -170,6 +170,6 @@ export function useProductsController(
     handleSelectedProduct,
     handleToBuyValue,
     handleSelectedAllProducts,
-    handleSearch
+    handleSearch,
   }
 }

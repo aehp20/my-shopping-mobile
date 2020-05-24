@@ -8,7 +8,7 @@ export function validate(product: IProduct): IValidationResponse {
   if (name.length === 0) {
     return {
       error: true,
-      message: ERROR_REQUIRED_NAME
+      message: ERROR_REQUIRED_NAME,
     }
   }
 

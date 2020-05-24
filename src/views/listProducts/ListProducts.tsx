@@ -10,7 +10,7 @@ import {
   IonIcon,
   IonGrid,
   IonRow,
-  IonCol
+  IonCol,
 } from '@ionic/react'
 import { save, arrowBack } from 'ionicons/icons'
 import { RouteComponentProps } from 'react-router'
@@ -24,7 +24,7 @@ import { IListProductsParams } from './ListProducts-Types'
 import { StyledErrorSection } from '../../common/styles'
 
 export function ListProducts({
-  match
+  match,
 }: RouteComponentProps<IListProductsParams>) {
   const { id } = match.params
   const {
@@ -32,7 +32,7 @@ export function ListProducts({
     handleName,
     apply,
     products,
-    isNew
+    isNew,
   } = useListProductsController(id)
 
   const errorSection = !name ? (

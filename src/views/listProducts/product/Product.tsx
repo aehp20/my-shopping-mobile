@@ -12,7 +12,7 @@ import {
   IonButtons,
   IonBackButton,
   IonContent,
-  IonTextarea
+  IonTextarea,
 } from '@ionic/react'
 import { RouteComponentProps } from 'react-router'
 
@@ -22,7 +22,7 @@ import { IProductParams } from './Product-Types'
 import {
   StyledTitle,
   StyledButton,
-  StyledLabelForToggle
+  StyledLabelForToggle,
 } from './Product-Styles'
 import { StyledErrorSection } from '../../../common/styles'
 
@@ -39,7 +39,7 @@ export function Product({ match }: RouteComponentProps<IProductParams>) {
     handleQuantity,
     handleToBuy,
     handleDescription,
-    apply
+    apply,
   } = useProductController(idListProducts, id)
 
   // const product = findProduct(id)

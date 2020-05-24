@@ -3,7 +3,7 @@ import React, {
   useState,
   useEffect,
   useCallback,
-  useContext
+  useContext,
 } from 'react'
 import { useStorage } from '@ionic/react-hooks/storage'
 
@@ -11,7 +11,7 @@ import { APP_STORAGE_KEY, APP_INITIAL_DATA } from './App-Constants'
 import { IAppContext, IAppData } from './App-Types'
 import {
   IListProducts,
-  IProduct
+  IProduct,
 } from './views/listsProducts/ListsProducts-Types'
 
 const AppContext = createContext({} as IAppContext)
@@ -121,7 +121,7 @@ export function AppProvider(props: any) {
     saveListProducts,
     deleteListProducts,
     getProduct,
-    saveProduct
+    saveProduct,
   }
 
   return (

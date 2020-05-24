@@ -6,7 +6,7 @@ import {
   IonCol,
   IonSearchbar,
   IonButton,
-  IonIcon
+  IonIcon,
 } from '@ionic/react'
 import classNames from 'classnames'
 import { trash } from 'ionicons/icons'
@@ -17,7 +17,7 @@ import {
   NAME_COL_SIZE,
   TO_BUY_COL_SIZE,
   SEARCH_PRODUCTS_REDUCED_COL_SIZE,
-  SEARCH_PRODUCTS_COL_SIZE
+  SEARCH_PRODUCTS_COL_SIZE,
 } from './Products-Constants'
 import { AddItemButton } from '../../../common/components/addItemButton'
 import { EmptyListMessage } from '../../../common/components/emptyListMessage'
@@ -28,7 +28,7 @@ import {
   StyledActionsBar,
   StyledColumnDelete,
   StyledColumnToBuy,
-  StyledToggleToBuy
+  StyledToggleToBuy,
 } from './Products-Styles'
 import { getName, getLink } from './Products-Utils'
 import { StyledCheckbox } from '../../../common/styles'
@@ -51,7 +51,7 @@ export function Products(props: IProductsProps) {
     handleSelectedProduct,
     handleToBuyValue,
     handleSelectedAllProducts,
-    handleSearch
+    handleSearch,
   } = useProductsController(idListProducts, name, products)
 
   const SIZE_SEARCH_PRODUCTS = areThereSelectedProducts
@@ -116,7 +116,7 @@ export function Products(props: IProductsProps) {
               <IonItem
                 key={index}
                 className={classNames({
-                  'products-enable-product': product.isSelected
+                  'products-enable-product': product.isSelected,
                 })}
               >
                 <IonGrid>

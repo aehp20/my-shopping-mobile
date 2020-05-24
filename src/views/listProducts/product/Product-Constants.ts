@@ -9,5 +9,5 @@ export const PRODUCT_INITIAL = {
   quantity: '',
   toBuy: true,
   description: '',
-  validationResponse: { error: false }
+  validationResponse: { error: false },
 }

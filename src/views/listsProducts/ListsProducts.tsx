@@ -9,12 +9,12 @@ import {
   StyledProducts,
   StyledName,
   StyledHeader,
-  StyledTrashIcon
+  StyledTrashIcon,
 } from './ListsProducts-Styles'
 import {
   displayProducts,
   getListProductsPath,
-  getNumberOfProducts
+  getNumberOfProducts,
 } from './ListsProducts-Utils'
 import { LIST_PRODUCTS_NEW_PATH } from '../listProducts/ListProducts-Constants'
 import { EmptyListMessage } from '../../common/components/emptyListMessage'
@@ -29,7 +29,7 @@ export function ListsProducts() {
     isOpenConfirmDeletionDialog,
     openConfirmDeletionDialog,
     closeConfirmDeletionDialog,
-    deleteSelectedList
+    deleteSelectedList,
   } = useListsProductsController()
 
   return (

@@ -9,7 +9,7 @@ import { IValidationResponse } from './Product-Types'
 import {
   TITLE_NEW_PRODUCT,
   TITLE_EDIT_PRODUCT,
-  PRODUCT_INITIAL
+  PRODUCT_INITIAL,
 } from './Product-Constants'
 import { useAppContext } from '../../../App-Context'
 import { getListProductsPath } from '../../listsProducts/ListsProducts-Utils'
@@ -67,7 +67,7 @@ export function useProductController(
       name,
       quantity,
       toBuy,
-      description
+      description,
     }
 
     const validation = validate(product)
@@ -117,6 +117,6 @@ export function useProductController(
     handleQuantity,
     handleToBuy,
     handleDescription,
-    apply
+    apply,
   }
 }

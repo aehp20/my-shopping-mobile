@@ -7,13 +7,13 @@ import { AppProvider } from './App-Context'
 import { ROOT_PATH, HOME_PATH } from './App-Constants'
 import {
   LIST_PRODUCTS_NEW_PATH,
-  LIST_PRODUCTS_EDIT_PATH
+  LIST_PRODUCTS_EDIT_PATH,
 } from './views/listProducts/ListProducts-Constants'
 import { ListProducts } from './views/listProducts'
 import { Home } from './views/home'
 import {
   PRODUCT_NEW_PATH,
-  PRODUCT_EDIT_PATH
+  PRODUCT_EDIT_PATH,
 } from './views/listProducts/product/Product-Constants'
 import { Product } from './views/listProducts/product'
 

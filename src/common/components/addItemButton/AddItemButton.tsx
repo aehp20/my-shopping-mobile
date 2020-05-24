@@ -8,7 +8,7 @@ export function AddItemButton(props: IAddItemButton) {
   const { path } = props
 
   return (
-    <IonFab vertical="bottom" horizontal="center" slot="fixed">
+    <IonFab vertical='bottom' horizontal='center' slot='fixed'>
       <IonFabButton routerLink={path}>
         <IonIcon icon={add}></IonIcon>
       </IonFabButton>

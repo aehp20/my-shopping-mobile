@@ -1,6 +1,6 @@
 import {
   IListProducts,
-  IProduct
+  IProduct,
 } from './views/listsProducts/ListsProducts-Types'
 
 export interface IAppData {

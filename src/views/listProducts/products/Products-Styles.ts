@@ -5,7 +5,7 @@ import {
   IonList,
   IonGrid,
   IonCol,
-  IonToggle
+  IonToggle,
 } from '@ionic/react'
 
 export const StyledList = styled(IonList)`

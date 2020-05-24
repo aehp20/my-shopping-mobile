@@ -9,7 +9,7 @@ export function useListsProductsController() {
   const { rowsProducts } = useRowsProducts(listsProducts)
   const [
     isOpenConfirmDeletionDialog,
-    setIsOpenConfirmDeletionDialog
+    setIsOpenConfirmDeletionDialog,
   ] = useState(false)
   const [idSelectedList, setIdSelectedList] = useState<string>()
 
@@ -32,6 +32,6 @@ export function useListsProductsController() {
     isOpenConfirmDeletionDialog,
     openConfirmDeletionDialog,
     closeConfirmDeletionDialog,
-    deleteSelectedList
+    deleteSelectedList,
   }
 }

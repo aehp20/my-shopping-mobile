@@ -26,7 +26,7 @@ export function useRowsProducts(
   }, [listsProducts])
 
   return {
-    rowsProducts
+    rowsProducts,
   }
 }
 

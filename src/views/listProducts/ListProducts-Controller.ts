@@ -23,7 +23,7 @@ export function useListProductsController(idListProducts: string) {
     saveListProducts({
       id,
       name,
-      products
+      products,
     })
     history.push(getListProductsPath(id))
   }
@@ -53,6 +53,6 @@ export function useListProductsController(idListProducts: string) {
     handleName,
     apply,
     products,
-    isNew
+    isNew,
   }
 }
