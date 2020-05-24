@@ -31,19 +31,19 @@ export function useProductController(
   >(PRODUCT_INITIAL.validationResponse)
 
   const handleName = (event: CustomEvent<InputChangeEventDetail>) => {
-    setName((<HTMLInputElement>event.target).value)
+    setName((event.target as HTMLInputElement).value)
   }
 
   const handleQuantity = (event: CustomEvent<InputChangeEventDetail>) => {
-    setQuantity((<HTMLInputElement>event.target).value)
+    setQuantity((event.target as HTMLInputElement).value)
   }
 
   const handleToBuy = (event: CustomEvent<ToggleChangeEventDetail>) => {
-    setToBuy((<HTMLInputElement>event.target).checked)
+    setToBuy((event.target as HTMLInputElement).checked)
   }
 
   const handleDescription = (event: CustomEvent<InputChangeEventDetail>) => {
-    setDescription((<HTMLInputElement>event.target).value)
+    setDescription((event.target as HTMLInputElement).value)
   }
 
   const clean = () => {

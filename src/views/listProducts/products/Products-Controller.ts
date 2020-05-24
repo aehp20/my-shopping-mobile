@@ -18,7 +18,7 @@ export function useProductsController(
   productsListProducts: IProduct[]
 ) {
   const { saveListProducts } = useAppContext()
-  const [products, setProducts] = useState<IProduct[]>(productsListProducts)
+  const [products, setProducts] = useState<IProduct[]>([])
   const [filteredProducts, setFilteredProducts] = useState<IProduct[]>()
   const [items, setItems] = useState<IProduct[]>([])
   const [selectedProduct, setSelectedProduct] = useState<ISelectedProduct>()
@@ -90,8 +90,20 @@ export function useProductsController(
 
   const deleteSelectedList = () => {
     const selectedProducts = items.filter((item: IProduct) => !item.isSelected)
-    setProducts(selectedProducts)
+    save(selectedProducts)
   }
+
+  const save = (products: IProduct[]) => {
+    saveListProducts({
+      id: idListProducts,
+      name: nameListProducts,
+      products,
+    })
+  }
+
+  useEffect(() => {
+    setProducts(productsListProducts)
+  }, [productsListProducts])
 
   useEffect(() => {
     const newItems = !!filteredProducts ? filteredProducts : products
@@ -99,12 +111,6 @@ export function useProductsController(
     setNotFoundFilteredProducts(
       hasListItems(products) && !hasListItems(filteredProducts)
     )
-    console.log('Products-Controller')
-    saveListProducts({
-      id: idListProducts,
-      name: nameListProducts,
-      products,
-    })
   }, [filteredProducts, products])
 
   useEffect(() => {

@@ -23,7 +23,7 @@ export function useRowsProducts(
 
       setRowsProducts(newRowsProducts)
     }
-  }, [listsProducts])
+  }, [listsProducts, nbColumn])
 
   return {
     rowsProducts,

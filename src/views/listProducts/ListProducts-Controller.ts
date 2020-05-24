@@ -16,7 +16,7 @@ export function useListProductsController(idListProducts: string) {
   const [isNew, setIsNew] = useState<boolean>(true)
 
   function handleName(event: CustomEvent<InputChangeEventDetail>) {
-    setName((<HTMLInputElement>event.target).value)
+    setName((event.target as HTMLInputElement).value)
   }
 
   function apply() {
@@ -29,12 +29,10 @@ export function useListProductsController(idListProducts: string) {
   }
 
   useEffect(() => {
-    let listProducts
-    console.log('useEffect', idListProducts)
-    if (!!idListProducts) {
-      listProducts = getListProducts(idListProducts)
+    if (idListProducts) {
+      const listProducts = getListProducts(idListProducts)
 
-      if (!!listProducts) {
+      if (listProducts) {
         setId(listProducts.id)
         setName(listProducts.name)
         setProducts(listProducts.products)
@@ -46,7 +44,7 @@ export function useListProductsController(idListProducts: string) {
       setProducts([])
       setIsNew(true)
     }
-  }, [idListProducts])
+  }, [idListProducts, getListProducts])
 
   return {
     name,

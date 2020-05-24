@@ -43,14 +43,6 @@ export function Product({ match }: RouteComponentProps<IProductParams>) {
     apply,
   } = useProductController(idListProducts, id)
 
-  // const product = findProduct(id)
-
-  // const close = () => {
-  //   props.history.push(HOME_PATH);
-  // }
-
-  // const apply = id ? editProduct : addProduct
-
   return (
     <IonPage>
       <IonHeader>
