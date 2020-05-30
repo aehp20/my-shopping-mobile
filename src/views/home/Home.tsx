@@ -8,7 +8,7 @@ export function Home() {
   return (
     <IonPage>
       <IonHeader>
-        <StyledHomeTitle>My shopping</StyledHomeTitle>
+        <StyledHomeTitle>My notes</StyledHomeTitle>
       </IonHeader>
       <IonContent>
         <ListsProducts />

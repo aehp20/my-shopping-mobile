@@ -1,6 +1,6 @@
 {
   "appId": "io.ionic.starter",
-  "appName": "my-shopping",
+  "appName": "My notes",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "build",
