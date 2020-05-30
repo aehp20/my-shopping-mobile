@@ -67,8 +67,9 @@ export function useProductsController(
         return product
       })
       setIsAllSelected(newIsAllSelected)
-      setProducts(newProducts)
       setAreThereSelectedProducts(newIsAllSelected)
+      setProducts(newProducts)
+      save(newProducts)
     }
   }
 
@@ -98,6 +99,7 @@ export function useProductsController(
       return item
     })
     setProducts(newProducts)
+    save(newProducts)
   }
 
   const updateToBuyProducts = (id: string, toBuy: boolean) => {
@@ -116,6 +118,7 @@ export function useProductsController(
     const newProducts = [...toBuyProducts, ...notToBuyProducts]
 
     setProducts(newProducts)
+    save(newProducts)
   }
 
   const save = (products: IProduct[]) => {
