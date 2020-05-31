@@ -3,6 +3,7 @@ import { Redirect, Route } from 'react-router-dom'
 import { IonApp, IonRouterOutlet } from '@ionic/react'
 import { IonReactRouter } from '@ionic/react-router'
 import { setupConfig } from '@ionic/react'
+import { ThemeProvider } from 'styled-components'
 
 import { AppProvider } from './App-Context'
 import { ROOT_PATH, HOME_PATH } from './App-Constants'
@@ -17,6 +18,8 @@ import {
   PRODUCT_EDIT_PATH,
 } from './views/listProducts/product/Product-Constants'
 import { Product } from './views/listProducts/product'
+import { lightTheme, darkTheme } from './theme/theme'
+import { GlobalStyles } from './theme/global'
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css'
@@ -42,32 +45,35 @@ setupConfig({
 })
 
 const App: React.FC = () => (
-  <IonApp>
-    <AppProvider>
-      <IonReactRouter>
-        <IonRouterOutlet>
-          <Route path={HOME_PATH} component={Home} exact={true} />
-          <Route
-            path={LIST_PRODUCTS_NEW_PATH}
-            component={ListProducts}
-            exact={true}
-          />
-          <Route
-            path={LIST_PRODUCTS_EDIT_PATH}
-            component={ListProducts}
-            exact={true}
-          />
-          <Route path={PRODUCT_NEW_PATH} component={Product} exact={true} />
-          <Route path={PRODUCT_EDIT_PATH} component={Product} exact={true} />
-          <Route
-            exact
-            path={ROOT_PATH}
-            render={() => <Redirect to={HOME_PATH} />}
-          />
-        </IonRouterOutlet>
-      </IonReactRouter>
-    </AppProvider>
-  </IonApp>
+  <ThemeProvider theme={darkTheme}>
+    <GlobalStyles />
+    <IonApp>
+      <AppProvider>
+        <IonReactRouter>
+          <IonRouterOutlet>
+            <Route path={HOME_PATH} component={Home} exact={true} />
+            <Route
+              path={LIST_PRODUCTS_NEW_PATH}
+              component={ListProducts}
+              exact={true}
+            />
+            <Route
+              path={LIST_PRODUCTS_EDIT_PATH}
+              component={ListProducts}
+              exact={true}
+            />
+            <Route path={PRODUCT_NEW_PATH} component={Product} exact={true} />
+            <Route path={PRODUCT_EDIT_PATH} component={Product} exact={true} />
+            <Route
+              exact
+              path={ROOT_PATH}
+              render={() => <Redirect to={HOME_PATH} />}
+            />
+          </IonRouterOutlet>
+        </IonReactRouter>
+      </AppProvider>
+    </IonApp>
+  </ThemeProvider>
 )
 
 export default App
