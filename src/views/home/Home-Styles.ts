@@ -3,5 +3,4 @@ import { IonTitle } from '@ionic/react'
 
 export const StyledHomeTitle = styled(IonTitle)`
   padding: 6px;
-  color: #3880ff;
 `

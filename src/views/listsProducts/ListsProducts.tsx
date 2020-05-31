@@ -19,7 +19,7 @@ import { LIST_PRODUCTS_NEW_PATH } from '../listProducts/ListProducts-Constants'
 import { EmptyListMessage } from '../../common/components/emptyListMessage'
 import { useListsProductsController } from './ListsProducts-Controller'
 import { ConfirmDeletionDialog } from '../../common/components/confirmDialog'
-import { StyledLink, StyledBlackLink } from '../../common/styles'
+import { StyledLink } from '../../common/styles'
 import { EmptyEspace } from '../../common/components/emptyEspace'
 
 export function ListsProducts() {
@@ -58,11 +58,9 @@ export function ListsProducts() {
                         />
                       </StyledHeader>
                       <StyledProducts>
-                        <StyledBlackLink
-                          to={getListProductsPath(listProducts.id)}
-                        >
+                        <StyledLink to={getListProductsPath(listProducts.id)}>
                           {displayProducts(listProducts.products)}
-                        </StyledBlackLink>
+                        </StyledLink>
                       </StyledProducts>
                     </div>
                   </IonCol>

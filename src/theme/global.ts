@@ -23,7 +23,31 @@ export const GlobalStyles = createGlobalStyle`
     transition: all 0.25s linear;
   }
 
-  ion-content{
+  :root {
+    --my-color-text: ${({ theme }: IThemeProps) => theme.text};
+    --my-color-primary: ${({ theme }: IThemeProps) => theme.myColorPrimary};
+    --my-color-secondary: ${({ theme }: IThemeProps) => theme.myColorSecondary};
+    --my-color-secondary-activated: ${({ theme }: IThemeProps) =>
+      theme.myColorSecondaryActivated};
+    --my-border-color: ${({ theme }: IThemeProps) => theme.myBorderColor};
+  }
+
+  ion-content {
     --background: ${({ theme }: IThemeProps) => theme.body};
+  }
+
+  ion-header {
+    background: ${({ theme }: IThemeProps) => theme.myColorPrimary};
+  }
+
+  ion-fab-button {
+    --background: ${({ theme }: IThemeProps) => theme.myColorSecondary};
+    --background-activated: var(--my-color-secondary-activated);
+    --background-focused: var(--my-color-secondary-activated);
+    --background-hover: var(--my-color-secondary-activated);
+  }
+
+  a {
+    color: var(--my-color-text);
   }
 `
