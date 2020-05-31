@@ -1,16 +1,6 @@
 import styled from 'styled-components'
 import { IonIcon } from '@ionic/react'
 
-export const StyledColumn = styled.div`
-  background-color: #ccf2ff;
-  border-style: solid;
-  border-radius: 4px;
-  border-width: 1px;
-  border-color: #3399ff;
-  padding: 6px;
-  min-height: 47px;
-`
-
 export const StyledName = styled.div`
   color: #3399ff;
   font-size: 14px;
@@ -20,14 +10,24 @@ export const StyledName = styled.div`
 export const StyledProducts = styled.div`
   color: #262626;
   font-size: 14px;
-  padding: 0 4px;
+  border-left: 1px solid #80deea;
+  border-right: 1px solid #80deea;
+  border-bottom: 1px solid #80deea;
+  min-height: 45px;
+  padding: 6px;
 `
 
 export const StyledHeader = styled.div`
   display: flex;
   justify-content: space-between;
+  padding: 6px;
+  border: 1px solid #80deea;
+  background: #e0f7fa;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
 `
 
 export const StyledTrashIcon = styled(IonIcon)`
   cursor: pointer;
+  font-size: 18px;
 `

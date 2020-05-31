@@ -5,7 +5,6 @@ import { trash } from 'ionicons/icons'
 import { hasListItems } from '../../common/utils'
 import { AddItemButton } from '../../common/components/addItemButton'
 import {
-  StyledColumn,
   StyledProducts,
   StyledName,
   StyledHeader,
@@ -41,7 +40,7 @@ export function ListsProducts() {
               <IonRow key={indexRow}>
                 {item.row.map((listProducts, indexItem) => (
                   <IonCol key={`${indexRow}${indexItem}`} size='6'>
-                    <StyledColumn>
+                    <div>
                       <StyledHeader>
                         <StyledName>
                           <StyledLink to={getListProductsPath(listProducts.id)}>
@@ -65,7 +64,7 @@ export function ListsProducts() {
                           {displayProducts(listProducts.products)}
                         </StyledBlackLink>
                       </StyledProducts>
-                    </StyledColumn>
+                    </div>
                   </IonCol>
                 ))}
               </IonRow>
