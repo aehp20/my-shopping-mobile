@@ -2,6 +2,7 @@ import React from 'react'
 import { Redirect, Route } from 'react-router-dom'
 import { IonApp, IonRouterOutlet } from '@ionic/react'
 import { IonReactRouter } from '@ionic/react-router'
+import { setupConfig } from '@ionic/react'
 
 import { AppProvider } from './App-Context'
 import { ROOT_PATH, HOME_PATH } from './App-Constants'
@@ -35,6 +36,10 @@ import '@ionic/react/css/display.css'
 
 /* Theme variables */
 import './theme/variables.css'
+
+setupConfig({
+  hardwareBackButton: false,
+})
 
 const App: React.FC = () => (
   <IonApp>
