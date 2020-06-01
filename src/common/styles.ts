@@ -17,5 +17,5 @@ export const StyledErrorSection = styled.div`
 export const StyledArrowBack = styled(IonIcon)`
   font-size: 24px;
   padding-left: 10px;
-  color: #222428;
+  color: var(--my-color-text);
 `

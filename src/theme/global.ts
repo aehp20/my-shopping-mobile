@@ -24,7 +24,10 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   :root {
+    --my-color-body: ${({ theme }: IThemeProps) => theme.body};
     --my-color-text: ${({ theme }: IThemeProps) => theme.text};
+    --my-color-clear-icon: ${({ theme }: IThemeProps) =>
+      theme.myColorClearIcon};
     --my-color-primary: ${({ theme }: IThemeProps) => theme.myColorPrimary};
     --my-color-secondary: ${({ theme }: IThemeProps) => theme.myColorSecondary};
     --my-color-secondary-activated: ${({ theme }: IThemeProps) =>
@@ -33,21 +36,57 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   ion-content {
-    --background: ${({ theme }: IThemeProps) => theme.body};
+    --background: var(--my-color-body);
   }
 
   ion-header {
-    background: ${({ theme }: IThemeProps) => theme.myColorPrimary};
+    background: var(--my-color-primary);
   }
 
-  ion-fab-button {
-    --background: ${({ theme }: IThemeProps) => theme.myColorSecondary};
+  ion-toolbar {
+    --background: var(--my-color-primary);
+  }
+
+  ion-fab-button,
+  ion-button {
+    --background: var(--my-color-secondary);
     --background-activated: var(--my-color-secondary-activated);
     --background-focused: var(--my-color-secondary-activated);
     --background-hover: var(--my-color-secondary-activated);
   }
 
+  ion-list {
+    background: var(--my-color-body) !important;
+  }
+
+  ion-item {
+    --background: var(--my-color-body);
+    --color: var(--my-color-text);
+  }
+
+  ion-checkbox {
+    --background: var(--my-color-secondary);
+    --border-color: var(--my-border-color);
+  }
+
+  ion-input,
+  ion-searchbar {
+    --background: var(--my-color-secondary) !important;
+    color: var(--my-color-text) !important;
+  }
+
   a {
     color: var(--my-color-text);
+  }
+
+  .searchbar-search-icon.sc-ion-searchbar-md {
+    color: var(--my-color-text);
+  }
+
+  .input-clear-icon.sc-ion-input-md {
+    background-image: url("data:image/svg+xml;charset=utf-8,<svg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20512%20512'><polygon%20fill='${({
+      theme,
+    }: IThemeProps) =>
+      theme.myColorClearIcon}'%20points='405,136.798%20375.202,107%20256,226.202%20136.798,107%20107,136.798%20226.202,256%20107,375.202%20136.798,405%20256,285.798%20375.202,405%20405,375.202%20285.798,256'/></svg>")};
   }
 `

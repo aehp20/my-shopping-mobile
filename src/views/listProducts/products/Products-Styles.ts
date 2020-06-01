@@ -24,7 +24,6 @@ export const StyledActionsBar = styled(IonGrid)`
   padding: 0px;
   position: fixed;
   z-index: 10;
-  background: white;
   width: 100%;
   margin-top: 1px;
 `
