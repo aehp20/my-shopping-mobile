@@ -62,6 +62,9 @@ export const GlobalStyles = createGlobalStyle`
   ion-item {
     --background: var(--my-color-body);
     --color: var(--my-color-text);
+    --ripple-color: transparent;
+    --background-hover: transparent;
+    --border-color: var(--my-border-color);
   }
 
   ion-checkbox {
@@ -69,10 +72,19 @@ export const GlobalStyles = createGlobalStyle`
     --border-color: var(--my-border-color);
   }
 
+  ion-textarea,
   ion-input,
   ion-searchbar {
     --background: var(--my-color-secondary) !important;
     color: var(--my-color-text) !important;
+  }
+
+  ion-title {
+    --color: var(--my-color-text);
+  }
+
+  ion-label {
+    margin-bottom: 8px! important;
   }
 
   a {

@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { IonTitle, IonButton, IonLabel } from '@ionic/react'
 
 export const StyledTitle = styled(IonTitle)`
-  padding: 6px 0;
+  padding: 6px 10px;
 `
 
 export const StyledButton = styled(IonButton)`
