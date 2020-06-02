@@ -22,7 +22,7 @@ export function Home() {
             <IonButtons slot='start'>
               <IonMenuButton />
             </IonButtons>
-            <StyledHomeTitle>My notes</StyledHomeTitle>
+            <StyledHomeTitle>My shopping</StyledHomeTitle>
           </IonToolbar>
         </IonHeader>
         <IonContent>
