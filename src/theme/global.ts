@@ -49,10 +49,7 @@ export const GlobalStyles = createGlobalStyle`
 
   ion-fab-button,
   ion-button {
-    --background: var(--my-color-secondary);
-    --background-activated: var(--my-color-secondary-activated);
-    --background-focused: var(--my-color-secondary-activated);
-    --background-hover: var(--my-color-secondary-activated);
+    --color: var(--my-color-body);
   }
 
   ion-list {

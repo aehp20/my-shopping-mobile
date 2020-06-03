@@ -76,7 +76,7 @@ export function Products(props: IProductsProps) {
           {areThereSelectedProducts && (
             <StyledColumnDelete size='3'>
               <IonButton color='danger' onClick={openConfirmDeletionDialog}>
-                <IonIcon icon={trash} size='large'></IonIcon>
+                <IonIcon icon={trash}></IonIcon>
               </IonButton>
             </StyledColumnDelete>
           )}
