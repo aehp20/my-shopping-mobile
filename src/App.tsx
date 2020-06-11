@@ -18,6 +18,8 @@ import {
   PRODUCT_EDIT_PATH,
 } from './views/listProducts/product/Product-Constants'
 import { Product } from './views/listProducts/product'
+import { MENU_PATH } from './views/menu/Menu-Constants'
+import { Menu } from './views/menu'
 import { lightTheme, darkTheme } from './theme/theme'
 import { GlobalStyles } from './theme/global'
 
@@ -51,6 +53,7 @@ const App: React.FC = () => (
       <AppProvider>
         <IonReactRouter>
           <IonRouterOutlet>
+            <Route path={MENU_PATH} component={Menu} exact={true} />
             <Route path={HOME_PATH} component={Home} exact={true} />
             <Route
               path={LIST_PRODUCTS_NEW_PATH}

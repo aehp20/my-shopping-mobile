@@ -4,7 +4,6 @@ import {
   IonPage,
   IonHeader,
   IonToolbar,
-  IonButtons,
   IonContent,
   IonButton,
   IonIcon,
@@ -12,16 +11,16 @@ import {
   IonRow,
   IonCol,
 } from '@ionic/react'
-import { save, arrowBack } from 'ionicons/icons'
+import { save } from 'ionicons/icons'
 import { RouteComponentProps } from 'react-router'
-import { Link } from 'react-router-dom'
 
 import { useListProductsController } from './ListProducts-Controller'
 import { StyledIonInput } from './ListProducts-Styles'
 import { HOME_PATH } from '../../App-Constants'
 import { Products } from './products'
 import { IListProductsParams } from './ListProducts-Types'
-import { StyledErrorSection, StyledArrowBack } from '../../common/styles'
+import { StyledErrorSection } from '../../common/styles'
+import { BackButton } from '../../common/components/backButton'
 
 export function ListProducts({
   match,
@@ -53,11 +52,7 @@ export function ListProducts({
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonButtons slot='start'>
-            <Link to={HOME_PATH}>
-              <StyledArrowBack icon={arrowBack}></StyledArrowBack>
-            </Link>
-          </IonButtons>
+          <BackButton to={HOME_PATH} />
           <IonGrid>
             <IonRow>
               <IonCol size='9'>

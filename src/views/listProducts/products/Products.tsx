@@ -17,7 +17,7 @@ import {
   SEARCH_PRODUCTS_REDUCED_COL_SIZE,
   SEARCH_PRODUCTS_COL_SIZE,
 } from './Products-Constants'
-import { AddItemButton } from '../../../common/components/addItemButton'
+import { AddFabButton } from '../../../common/components/fabButtons'
 import { EmptyListMessage } from '../../../common/components/emptyListMessage'
 import {
   StyledHeaderItem,
@@ -146,7 +146,7 @@ export function Products(props: IProductsProps) {
           : listMessage}
       </StyledList>
 
-      <AddItemButton path={`/list-products/${idListProducts}/product`} />
+      <AddFabButton path={`/list-products/${idListProducts}/product`} />
     </>
   )
 }
