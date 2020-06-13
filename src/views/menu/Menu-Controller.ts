@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { SelectChangeEventDetail } from '@ionic/core'
 
 import { useAppContext } from '../../App-Context'
 
@@ -9,13 +10,12 @@ export function useMenuController() {
     return appConfig ? appConfig.theme : ''
   })
 
-  const handleTheme = (event: any) => {
-    console.log(event)
+  const handleTheme = (event: CustomEvent<SelectChangeEventDetail>) => {
     setTheme(event.detail.value)
   }
 
   const apply = () => {
-    setAppConfig({ theme })
+    setAppConfig({ ...getAppConfig(), theme })
   }
 
   return {

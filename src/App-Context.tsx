@@ -14,7 +14,7 @@ import {
   IProduct,
 } from './views/listsProducts/ListsProducts-Types'
 
-const AppContext = createContext({} as IAppContext)
+export const AppContext = createContext({} as IAppContext)
 
 export function AppProvider(props: IAppProvider) {
   const [appData, setAppData] = useState<IAppData>(APP_INITIAL_DATA)
@@ -109,21 +109,17 @@ export function AppProvider(props: IAppProvider) {
   }
 
   function setAppConfig(config: IAppConfig) {
-    const newAppData = { ...appData, ...config }
+    const newAppData = { ...appData, config }
     saveAppData(newAppData)
   }
 
   useEffect(() => {
     const loadSaved = async () => {
-      const appDataAsString = await get(APP_STORAGE_KEY)
-      let appDataInStorage = APP_INITIAL_DATA
+      const appDataAsString = (await get(APP_STORAGE_KEY)) || '{}'
+      const appDataAsObject = JSON.parse(appDataAsString)
+      const appDataInStorage = { ...APP_INITIAL_DATA, ...appDataAsObject }
 
-      if (appDataAsString) {
-        appDataInStorage = JSON.parse(appDataAsString)
-      } else {
-        saveAppData(appDataInStorage)
-      }
-
+      saveAppData(appDataInStorage)
       setAppData(appDataInStorage)
     }
     loadSaved()

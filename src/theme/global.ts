@@ -30,8 +30,6 @@ export const GlobalStyles = createGlobalStyle`
       theme.myColorClearIcon};
     --my-color-primary: ${({ theme }: IThemeProps) => theme.myColorPrimary};
     --my-color-secondary: ${({ theme }: IThemeProps) => theme.myColorSecondary};
-    --my-color-secondary-activated: ${({ theme }: IThemeProps) =>
-      theme.myColorSecondaryActivated};
     --my-border-color: ${({ theme }: IThemeProps) => theme.myBorderColor};
   }
 
