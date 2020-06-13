@@ -7,7 +7,6 @@ import {
   IonText,
   IonList,
   IonPage,
-  IonHeader,
   IonToolbar,
   IonContent,
   IonTextarea,
@@ -24,6 +23,7 @@ import { StyledErrorSection } from '../../../common/styles'
 import { getListProductsPath } from '../../listsProducts/ListsProducts-Utils'
 import { IProductParams } from './Product-Types'
 import { BackButton } from '../../../common/components/backButton'
+import { Header } from '../../../common/components/header'
 
 export function Product({ match }: RouteComponentProps<IProductParams>) {
   const { idListProducts, id } = match.params
@@ -43,12 +43,12 @@ export function Product({ match }: RouteComponentProps<IProductParams>) {
 
   return (
     <IonPage>
-      <IonHeader>
+      <Header>
         <IonToolbar>
           <BackButton to={getListProductsPath(idListProducts)} />
           <StyledTitle>{title}</StyledTitle>
         </IonToolbar>
-      </IonHeader>
+      </Header>
       <IonContent>
         <form>
           <IonList>

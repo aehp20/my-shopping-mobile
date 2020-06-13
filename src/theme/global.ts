@@ -39,6 +39,7 @@ export const GlobalStyles = createGlobalStyle`
 
   ion-header {
     background: var(--my-color-primary);
+    border-bottom: 1px solid var(--my-border-color);
   }
 
   ion-toolbar {

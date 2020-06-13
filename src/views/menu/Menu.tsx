@@ -1,7 +1,6 @@
 import React from 'react'
 import {
   IonContent,
-  IonHeader,
   IonPage,
   IonToolbar,
   IonTitle,
@@ -16,18 +15,19 @@ import { HOME_PATH } from '../../App-Constants'
 import { BackButton } from '../../common/components/backButton'
 import { StyledButton } from '../listProducts/product/Product-Styles'
 import { useMenuController } from './Menu-Controller'
+import { Header } from '../../common/components/header'
 
 export function Menu() {
   const { theme, handleTheme, apply } = useMenuController()
 
   return (
     <IonPage>
-      <IonHeader>
+      <Header>
         <IonToolbar>
           <BackButton to={HOME_PATH} />
           <IonTitle>Configuration</IonTitle>
         </IonToolbar>
-      </IonHeader>
+      </Header>
       <IonContent>
         <form>
           <IonList>

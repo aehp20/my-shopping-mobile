@@ -2,7 +2,6 @@ import React from 'react'
 import {
   IonText,
   IonPage,
-  IonHeader,
   IonToolbar,
   IonContent,
   IonButton,
@@ -21,6 +20,7 @@ import { Products } from './products'
 import { IListProductsParams } from './ListProducts-Types'
 import { StyledErrorSection } from '../../common/styles'
 import { BackButton } from '../../common/components/backButton'
+import { Header } from '../../common/components/header'
 
 export function ListProducts({
   match,
@@ -50,7 +50,7 @@ export function ListProducts({
 
   return (
     <IonPage>
-      <IonHeader>
+      <Header>
         <IonToolbar>
           <BackButton to={HOME_PATH} />
           <IonGrid>
@@ -74,7 +74,7 @@ export function ListProducts({
             </IonRow>
           </IonGrid>
         </IonToolbar>
-      </IonHeader>
+      </Header>
       <IonContent>
         {errorSection}
         {productsSection}
