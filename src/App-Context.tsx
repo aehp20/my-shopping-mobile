@@ -8,7 +8,7 @@ import React, {
 import { useStorage } from '@ionic/react-hooks/storage'
 
 import { APP_STORAGE_KEY, APP_INITIAL_DATA } from './App-Constants'
-import { IAppContext, IAppData, IAppProvider } from './App-Types'
+import { IAppContext, IAppData, IAppProvider, IAppConfig } from './App-Types'
 import {
   IListProducts,
   IProduct,
@@ -37,7 +37,8 @@ export function AppProvider(props: IAppProvider) {
 
   function addListProducts(list: IListProducts) {
     const newListsProducts = [list, ...appData.listsProducts]
-    saveAppData({ listsProducts: newListsProducts })
+    const newAppData = { ...appData, listsProducts: newListsProducts }
+    saveAppData(newAppData)
   }
 
   function updateListProducts(list: IListProducts) {
@@ -45,13 +46,15 @@ export function AppProvider(props: IAppProvider) {
     const newListsProducts = listsProducts.map((item) =>
       item.id === list.id ? { ...item, ...list } : item
     )
-    saveAppData({ listsProducts: newListsProducts })
+    const newAppData = { ...appData, listsProducts: newListsProducts }
+    saveAppData(newAppData)
   }
 
   function deleteListProducts(id: string) {
     const { listsProducts } = appData
     const newListsProducts = listsProducts.filter((item) => item.id !== id)
-    saveAppData({ listsProducts: newListsProducts })
+    const newAppData = { ...appData, listsProducts: newListsProducts }
+    saveAppData(newAppData)
   }
 
   function saveListProducts(listProducts: IListProducts) {
@@ -101,6 +104,15 @@ export function AppProvider(props: IAppProvider) {
     }
   }
 
+  function getAppConfig() {
+    return appData.config
+  }
+
+  function setAppConfig(config: IAppConfig) {
+    const newAppData = { ...appData, ...config }
+    saveAppData(newAppData)
+  }
+
   useEffect(() => {
     const loadSaved = async () => {
       const appDataAsString = await get(APP_STORAGE_KEY)
@@ -125,6 +137,8 @@ export function AppProvider(props: IAppProvider) {
     deleteListProducts,
     getProduct,
     saveProduct,
+    getAppConfig,
+    setAppConfig,
   }
 
   return (
