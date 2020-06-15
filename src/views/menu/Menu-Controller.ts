@@ -11,16 +11,18 @@ export function useMenuController() {
   })
 
   const handleTheme = (event: CustomEvent<SelectChangeEventDetail>) => {
-    setTheme(event.detail.value)
+    const selectedTheme = event.detail.value
+
+    setTheme(selectedTheme)
+    apply(selectedTheme)
   }
 
-  const apply = () => {
-    setAppConfig({ ...getAppConfig(), theme })
+  const apply = (selectedTheme: string) => {
+    setAppConfig({ ...getAppConfig(), theme: selectedTheme })
   }
 
   return {
     theme,
     handleTheme,
-    apply,
   }
 }
