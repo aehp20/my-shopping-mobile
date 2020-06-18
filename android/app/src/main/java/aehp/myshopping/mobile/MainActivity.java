@@ -1,4 +1,4 @@
-package io.ionic.starter;
+package aehp.myshopping.mobile;
 
 import android.os.Bundle;
 
