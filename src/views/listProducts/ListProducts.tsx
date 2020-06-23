@@ -3,7 +3,6 @@ import {
   IonText,
   IonPage,
   IonToolbar,
-  IonContent,
   IonButton,
   IonIcon,
   IonGrid,
@@ -20,7 +19,7 @@ import { Products } from './products'
 import { IListProductsParams } from './ListProducts-Types'
 import { StyledErrorSection } from '../../common/styles'
 import { BackButton } from '../../common/components/backButton'
-import { Header } from '../../common/components/header'
+import { MyUIHeader, MyUIContent } from '../../common/myUIComponents'
 
 export function ListProducts({
   match,
@@ -50,7 +49,7 @@ export function ListProducts({
 
   return (
     <IonPage>
-      <Header>
+      <MyUIHeader>
         <IonToolbar>
           <BackButton to={HOME_PATH} />
           <IonGrid>
@@ -74,11 +73,11 @@ export function ListProducts({
             </IonRow>
           </IonGrid>
         </IonToolbar>
-      </Header>
-      <IonContent>
+      </MyUIHeader>
+      <MyUIContent>
         {errorSection}
         {productsSection}
-      </IonContent>
+      </MyUIContent>
     </IonPage>
   )
 }

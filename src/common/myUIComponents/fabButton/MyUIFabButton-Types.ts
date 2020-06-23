@@ -1,8 +1,8 @@
-export interface IFabPathProps {
+export interface IMyUIFabPathProps {
   path: string
 }
 
-export interface IFabButtonProps extends IFabPathProps {
+export interface IMyUIFabButtonProps extends IMyUIFabPathProps {
   vertical?: 'bottom' | 'top' | 'center' | undefined
   horizontal?: 'center' | 'start' | 'end' | undefined
   icon?: string

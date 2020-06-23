@@ -3,7 +3,6 @@ import { IonGrid, IonRow, IonCol } from '@ionic/react'
 import { trash } from 'ionicons/icons'
 
 import { hasListItems } from '../../common/utils'
-import { AddFabButton, MenuFabButton } from '../../common/components/fabButtons'
 import {
   StyledProducts,
   StyledName,
@@ -22,6 +21,10 @@ import { ConfirmDeletionDialog } from '../../common/components/confirmDialog'
 import { StyledLink } from '../../common/styles'
 import { EmptyEspace } from '../../common/components/emptyEspace'
 import { MENU_PATH } from '../menu/Menu-Constants'
+import {
+  MyUIAddFabButton,
+  MyUIMenuFabButton,
+} from '../../common/myUIComponents'
 
 export function ListsProducts() {
   const {
@@ -78,8 +81,8 @@ export function ListsProducts() {
       ) : (
         <EmptyListMessage />
       )}
-      <AddFabButton path={LIST_PRODUCTS_NEW_PATH} />
-      <MenuFabButton path={MENU_PATH} />
+      <MyUIAddFabButton path={LIST_PRODUCTS_NEW_PATH} />
+      <MyUIMenuFabButton path={MENU_PATH} />
     </div>
   )
 }

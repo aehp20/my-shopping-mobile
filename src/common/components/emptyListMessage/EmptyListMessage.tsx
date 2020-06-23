@@ -1,9 +1,7 @@
 import React from 'react'
 
-import { StyledEmptyList } from './EmptyListMessage-Styles'
+import { MyUIInfo } from '../../myUIComponents'
 
 export function EmptyListMessage() {
-  return (
-    <StyledEmptyList>Click on the button (+) to add a list</StyledEmptyList>
-  )
+  return <MyUIInfo>Click on the button (+) to add a list</MyUIInfo>
 }

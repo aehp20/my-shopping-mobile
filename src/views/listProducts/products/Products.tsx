@@ -17,7 +17,6 @@ import {
   SEARCH_PRODUCTS_REDUCED_COL_SIZE,
   SEARCH_PRODUCTS_COL_SIZE,
 } from './Products-Constants'
-import { AddFabButton } from '../../../common/components/fabButtons'
 import { EmptyListMessage } from '../../../common/components/emptyListMessage'
 import {
   StyledHeaderItem,
@@ -33,8 +32,8 @@ import { getName, getLink } from './Products-Utils'
 import { StyledCheckbox } from '../../../common/styles'
 import { useProductsController } from './Products-Controller'
 import { hasListItems } from '../../../common/utils'
-import { StyledEmptyList } from '../../../common/components/emptyListMessage/EmptyListMessage-Styles'
 import { ConfirmDeletionDialog } from '../../../common/components/confirmDialog'
+import { MyUIInfo, MyUIAddFabButton } from '../../../common/myUIComponents'
 
 export function Products(props: IProductsProps) {
   const { id: idListProducts, name, products } = props
@@ -58,7 +57,7 @@ export function Products(props: IProductsProps) {
     : SEARCH_PRODUCTS_COL_SIZE
 
   const listMessage = notFoundFilteredProducts ? (
-    <StyledEmptyList>Items not found</StyledEmptyList>
+    <MyUIInfo>Items not found</MyUIInfo>
   ) : (
     <EmptyListMessage />
   )
@@ -146,7 +145,7 @@ export function Products(props: IProductsProps) {
           : listMessage}
       </StyledList>
 
-      <AddFabButton path={`/list-products/${idListProducts}/product`} />
+      <MyUIAddFabButton path={`/list-products/${idListProducts}/product`} />
     </>
   )
 }

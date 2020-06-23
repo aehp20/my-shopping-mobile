@@ -31,22 +31,18 @@ export const GlobalStyles = createGlobalStyle`
     --my-color-primary: ${({ theme }: IThemeProps) => theme.myColorPrimary};
     --my-color-secondary: ${({ theme }: IThemeProps) => theme.myColorSecondary};
     --my-border-color: ${({ theme }: IThemeProps) => theme.myBorderColor};
+
+    --my-ui-content-background: ${({ theme }: IThemeProps) => theme.body};
+    --my-ui-header-border-bottom-color: ${({ theme }: IThemeProps) =>
+      theme.myColorPrimary};
+    --my-ui-toolbar-background: ${({ theme }: IThemeProps) =>
+      theme.myColorSecondary};
+    --my-ui-title-color: ${({ theme }: IThemeProps) => theme.body};
+    --my-ui-fab-button-color: ${({ theme }: IThemeProps) => theme.body};
+    --my-ui-fab-button-background: ${({ theme }: IThemeProps) =>
+      theme.myColorTertiary};
   }
 
-  ion-content {
-    --background: var(--my-color-body);
-  }
-
-  ion-header {
-    background: var(--my-color-primary);
-    border-bottom: 1px solid var(--my-border-color);
-  }
-
-  ion-toolbar {
-    --background: var(--my-color-primary);
-  }
-
-  ion-fab-button,
   ion-button {
     --color: var(--my-color-body);
   }

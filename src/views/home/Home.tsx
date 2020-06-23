@@ -1,21 +1,25 @@
 import React from 'react'
-import { IonContent, IonPage, IonToolbar } from '@ionic/react'
+import { IonPage } from '@ionic/react'
 
 import { ListsProducts } from '../listsProducts'
-import { StyledHomeTitle } from './Home-Styles'
-import { Header } from '../../common/components/header'
+import {
+  MyUIHeader,
+  MyUIToolbar,
+  MyUITitle,
+  MyUIContent,
+} from '../../common/myUIComponents'
 
 export function Home() {
   return (
     <IonPage>
-      <Header>
-        <IonToolbar>
-          <StyledHomeTitle>My shopping</StyledHomeTitle>
-        </IonToolbar>
-      </Header>
-      <IonContent>
+      <MyUIHeader>
+        <MyUIToolbar>
+          <MyUITitle>My shopping</MyUITitle>
+        </MyUIToolbar>
+      </MyUIHeader>
+      <MyUIContent>
         <ListsProducts />
-      </IonContent>
+      </MyUIContent>
     </IonPage>
   )
 }

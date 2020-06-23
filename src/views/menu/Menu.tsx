@@ -1,6 +1,5 @@
 import React from 'react'
 import {
-  IonContent,
   IonPage,
   IonToolbar,
   IonTitle,
@@ -14,20 +13,20 @@ import {
 import { HOME_PATH } from '../../App-Constants'
 import { BackButton } from '../../common/components/backButton'
 import { useMenuController } from './Menu-Controller'
-import { Header } from '../../common/components/header'
+import { MyUIHeader, MyUIContent } from '../../common/myUIComponents'
 
 export function Menu() {
   const { theme, handleTheme } = useMenuController()
 
   return (
     <IonPage>
-      <Header>
+      <MyUIHeader>
         <IonToolbar>
           <BackButton to={HOME_PATH} />
           <IonTitle>Configuration</IonTitle>
         </IonToolbar>
-      </Header>
-      <IonContent>
+      </MyUIHeader>
+      <MyUIContent>
         <form>
           <IonList>
             <IonItem>
@@ -39,7 +38,7 @@ export function Menu() {
             </IonItem>
           </IonList>
         </form>
-      </IonContent>
+      </MyUIContent>
     </IonPage>
   )
 }

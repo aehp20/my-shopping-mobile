@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
 
-export interface IHeader {
+export interface IMyUIComponentProps {
   children: ReactNode
 }
