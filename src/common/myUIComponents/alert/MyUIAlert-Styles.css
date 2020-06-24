@@ -1,0 +1,17 @@
+.alert-head {
+  background: var(--my-ui-alert-head-background);
+}
+
+.alert-title {
+  color: var(--my-ui-alert-title-color) !important;
+}
+
+.alert-message {
+  padding-top: 10px !important;
+  color: var(--my-ui-alert-message-color) !important;
+}
+
+.alert-button {
+  background-color: var(--my-ui-alert-button-background-color) !important;
+  color: white !important;
+}

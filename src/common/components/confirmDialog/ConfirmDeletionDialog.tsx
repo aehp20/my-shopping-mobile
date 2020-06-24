@@ -1,13 +1,13 @@
 import React from 'react'
-import { IonAlert } from '@ionic/react'
 
 import { IConfirmDeletionDialog } from './ConfirmDeletionDialog-Types'
+import { MyUIAlert } from '../../myUIComponents'
 
 export function ConfirmDeletionDialog(props: IConfirmDeletionDialog) {
   const { isOpen, cancelFn, okFn } = props
 
   return (
-    <IonAlert
+    <MyUIAlert
       isOpen={isOpen}
       onDidDismiss={cancelFn}
       header={'Confirm deletion'}

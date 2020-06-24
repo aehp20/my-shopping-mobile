@@ -6,7 +6,6 @@ import {
   IonToggle,
   IonText,
   IonList,
-  IonPage,
   IonToolbar,
   IonTextarea,
 } from '@ionic/react'
@@ -22,7 +21,11 @@ import { StyledErrorSection } from '../../../common/styles'
 import { getListProductsPath } from '../../listsProducts/ListsProducts-Utils'
 import { IProductParams } from './Product-Types'
 import { BackButton } from '../../../common/components/backButton'
-import { MyUIHeader, MyUIContent } from '../../../common/myUIComponents'
+import {
+  MyUIHeader,
+  MyUIContent,
+  MyUIPage,
+} from '../../../common/myUIComponents'
 
 export function Product({ match }: RouteComponentProps<IProductParams>) {
   const { idListProducts, id } = match.params
@@ -41,7 +44,7 @@ export function Product({ match }: RouteComponentProps<IProductParams>) {
   } = useProductController(idListProducts, id)
 
   return (
-    <IonPage>
+    <MyUIPage>
       <MyUIHeader>
         <IonToolbar>
           <BackButton to={getListProductsPath(idListProducts)} />
@@ -98,6 +101,6 @@ export function Product({ match }: RouteComponentProps<IProductParams>) {
           </StyledButton>
         </form>
       </MyUIContent>
-    </IonPage>
+    </MyUIPage>
   )
 }

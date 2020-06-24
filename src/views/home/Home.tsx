@@ -1,25 +1,22 @@
 import React from 'react'
-import { IonPage } from '@ionic/react'
 
 import { ListsProducts } from '../listsProducts'
 import {
   MyUIHeader,
-  MyUIToolbar,
   MyUITitle,
   MyUIContent,
+  MyUIPage,
 } from '../../common/myUIComponents'
 
 export function Home() {
   return (
-    <IonPage>
+    <MyUIPage>
       <MyUIHeader>
-        <MyUIToolbar>
-          <MyUITitle>My shopping</MyUITitle>
-        </MyUIToolbar>
+        <MyUITitle>My shopping</MyUITitle>
       </MyUIHeader>
       <MyUIContent>
         <ListsProducts />
       </MyUIContent>
-    </IonPage>
+    </MyUIPage>
   )
 }

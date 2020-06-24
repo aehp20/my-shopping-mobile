@@ -26,10 +26,11 @@ export const GlobalStyles = createGlobalStyle`
   :root {
     --my-color-body: ${({ theme }: IThemeProps) => theme.body};
     --my-color-text: ${({ theme }: IThemeProps) => theme.text};
-    --my-color-clear-icon: ${({ theme }: IThemeProps) =>
-      theme.myColorClearIcon};
     --my-color-primary: ${({ theme }: IThemeProps) => theme.myColorPrimary};
     --my-color-secondary: ${({ theme }: IThemeProps) => theme.myColorSecondary};
+    --my-color-tertiary: ${({ theme }: IThemeProps) => theme.myColorTertiary};
+    --my-color-quaternary: ${({ theme }: IThemeProps) =>
+      theme.myColorQuaternary};
     --my-border-color: ${({ theme }: IThemeProps) => theme.myBorderColor};
 
     --my-ui-content-background: ${({ theme }: IThemeProps) => theme.body};
@@ -41,10 +42,20 @@ export const GlobalStyles = createGlobalStyle`
     --my-ui-fab-button-color: ${({ theme }: IThemeProps) => theme.body};
     --my-ui-fab-button-background: ${({ theme }: IThemeProps) =>
       theme.myColorTertiary};
-  }
-
-  ion-button {
-    --color: var(--my-color-body);
+    --my-ui-icon-color: ${({ theme }: IThemeProps) => theme.body};
+    --my-ui-icon-background: ${({ theme }: IThemeProps) =>
+      theme.myColorTertiary};
+    --my-ui-input-color: ${({ theme }: IThemeProps) => theme.text};
+    --my-ui-input-background: ${({ theme }: IThemeProps) => theme.body};
+    --my-ui-input-clear-icon-color: ${({ theme }: IThemeProps) => theme.text};
+    --my-ui-alert-head-background: ${({ theme }: IThemeProps) =>
+      theme.myColorPrimary};
+    --my-ui-alert-title-color: ${({ theme }: IThemeProps) => theme.body};
+    --my-ui-alert-message-color: ${({ theme }: IThemeProps) => theme.text};
+    --my-ui-alert-button-background-color: ${({ theme }: IThemeProps) =>
+      theme.myColorTertiary};
+    --my-ui-searchbar-color: ${({ theme }: IThemeProps) => theme.text};
+    --my-ui-searchbar-background: ${({ theme }: IThemeProps) => theme.body};
   }
 
   ion-list {
@@ -64,15 +75,9 @@ export const GlobalStyles = createGlobalStyle`
     --border-color: var(--my-border-color);
   }
 
-  ion-textarea,
-  ion-input,
-  ion-searchbar {
+  ion-textarea {
     --background: var(--my-color-secondary) !important;
     color: var(--my-color-text) !important;
-  }
-
-  ion-title {
-    --color: var(--my-color-text);
   }
 
   ion-label {
@@ -85,12 +90,5 @@ export const GlobalStyles = createGlobalStyle`
 
   .searchbar-search-icon.sc-ion-searchbar-md {
     color: var(--my-color-text);
-  }
-
-  .input-clear-icon.sc-ion-input-md {
-    background-image: url("data:image/svg+xml;charset=utf-8,<svg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20512%20512'><polygon%20fill='${({
-      theme,
-    }: IThemeProps) =>
-      theme.myColorClearIcon}'%20points='405,136.798%20375.202,107%20256,226.202%20136.798,107%20107,136.798%20226.202,256%20107,375.202%20136.798,405%20256,285.798%20375.202,405%20405,375.202%20285.798,256'/></svg>")};
   }
 `

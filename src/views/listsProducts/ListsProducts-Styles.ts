@@ -8,9 +8,9 @@ export const StyledName = styled.div`
 
 export const StyledProducts = styled.div`
   font-size: 14px;
-  border-left: 1px solid var(--my-border-color);
-  border-right: 1px solid var(--my-border-color);
-  border-bottom: 1px solid var(--my-border-color);
+  border-left: 1px solid var(--my-color-tertiary);
+  border-right: 1px solid var(--my-color-tertiary);
+  border-bottom: 1px solid var(--my-color-tertiary);
   min-height: 45px;
   padding: 6px;
 `
@@ -19,8 +19,8 @@ export const StyledHeader = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 6px;
-  border: 1px solid var(--my-border-color);
-  background: var(--my-color-primary);
+  border: 1px solid var(--my-color-tertiary);
+  background: var(--my-color-tertiary);
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
 `
@@ -28,4 +28,8 @@ export const StyledHeader = styled.div`
 export const StyledTrashIcon = styled(IonIcon)`
   cursor: pointer;
   font-size: 18px;
+  border-radius: 50%;
+  padding: 2px;
+  color: var(--my-color-tertiary);
+  background: var(--my-color-body);
 `

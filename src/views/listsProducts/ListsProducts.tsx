@@ -1,5 +1,4 @@
 import React from 'react'
-import { IonGrid, IonRow, IonCol } from '@ionic/react'
 import { trash } from 'ionicons/icons'
 
 import { hasListItems } from '../../common/utils'
@@ -18,12 +17,15 @@ import { LIST_PRODUCTS_NEW_PATH } from '../listProducts/ListProducts-Constants'
 import { EmptyListMessage } from '../../common/components/emptyListMessage'
 import { useListsProductsController } from './ListsProducts-Controller'
 import { ConfirmDeletionDialog } from '../../common/components/confirmDialog'
-import { StyledLink } from '../../common/styles'
+import { StyledLink, StyledWhiteLink } from '../../common/styles'
 import { EmptyEspace } from '../../common/components/emptyEspace'
 import { MENU_PATH } from '../menu/Menu-Constants'
 import {
   MyUIAddFabButton,
   MyUIMenuFabButton,
+  MyUIGrid,
+  MyUIRow,
+  MyUICol,
 } from '../../common/myUIComponents'
 
 export function ListsProducts() {
@@ -39,23 +41,24 @@ export function ListsProducts() {
     <div>
       {hasListItems(rowsProducts) ? (
         <>
-          <IonGrid>
+          <MyUIGrid>
             {rowsProducts.map((item, indexRow) => (
-              <IonRow key={indexRow}>
+              <MyUIRow key={indexRow}>
                 {item.row.map((listProducts, indexItem) => (
-                  <IonCol key={`${indexRow}${indexItem}`} size='6'>
+                  <MyUICol key={`${indexRow}${indexItem}`} size='6'>
                     <div>
                       <StyledHeader>
                         <StyledName>
-                          <StyledLink to={getListProductsPath(listProducts.id)}>
+                          <StyledWhiteLink
+                            to={getListProductsPath(listProducts.id)}
+                          >
                             {listProducts.name}
                             <EmptyEspace />
                             {getNumberOfProducts(listProducts.products)}
-                          </StyledLink>
+                          </StyledWhiteLink>
                         </StyledName>
                         <StyledTrashIcon
                           icon={trash}
-                          color='danger'
                           onClick={() =>
                             openConfirmDeletionDialog(listProducts.id)
                           }
@@ -67,11 +70,11 @@ export function ListsProducts() {
                         </StyledLink>
                       </StyledProducts>
                     </div>
-                  </IonCol>
+                  </MyUICol>
                 ))}
-              </IonRow>
+              </MyUIRow>
             ))}
-          </IonGrid>
+          </MyUIGrid>
           <ConfirmDeletionDialog
             isOpen={isOpenConfirmDeletionDialog}
             cancelFn={closeConfirmDeletionDialog}

@@ -1,12 +1,5 @@
 import React from 'react'
-import {
-  IonGrid,
-  IonRow,
-  IonCol,
-  IonSearchbar,
-  IonButton,
-  IonIcon,
-} from '@ionic/react'
+import { IonGrid, IonRow, IonCol, IonButton, IonIcon } from '@ionic/react'
 import { trash } from 'ionicons/icons'
 
 import { IProductsProps } from './Products-Types'
@@ -33,7 +26,11 @@ import { StyledCheckbox } from '../../../common/styles'
 import { useProductsController } from './Products-Controller'
 import { hasListItems } from '../../../common/utils'
 import { ConfirmDeletionDialog } from '../../../common/components/confirmDialog'
-import { MyUIInfo, MyUIAddFabButton } from '../../../common/myUIComponents'
+import {
+  MyUIInfo,
+  MyUIAddFabButton,
+  MyUISearchbar,
+} from '../../../common/myUIComponents'
 
 export function Products(props: IProductsProps) {
   const { id: idListProducts, name, products } = props
@@ -65,21 +62,18 @@ export function Products(props: IProductsProps) {
   return (
     <>
       <StyledActionsBar>
-        <IonRow>
-          <IonCol size={SIZE_SEARCH_PRODUCTS}>
-            <IonSearchbar
-              placeholder='Search products'
-              onIonChange={handleSearch}
-            ></IonSearchbar>
-          </IonCol>
-          {areThereSelectedProducts && (
-            <StyledColumnDelete size='3'>
-              <IonButton color='danger' onClick={openConfirmDeletionDialog}>
-                <IonIcon icon={trash}></IonIcon>
-              </IonButton>
-            </StyledColumnDelete>
-          )}
-        </IonRow>
+        <MyUISearchbar
+          placeholder='Search products'
+          onIonChange={handleSearch}
+        />
+
+        {areThereSelectedProducts && (
+          <div>
+            <IonButton color='danger' onClick={openConfirmDeletionDialog}>
+              <IonIcon icon={trash}></IonIcon>
+            </IonButton>
+          </div>
+        )}
       </StyledActionsBar>
 
       <ConfirmDeletionDialog

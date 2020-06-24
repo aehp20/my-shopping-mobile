@@ -3,7 +3,6 @@ import {
   IonItem,
   IonListHeader,
   IonList,
-  IonGrid,
   IonCol,
   IonToggle,
 } from '@ionic/react'
@@ -20,12 +19,11 @@ export const StyledHeaderItem = styled(IonItem)`
   width: 100%;
 `
 
-export const StyledActionsBar = styled(IonGrid)`
-  padding: 0px;
+export const StyledActionsBar = styled.div`
   position: fixed;
   z-index: 10;
   width: 100%;
-  margin-top: 1px;
+  background: var(--my-color-quaternary);
 `
 
 export const StyledColumnDelete = styled(IonCol)`
