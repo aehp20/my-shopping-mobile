@@ -33,7 +33,6 @@ export const GlobalStyles = createGlobalStyle`
       theme.myColorQuaternary};
     --my-color-quinary: ${({ theme }: IThemeProps) => theme.myColorQuinary};
     --my-color-senary: ${({ theme }: IThemeProps) => theme.myColorSenary};
-    --my-border-color: ${({ theme }: IThemeProps) => theme.myBorderColor};
 
     --my-ui-content-background: ${({ theme }: IThemeProps) => theme.body};
     --my-ui-header-border-bottom-color: ${({ theme }: IThemeProps) =>
@@ -41,6 +40,7 @@ export const GlobalStyles = createGlobalStyle`
     --my-ui-header-background: ${({ theme }: IThemeProps) =>
       theme.myColorSecondary};
     --my-ui-title-color: ${({ theme }: IThemeProps) => theme.body};
+    --my-ui-text-color: ${({ theme }: IThemeProps) => theme.text};
     --my-ui-fab-button-color: ${({ theme }: IThemeProps) => theme.body};
     --my-ui-fab-button-background: ${({ theme }: IThemeProps) =>
       theme.myColorTertiary};
@@ -49,7 +49,6 @@ export const GlobalStyles = createGlobalStyle`
       theme.myColorTertiary};
     --my-ui-input-color: ${({ theme }: IThemeProps) => theme.text};
     --my-ui-input-background: ${({ theme }: IThemeProps) => theme.body};
-    --my-ui-input-clear-icon-color: ${({ theme }: IThemeProps) => theme.text};
     --my-ui-textarea-color: ${({ theme }: IThemeProps) => theme.text};
     --my-ui-textarea-background: ${({ theme }: IThemeProps) => theme.body};
     --my-ui-alert-head-background: ${({ theme }: IThemeProps) =>
@@ -64,21 +63,39 @@ export const GlobalStyles = createGlobalStyle`
       theme.text};
     --my-ui-checkbox-background: ${({ theme }: IThemeProps) => theme.body};
     --my-ui-checkbox-border-color: ${({ theme }: IThemeProps) =>
-      theme.myBorderColor};
+      theme.myColorOctonary};
     --my-ui-checkbox-background-checked: ${({ theme }: IThemeProps) =>
       theme.myColorQuaternary};
     --my-ui-checkbox-border-color-checked: ${({ theme }: IThemeProps) =>
       theme.myColorQuaternary};
     --my-ui-toggle-background: ${({ theme }: IThemeProps) =>
       theme.myColorSenary};
-    --my-ui-toggle-handle-background: ${({ theme }: IThemeProps) => theme.body};
+    --my-ui-toggle-handle-background: ${({ theme }: IThemeProps) =>
+      theme.myColorSeptenary};
     --my-ui-toggle-background-checked: ${({ theme }: IThemeProps) =>
       theme.myColorQuaternary};
     --my-ui-toggle-handle-background-checked: ${({ theme }: IThemeProps) =>
       theme.myColorSecondary};
+    --my-ui-list-background: ${({ theme }: IThemeProps) => theme.body};
+    --my-ui-item-background: ${({ theme }: IThemeProps) => theme.body};
+    --my-ui-item-border-color: ${({ theme }: IThemeProps) =>
+      theme.myColorSeptenary};
+    --my-ui-info-box-shadow-color: ${({ theme }: IThemeProps) =>
+      theme.myColorOctonary};
+    --my-ui-info-color: ${({ theme }: IThemeProps) => theme.myColorOctonary};
+    --my-ui-info-background: ${({ theme }: IThemeProps) => theme.body}; 
+    --my-ui-label-color: ${({ theme }: IThemeProps) => theme.text};
   }
 
   a {
     color: var(--my-color-text);
+  }
+
+  // TODO find anothet solution to change color in input clear icon
+  .input-clear-icon.sc-ion-input-md {
+    background-image: url("data:image/svg+xml;charset=utf-8,<svg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20512%20512'><polygon%20fill='${({
+      theme,
+    }: IThemeProps) =>
+      theme.text}'%20points='405,136.798%20375.202,107%20256,226.202%20136.798,107%20107,136.798%20226.202,256%20107,375.202%20136.798,405%20256,285.798%20375.202,405%20405,375.202%20285.798,256'/></svg>");
   }
 `

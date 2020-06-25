@@ -30,6 +30,7 @@ import {
   MyUIHorizontalSpace,
   MyUIButton,
   MyUITrashIcon,
+  MyUIText,
 } from '../../../common/myUIComponents'
 
 export function Products(props: IProductsProps) {
@@ -92,8 +93,12 @@ export function Products(props: IProductsProps) {
                     onIonChange={handleSelectedAllProducts}
                   />
                 </MyUICol>
-                <MyUICol size={NAME_COL_SIZE}>Name</MyUICol>
-                <MyUICol size={TO_BUY_COL_SIZE}>Buy</MyUICol>
+                <MyUICol size={NAME_COL_SIZE}>
+                  <MyUIText>Name</MyUIText>
+                </MyUICol>
+                <MyUICol size={TO_BUY_COL_SIZE}>
+                  <MyUIText>Buy</MyUIText>
+                </MyUICol>
               </MyUIRow>
             </MyUIGrid>
           </StyledHeaderItem>

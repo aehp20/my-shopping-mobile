@@ -11,8 +11,8 @@ export const StyledLink = styled(Link)`
   text-decoration: none;
 `
 
-export const StyledWhiteLink = styled(StyledLink)`
-  color: #ffffff;
+export const StyledHeaderLink = styled(StyledLink)`
+  color: var(--my-color-body);
 `
 
 export const StyledErrorSection = styled.div`
