@@ -7,8 +7,12 @@
 }
 
 .alert-message {
-  padding-top: 10px !important;
+  padding-top: 20px !important;
   color: var(--my-ui-alert-message-color) !important;
+}
+
+.alert-message:empty {
+  padding-top: 0 !important;
 }
 
 .alert-button {

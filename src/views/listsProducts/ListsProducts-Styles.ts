@@ -1,5 +1,6 @@
 import styled from 'styled-components'
-import { IonIcon } from '@ionic/react'
+
+import { MyUIIcon } from '../../common/myUIComponents'
 
 export const StyledName = styled.div`
   font-size: 14px;
@@ -25,7 +26,7 @@ export const StyledHeader = styled.div`
   border-top-right-radius: 4px;
 `
 
-export const StyledTrashIcon = styled(IonIcon)`
+export const StyledTrashIcon = styled(MyUIIcon)`
   cursor: pointer;
   font-size: 18px;
   border-radius: 50%;

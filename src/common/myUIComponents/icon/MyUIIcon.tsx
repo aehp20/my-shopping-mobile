@@ -6,7 +6,7 @@ import { save, trash } from 'ionicons/icons'
 // TODO: remove this import when Ionic adds this in types/components.d.ts
 import { IonIconProps } from './MyUIIcon-Types'
 
-function MyUIIcon(
+export function MyUIIcon(
   props: IonIconProps & IonicReactProps & HTMLAttributes<HTMLIonIconElement>
 ) {
   return <IonIcon {...props} />

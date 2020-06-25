@@ -1,18 +1,19 @@
 import React from 'react'
-import {
-  IonToolbar,
-  IonTitle,
-  IonList,
-  IonItem,
-  IonLabel,
-  IonSelect,
-  IonSelectOption,
-} from '@ionic/react'
 
 import { HOME_PATH } from '../../App-Constants'
 import { BackButton } from '../../common/components/backButton'
 import { useMenuController } from './Menu-Controller'
-import { MyUIHeader, MyUIContent, MyUIPage } from '../../common/myUIComponents'
+import {
+  MyUIHeader,
+  MyUIContent,
+  MyUIPage,
+  MyUITitle,
+  MyUIList,
+  MyUIItem,
+  MyUILabel,
+  MyUISelect,
+  MyUISelectOption,
+} from '../../common/myUIComponents'
 
 export function Menu() {
   const { theme, handleTheme } = useMenuController()
@@ -20,22 +21,20 @@ export function Menu() {
   return (
     <MyUIPage>
       <MyUIHeader>
-        <IonToolbar>
-          <BackButton to={HOME_PATH} />
-          <IonTitle>Configuration</IonTitle>
-        </IonToolbar>
+        <BackButton to={HOME_PATH} />
+        <MyUITitle>Configuration</MyUITitle>
       </MyUIHeader>
       <MyUIContent>
         <form>
-          <IonList>
-            <IonItem>
-              <IonLabel>Theme</IonLabel>
-              <IonSelect value={theme} onIonChange={handleTheme}>
-                <IonSelectOption value='light'>Light</IonSelectOption>
-                <IonSelectOption value='dark'>Dark</IonSelectOption>
-              </IonSelect>
-            </IonItem>
-          </IonList>
+          <MyUIList>
+            <MyUIItem>
+              <MyUILabel>Theme</MyUILabel>
+              <MyUISelect value={theme} onIonChange={handleTheme}>
+                <MyUISelectOption value='light'>Light</MyUISelectOption>
+                <MyUISelectOption value='dark'>Dark</MyUISelectOption>
+              </MyUISelect>
+            </MyUIItem>
+          </MyUIList>
         </form>
       </MyUIContent>
     </MyUIPage>
