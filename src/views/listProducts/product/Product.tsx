@@ -1,22 +1,8 @@
 import React from 'react'
-import {
-  IonInput,
-  IonItem,
-  IonLabel,
-  IonToggle,
-  IonText,
-  IonList,
-  IonToolbar,
-  IonTextarea,
-} from '@ionic/react'
 import { RouteComponentProps } from 'react-router'
 
 import { useProductController } from './Product-Controller'
-import {
-  StyledTitle,
-  StyledButton,
-  StyledLabelForToggle,
-} from './Product-Styles'
+import { StyledButton, StyledLabelForToggle } from './Product-Styles'
 import { StyledErrorSection } from '../../../common/styles'
 import { getListProductsPath } from '../../listsProducts/ListsProducts-Utils'
 import { IProductParams } from './Product-Types'
@@ -25,6 +11,14 @@ import {
   MyUIHeader,
   MyUIContent,
   MyUIPage,
+  MyUITitle,
+  MyUIList,
+  MyUIItem,
+  MyUIText,
+  MyUIInput,
+  MyUIToggle,
+  MyUILabel,
+  MyUITextarea,
 } from '../../../common/myUIComponents'
 
 export function Product({ match }: RouteComponentProps<IProductParams>) {
@@ -46,19 +40,17 @@ export function Product({ match }: RouteComponentProps<IProductParams>) {
   return (
     <MyUIPage>
       <MyUIHeader>
-        <IonToolbar>
-          <BackButton to={getListProductsPath(idListProducts)} />
-          <StyledTitle>{title}</StyledTitle>
-        </IonToolbar>
+        <BackButton to={getListProductsPath(idListProducts)} />
+        <MyUITitle>{title}</MyUITitle>
       </MyUIHeader>
       <MyUIContent>
         <form>
-          <IonList>
-            <IonItem>
-              <IonLabel position='stacked'>
-                Name <IonText color='danger'>*</IonText>
-              </IonLabel>
-              <IonInput
+          <MyUIList>
+            <MyUIItem>
+              <MyUILabel position='stacked'>
+                Name <MyUIText color='danger'>*</MyUIText>
+              </MyUILabel>
+              <MyUIInput
                 autofocus={true}
                 required
                 type='text'
@@ -66,33 +58,33 @@ export function Product({ match }: RouteComponentProps<IProductParams>) {
                 onIonChange={handleName}
                 clearInput
               />
-            </IonItem>
-            <IonItem>
-              <IonLabel position='stacked'>Quantity</IonLabel>
-              <IonInput
+            </MyUIItem>
+            <MyUIItem>
+              <MyUILabel position='stacked'>Quantity</MyUILabel>
+              <MyUIInput
                 required
                 type='text'
                 value={quantity}
                 onIonChange={handleQuantity}
                 clearInput
               />
-            </IonItem>
-            <IonItem lines='full'>
+            </MyUIItem>
+            <MyUIItem lines='full'>
               <StyledLabelForToggle>To buy</StyledLabelForToggle>
-              <IonToggle checked={toBuy} onIonChange={handleToBuy} />
-            </IonItem>
-            <IonItem>
-              <IonLabel position='stacked'>Description</IonLabel>
-              <IonTextarea
+              <MyUIToggle checked={toBuy} onIonChange={handleToBuy} />
+            </MyUIItem>
+            <MyUIItem>
+              <MyUILabel position='stacked'>Description</MyUILabel>
+              <MyUITextarea
                 value={description}
                 onIonChange={handleDescription}
               />
-            </IonItem>
-          </IonList>
+            </MyUIItem>
+          </MyUIList>
 
           {validationResponse.error && (
             <StyledErrorSection>
-              <IonText color='danger'>{validationResponse.message}</IonText>
+              <MyUIText color='danger'>{validationResponse.message}</MyUIText>
             </StyledErrorSection>
           )}
 

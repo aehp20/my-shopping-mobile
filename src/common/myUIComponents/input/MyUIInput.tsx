@@ -3,7 +3,7 @@ import { JSX } from '@ionic/core'
 
 import { StyledMyUIInput } from './MyUIInput-Styles'
 
-export function MyUInput(
+export function MyUIInput(
   props: JSX.IonInput & HTMLAttributes<HTMLIonInputElement>
 ) {
   return <StyledMyUIInput {...props} />

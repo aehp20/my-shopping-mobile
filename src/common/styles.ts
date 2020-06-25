@@ -1,8 +1,9 @@
 import styled from 'styled-components'
-import { IonCheckbox } from '@ionic/react'
 import { Link } from 'react-router-dom'
 
-export const StyledCheckbox = styled(IonCheckbox)`
+import { MyUICheckbox } from './myUIComponents'
+
+export const StyledCheckbox = styled(MyUICheckbox)`
   margin: 0px;
 `
 

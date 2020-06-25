@@ -10,7 +10,7 @@ import { BackButton } from '../../common/components/backButton'
 import {
   MyUIHeader,
   MyUIContent,
-  MyUInput,
+  MyUIInput,
   MyUIHorizontalSpace,
   MyUIButton,
   MyUIPage,
@@ -49,7 +49,7 @@ export function ListProducts({
       <MyUIHeader>
         <BackButton to={HOME_PATH} />
         <MyUIHorizontalSpace width='6px' />
-        <MyUInput
+        <MyUIInput
           autofocus={true}
           required
           type='text'

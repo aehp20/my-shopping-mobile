@@ -10,6 +10,8 @@ export interface ITheme {
   myColorSecondary: string // Background fields
   myColorTertiary: string // Fab button color
   myColorQuaternary: string // Searchbar background color
+  myColorQuinary: string // Selected item background color
+  myColorSenary: string // Background toggle
   myBorderColor: string // Border
 }
 
@@ -21,6 +23,8 @@ export const defaultTheme = {
   myColorSecondary: '#2d89ef',
   myColorTertiary: '#03a9f4',
   myColorQuaternary: '#41bdf4',
+  myColorQuinary: '#b3e4f9',
+  myColorSenary: '#989aa2',
   myBorderColor: '#666666',
 }
 
@@ -34,6 +38,8 @@ export const themes: ITheme[] = [
     myColorSecondary: '#636366',
     myColorTertiary: '#03a9f4',
     myColorQuaternary: '#41bdf4',
+    myColorQuinary: '#b3e4f9',
+    myColorSenary: '#989aa2',
     myBorderColor: '#313131',
   },
 ]
