@@ -135,7 +135,9 @@ export function useProductsController(
 
   useEffect(() => {
     const newIsAllSelected = hasListItems(products)
-      ? products.every((product) => product.isSelected)
+      ? products
+          .filter((product) => product.toBuy)
+          .every((product) => product.isSelected)
       : false
     const newSelectedProducts = getSelectedProducts(products)
 

@@ -24,6 +24,9 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   :root {
+    // *******************
+    // Local css variables
+    // *******************
     --my-color-body: ${({ theme }: IThemeProps) => theme.body};
     --my-color-text: ${({ theme }: IThemeProps) => theme.text};
     --my-color-primary: ${({ theme }: IThemeProps) => theme.myColorPrimary};
@@ -32,8 +35,16 @@ export const GlobalStyles = createGlobalStyle`
     --my-color-quaternary: ${({ theme }: IThemeProps) =>
       theme.myColorQuaternary};
     --my-color-quinary: ${({ theme }: IThemeProps) => theme.myColorQuinary};
-    --my-color-senary: ${({ theme }: IThemeProps) => theme.myColorSenary};
 
+    // **************************
+    // Custom Ionic css variables
+    // **************************
+    --ion-color-danger-contrast: ${({ theme }: IThemeProps) =>
+      theme.customIonColorDangerContrast};
+
+    // ********************************************
+    // Set values to My UI Components css variables
+    // ********************************************
     --my-ui-content-background: ${({ theme }: IThemeProps) => theme.body};
     --my-ui-header-border-bottom-color: ${({ theme }: IThemeProps) =>
       theme.myColorPrimary};
@@ -41,6 +52,9 @@ export const GlobalStyles = createGlobalStyle`
       theme.myColorSecondary};
     --my-ui-title-color: ${({ theme }: IThemeProps) => theme.body};
     --my-ui-text-color: ${({ theme }: IThemeProps) => theme.text};
+    --my-ui-button-color: ${({ theme }: IThemeProps) => theme.body};
+    --my-ui-button-background: ${({ theme }: IThemeProps) =>
+      theme.myColorTertiary};
     --my-ui-fab-button-color: ${({ theme }: IThemeProps) => theme.body};
     --my-ui-fab-button-background: ${({ theme }: IThemeProps) =>
       theme.myColorTertiary};
@@ -52,39 +66,60 @@ export const GlobalStyles = createGlobalStyle`
     --my-ui-textarea-color: ${({ theme }: IThemeProps) => theme.text};
     --my-ui-textarea-background: ${({ theme }: IThemeProps) => theme.body};
     --my-ui-alert-head-background: ${({ theme }: IThemeProps) =>
-      theme.myColorPrimary};
-    --my-ui-alert-title-color: ${({ theme }: IThemeProps) => theme.body};
-    --my-ui-alert-message-color: ${({ theme }: IThemeProps) => theme.text};
+      theme.alertHeadBackground};
+    --my-ui-alert-title-color: ${({ theme }: IThemeProps) =>
+      theme.alertTitleColor};
+    --my-ui-alert-message-background: ${({ theme }: IThemeProps) =>
+      theme.alertMessageBackground};
+    --my-ui-alert-message-color: ${({ theme }: IThemeProps) =>
+      theme.alertMessageColor};
+    --my-ui-alert-radio-group-background: ${({ theme }: IThemeProps) =>
+      theme.alertRadioGroupBackground};
+    --my-ui-alert-radio-group-border-color: ${({ theme }: IThemeProps) =>
+      theme.alertRadioGroupBorderColor};
+    --my-ui-alert-radio-icon-border-color: ${({ theme }: IThemeProps) =>
+      theme.alertRadioIconBorderColor};
+    --my-ui-alert-radio-inner-background: ${({ theme }: IThemeProps) =>
+      theme.alertRadioInnerBackground};
+    --my-ui-alert-radio-label-color: ${({ theme }: IThemeProps) =>
+      theme.alertRadioLabelColor};
+    --my-ui-alert-button-group-background: ${({ theme }: IThemeProps) =>
+      theme.alertButtonGroupBackground};
     --my-ui-alert-button-background-color: ${({ theme }: IThemeProps) =>
-      theme.myColorTertiary};
+      theme.alertButtonBackground};
+    --my-ui-alert-button-color: ${({ theme }: IThemeProps) =>
+      theme.alertButtonColor};
     --my-ui-searchbar-color: ${({ theme }: IThemeProps) => theme.text};
     --my-ui-searchbar-background: ${({ theme }: IThemeProps) => theme.body};
     --my-ui-searchbar-search-icon-color: ${({ theme }: IThemeProps) =>
       theme.text};
     --my-ui-checkbox-background: ${({ theme }: IThemeProps) => theme.body};
     --my-ui-checkbox-border-color: ${({ theme }: IThemeProps) =>
-      theme.myColorOctonary};
+      theme.myColorSeptenary};
     --my-ui-checkbox-background-checked: ${({ theme }: IThemeProps) =>
       theme.myColorQuaternary};
     --my-ui-checkbox-border-color-checked: ${({ theme }: IThemeProps) =>
       theme.myColorQuaternary};
     --my-ui-toggle-background: ${({ theme }: IThemeProps) =>
-      theme.myColorSenary};
+      theme.toggleBackground};
     --my-ui-toggle-handle-background: ${({ theme }: IThemeProps) =>
-      theme.myColorSeptenary};
+      theme.toggleHandleBackground};
     --my-ui-toggle-background-checked: ${({ theme }: IThemeProps) =>
-      theme.myColorQuaternary};
+      theme.toggleBackgroundChecked};
     --my-ui-toggle-handle-background-checked: ${({ theme }: IThemeProps) =>
-      theme.myColorSecondary};
+      theme.toggleHandleBackgroundChecked};
     --my-ui-list-background: ${({ theme }: IThemeProps) => theme.body};
     --my-ui-item-background: ${({ theme }: IThemeProps) => theme.body};
     --my-ui-item-border-color: ${({ theme }: IThemeProps) =>
-      theme.myColorSeptenary};
+      theme.myColorSenary};
+    --my-ui-item-highlight-background: ${({ theme }: IThemeProps) =>
+      theme.myColorSecondary};
     --my-ui-info-box-shadow-color: ${({ theme }: IThemeProps) =>
-      theme.myColorOctonary};
-    --my-ui-info-color: ${({ theme }: IThemeProps) => theme.myColorOctonary};
+      theme.myColorSeptenary};
+    --my-ui-info-color: ${({ theme }: IThemeProps) => theme.myColorSeptenary};
     --my-ui-info-background: ${({ theme }: IThemeProps) => theme.body}; 
     --my-ui-label-color: ${({ theme }: IThemeProps) => theme.text};
+    --my-ui-select-color: ${({ theme }: IThemeProps) => theme.text};
   }
 
   a {

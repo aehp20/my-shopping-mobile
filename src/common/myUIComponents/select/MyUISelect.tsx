@@ -1,9 +1,10 @@
 import React, { HTMLAttributes } from 'react'
 import { JSX } from '@ionic/core'
-import { IonSelect } from '@ionic/react'
+
+import { StyledMyUISelect } from './MyUISelect-Styles'
 
 export function MyUISelect(
   props: JSX.IonSelect & HTMLAttributes<HTMLIonSelectElement>
 ) {
-  return <IonSelect {...props}>{props.children}</IonSelect>
+  return <StyledMyUISelect {...props}>{props.children}</StyledMyUISelect>
 }
