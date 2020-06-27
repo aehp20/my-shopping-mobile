@@ -8,13 +8,14 @@ export const StyledAboutContainer = styled.div`
   align-items: center;
   text-align: center;
   padding: 10px;
+  color: var(--my-color-text);
 `
 
 export const StyledAboutRow = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 4px;
+  margin: 5px;
 `
 
 export const StyledAboutLogo = styled(StyledAboutRow)`

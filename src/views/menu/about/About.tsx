@@ -18,6 +18,7 @@ import {
   StyledAboutAuthor,
   StyledAboutAppName,
 } from './About-Styles'
+import { version } from '../../../../package.json'
 
 export function About() {
   return (
@@ -34,7 +35,7 @@ export function About() {
             The easy way to organize your shopping list
           </StyledAboutRow>
           <br />
-          <StyledAboutRow>Version 1.0.0</StyledAboutRow>
+          <StyledAboutRow>Version {version}</StyledAboutRow>
           <StyledAboutRow>Copyright (c) 2020</StyledAboutRow>
           <StyledAboutRow>
             <StyledAboutAuthor
