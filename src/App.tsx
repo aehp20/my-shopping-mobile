@@ -17,8 +17,9 @@ import {
   PRODUCT_EDIT_PATH,
 } from './views/listProducts/product/Product-Constants'
 import { Product } from './views/listProducts/product'
-import { MENU_PATH } from './views/menu/Menu-Constants'
-import { Menu } from './views/menu'
+import { MENU_CONFIG_PATH, MENU_ABOUT_PATH } from './views/menu'
+import { Configuration } from './views/menu/config'
+import { About } from './views/menu/about'
 import { GlobalStyles } from './theme/global'
 import { getTheme } from './App-Utils'
 
@@ -39,7 +40,6 @@ import '@ionic/react/css/flex-utils.css'
 import '@ionic/react/css/display.css'
 
 /* Theme variables */
-import './theme/variables.css'
 
 const App: React.FC = () => (
   <IonApp>
@@ -50,7 +50,12 @@ const App: React.FC = () => (
             <GlobalStyles />
             <IonReactRouter>
               <IonRouterOutlet>
-                <Route path={MENU_PATH} component={Menu} exact={true} />
+                <Route
+                  path={MENU_CONFIG_PATH}
+                  component={Configuration}
+                  exact={true}
+                />
+                <Route path={MENU_ABOUT_PATH} component={About} exact={true} />
                 <Route path={HOME_PATH} component={Home} exact={true} />
                 <Route
                   path={LIST_PRODUCTS_NEW_PATH}

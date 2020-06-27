@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { SelectChangeEventDetail } from '@ionic/core'
 
-import { useAppContext } from '../../App-Context'
+import { useAppContext } from '../../../App-Context'
 
-export function useMenuController() {
+export function useConfigurationController() {
   const { getAppConfig, setAppConfig } = useAppContext()
   const [theme, setTheme] = useState(() => {
     const appConfig = getAppConfig()

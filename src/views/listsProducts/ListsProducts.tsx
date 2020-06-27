@@ -19,14 +19,13 @@ import { useListsProductsController } from './ListsProducts-Controller'
 import { ConfirmDeletionDialog } from '../../common/components/confirmDialog'
 import { StyledLink, StyledHeaderLink } from '../../common/styles'
 import { EmptyEspace } from '../../common/components/emptyEspace'
-import { MENU_PATH } from '../menu/Menu-Constants'
 import {
   MyUIAddFabButton,
-  MyUIMenuFabButton,
   MyUIGrid,
   MyUIRow,
   MyUICol,
 } from '../../common/myUIComponents'
+import { Menu } from '../menu'
 
 export function ListsProducts() {
   const {
@@ -85,7 +84,7 @@ export function ListsProducts() {
         <EmptyListMessage />
       )}
       <MyUIAddFabButton path={LIST_PRODUCTS_NEW_PATH} />
-      <MyUIMenuFabButton path={MENU_PATH} />
+      <Menu />
     </div>
   )
 }
