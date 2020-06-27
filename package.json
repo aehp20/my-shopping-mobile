@@ -1,8 +1,8 @@
 {
   "name": "my-shopping",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "private": true,
-  "description": "A great Ionic project",
+  "description": "The easy way to organize your shopping list.",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

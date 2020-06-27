@@ -1,2 +1,3 @@
 # My shopping mobile
-Easy way to organize your products.
+
+The easy way to organize your shopping list.

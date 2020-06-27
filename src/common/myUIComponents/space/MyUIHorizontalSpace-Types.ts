@@ -1,3 +1,3 @@
 export interface IMyUIHorizontalSpaceProps {
-  width: string
+  width?: string
 }
