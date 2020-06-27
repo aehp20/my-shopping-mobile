@@ -14,6 +14,7 @@ import {
   StyledActionsBar,
   StyledToggleToBuy,
   StyledItemProduct,
+  StyledCol,
 } from './Products-Styles'
 import { getName, getLink } from './Products-Utils'
 import { StyledCheckbox } from '../../../common/styles'
@@ -26,7 +27,6 @@ import {
   MyUISearchbar,
   MyUIGrid,
   MyUIRow,
-  MyUICol,
   MyUIHorizontalSpace,
   MyUIButton,
   MyUITrashIcon,
@@ -85,20 +85,20 @@ export function Products(props: IProductsProps) {
           <StyledHeaderItem>
             <MyUIGrid>
               <MyUIRow>
-                <MyUICol size={DONE_COL_SIZE} ion-no-padding>
+                <StyledCol size={DONE_COL_SIZE} ion-no-padding>
                   <StyledCheckbox
                     color='primary'
                     value={isAllSelected ? 'true' : 'false'}
                     checked={isAllSelected}
                     onIonChange={handleSelectedAllProducts}
                   />
-                </MyUICol>
-                <MyUICol size={NAME_COL_SIZE}>
+                </StyledCol>
+                <StyledCol size={NAME_COL_SIZE}>
                   <MyUIText>Name</MyUIText>
-                </MyUICol>
-                <MyUICol size={TO_BUY_COL_SIZE}>
+                </StyledCol>
+                <StyledCol size={TO_BUY_COL_SIZE}>
                   <MyUIText>Buy</MyUIText>
-                </MyUICol>
+                </StyledCol>
               </MyUIRow>
             </MyUIGrid>
           </StyledHeaderItem>
@@ -109,7 +109,7 @@ export function Products(props: IProductsProps) {
               <StyledItemProduct key={index} isSelected={!!product.isSelected}>
                 <MyUIGrid>
                   <MyUIRow>
-                    <MyUICol size={DONE_COL_SIZE} ion-no-padding>
+                    <StyledCol size={DONE_COL_SIZE} ion-no-padding>
                       <StyledCheckbox
                         color='primary'
                         id={product.id}
@@ -118,14 +118,14 @@ export function Products(props: IProductsProps) {
                         onIonChange={handleSelectedProduct}
                         disabled={!product.toBuy}
                       />
-                    </MyUICol>
-                    <MyUICol size={NAME_COL_SIZE}>
+                    </StyledCol>
+                    <StyledCol size={NAME_COL_SIZE}>
                       {getLink(
                         `/list-products/${idListProducts}/product/${product.id}`,
                         getName(product)
                       )}
-                    </MyUICol>
-                    <MyUICol size={TO_BUY_COL_SIZE}>
+                    </StyledCol>
+                    <StyledCol size={TO_BUY_COL_SIZE}>
                       <StyledToggleToBuy
                         id={product.id}
                         value={(!!product.toBuy).toString()}
@@ -133,7 +133,7 @@ export function Products(props: IProductsProps) {
                         onIonChange={handleToBuyValue}
                         disabled={product.isSelected}
                       />
-                    </MyUICol>
+                    </StyledCol>
                   </MyUIRow>
                 </MyUIGrid>
               </StyledItemProduct>

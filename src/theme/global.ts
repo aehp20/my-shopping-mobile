@@ -79,8 +79,8 @@ export const GlobalStyles = createGlobalStyle`
       theme.alertRadioGroupBorderColor};
     --my-ui-alert-radio-icon-border-color: ${({ theme }: IThemeProps) =>
       theme.alertRadioIconBorderColor};
-    --my-ui-alert-radio-inner-background: ${({ theme }: IThemeProps) =>
-      theme.alertRadioInnerBackground};
+    --my-ui-alert-radio-inner-color: ${({ theme }: IThemeProps) =>
+      theme.alertRadioInnerColor};
     --my-ui-alert-radio-label-color: ${({ theme }: IThemeProps) =>
       theme.alertRadioLabelColor};
     --my-ui-alert-button-group-background: ${({ theme }: IThemeProps) =>
@@ -120,6 +120,8 @@ export const GlobalStyles = createGlobalStyle`
     --my-ui-info-background: ${({ theme }: IThemeProps) => theme.body}; 
     --my-ui-label-color: ${({ theme }: IThemeProps) => theme.text};
     --my-ui-select-color: ${({ theme }: IThemeProps) => theme.text};
+    --my-ui-fab-button-background-hover: ${({ theme }: IThemeProps) =>
+      theme.fabButtonBackgroundHover};
   }
 
   a {

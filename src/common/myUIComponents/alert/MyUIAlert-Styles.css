@@ -26,7 +26,11 @@
 }
 
 .alert-radio-inner {
-  background: var(--my-ui-alert-radio-inner-background) !important;
+  border-color: var(--my-ui-alert-radio-inner-color) !important;
+}
+
+.alert-radio-inner.sc-ion-alert-md {
+  background-color: var(--my-ui-alert-radio-inner-color) !important;
 }
 
 .alert-radio-label {

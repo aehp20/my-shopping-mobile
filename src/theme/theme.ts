@@ -24,12 +24,13 @@ export interface ITheme {
   alertRadioGroupBackground: string // Alert radio group background
   alertRadioGroupBorderColor: string // Alert radio group border color
   alertRadioIconBorderColor: string // Alert radio icon border color
-  alertRadioInnerBackground: string // Alert radio inner background
+  alertRadioInnerColor: string // Alert radio inner color
   alertRadioLabelColor: string // Alert radio label color
   alertButtonGroupBackground: string // Alert button group background
   alertButtonBackground: string // Alert button background
   alertButtonColor: string // Alert button color
   customIonColorDangerContrast: string // Custom Ion color danger contrast
+  fabButtonBackgroundHover: string // Fab button background hover
 }
 
 export const defaultTheme = {
@@ -54,12 +55,13 @@ export const defaultTheme = {
   alertRadioGroupBackground: '#ffffff',
   alertRadioGroupBorderColor: '#ffffff',
   alertRadioIconBorderColor: '#666666',
-  alertRadioInnerBackground: '#666666',
+  alertRadioInnerColor: '#363537',
   alertRadioLabelColor: '#363537',
   alertButtonGroupBackground: '#ffffff',
   alertButtonBackground: '#03a9f4',
   alertButtonColor: '#ffffff',
   customIonColorDangerContrast: '#ffffff',
+  fabButtonBackgroundHover: '#028bca',
 }
 
 export const themes: ITheme[] = [
@@ -86,11 +88,12 @@ export const themes: ITheme[] = [
     alertRadioGroupBackground: '#242424',
     alertRadioGroupBorderColor: '#242424',
     alertRadioIconBorderColor: '#f7f7f7',
-    alertRadioInnerBackground: '#f7f7f7',
+    alertRadioInnerColor: '#f7f7f7',
     alertRadioLabelColor: '#f7f7f7',
     alertButtonGroupBackground: '#242424',
     alertButtonBackground: '#03a9f4',
     alertButtonColor: '#121212',
     customIonColorDangerContrast: '#121212',
+    fabButtonBackgroundHover: '#028bca',
   },
 ]
