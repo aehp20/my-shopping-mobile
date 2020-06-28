@@ -1,6 +1,7 @@
 export { MyUIContent } from './content/MyUIContent'
 export { MyUIHeader } from './header/MyUIHeader'
 export { MyUITitle } from './title/MyUITitle'
+export { MyUICustomTitle } from './title/MyUICustomTitle'
 export { MyUIInfo } from './info/MyUIInfo'
 export { MyUIFab } from './fab/MyUIFab'
 export { MyUIFabList } from './fab/MyUIFabList'

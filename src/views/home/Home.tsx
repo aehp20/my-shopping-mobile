@@ -3,16 +3,16 @@ import React from 'react'
 import { ListsProducts } from '../listsProducts'
 import {
   MyUIHeader,
-  MyUITitle,
   MyUIContent,
   MyUIPage,
+  MyUICustomTitle,
 } from '../../common/myUIComponents'
 
 export function Home() {
   return (
     <MyUIPage>
       <MyUIHeader>
-        <MyUITitle>My shopping</MyUITitle>
+        <MyUICustomTitle>My shopping</MyUICustomTitle>
       </MyUIHeader>
       <MyUIContent>
         <ListsProducts />

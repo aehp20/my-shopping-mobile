@@ -7,12 +7,12 @@ import {
   MyUIHeader,
   MyUIContent,
   MyUIPage,
-  MyUITitle,
   MyUIList,
   MyUIItem,
   MyUILabel,
   MyUISelect,
   MyUISelectOption,
+  MyUICustomTitle,
 } from '../../../common/myUIComponents'
 
 export function Configuration() {
@@ -22,7 +22,7 @@ export function Configuration() {
     <MyUIPage>
       <MyUIHeader>
         <BackButton to={HOME_PATH} />
-        <MyUITitle>Configuration</MyUITitle>
+        <MyUICustomTitle>Configuration</MyUICustomTitle>
       </MyUIHeader>
       <MyUIContent>
         <form>

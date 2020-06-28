@@ -7,9 +7,9 @@ import {
   MyUIHeader,
   MyUIContent,
   MyUIPage,
-  MyUITitle,
   MyUIIcon,
   MyUIHorizontalSpace,
+  MyUICustomTitle,
 } from '../../../common/myUIComponents'
 import {
   StyledAboutContainer,
@@ -25,7 +25,7 @@ export function About() {
     <MyUIPage>
       <MyUIHeader>
         <BackButton to={HOME_PATH} />
-        <MyUITitle>About My shopping</MyUITitle>
+        <MyUICustomTitle>About My shopping</MyUICustomTitle>
       </MyUIHeader>
       <MyUIContent>
         <StyledAboutContainer>
